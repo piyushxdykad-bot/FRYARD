@@ -253,7 +253,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 .lights svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .bulb{position:absolute;width:12px;height:12px;margin:-2px 0 0 -6px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFF6DD 0%,#FFCF6B 45%,#E88A1A 100%);box-shadow:0 0 10px 3px rgba(255,190,90,.75),0 0 34px 10px rgba(255,140,40,.35);opacity:.12;transition:opacity .25s}
 .bulb.lit{opacity:1}
-.night-ui{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;padding-left:var(--gutter);padding-right:var(--gutter-r);padding-block:0 calc(26px + env(safe-area-inset-bottom,0px))}
+.night-ui{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;padding-left:var(--gutter);padding-right:var(--gutter-r);padding-block:0 calc(78px + env(safe-area-inset-bottom,0px))}
 .night-ui .live{margin:0}
 .night-btns{display:flex;gap:12px;flex-wrap:wrap}
 .cue{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
@@ -602,14 +602,11 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 <main data-page="home">
 
   <!-- 1. Night market: lights on, walk in -->
-  <section class="chap ch-night" id="chNight" aria-labelledby="neonTitle">
+  <section class="chap ch-night" id="chNight" aria-label="The Night Market">
     <div class="ch-stage">
       <canvas class="gl" id="glNight" role="img" aria-label="Walking through the Night Market towards the red FRYARD stall"></canvas>
       <div class="lights" id="lights" aria-hidden="true"></div>
-      <div class="beat b0 on" data-from="0" data-to=".2">
-        <h1 class="neon" id="neonTitle" aria-label="FRYARD, Nashville hot chicken"><span class="neon-word">FRYARD</span></h1>
-        <p class="kicker">Nashville hot chicken at the Night Market</p>
-      </div>
+      <h1 class="sr">FRYARD, Nashville hot chicken at the Night Market</h1>
       <div class="beat b1" data-from=".24" data-to=".52">
         <h2 class="mega">Follow<br>the smoke</h2>
       </div>
@@ -1246,7 +1243,7 @@ const inits={
     const caps=$$('#chOil .cap'),bars=$$('#chOil .dunk-steps i'),arcG=$('#gaugeArc'),needle=$('#gaugeNeedle'),glazeT=$('[data-glaze]'),tempT=$('[data-temp]');
     const ss=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
     const beats=(sec,p)=>$$('.beat',sec).forEach(b=>b.classList.toggle('on',p>=+b.dataset.from&&p<=+b.dataset.to));
-    const night=p=>{ST.night.frame(p*LAST);ST.night.u.zoom=1+p*.35;ST.night.u.dark=.55*(1-ss(0,.22,p));ST.night.u.burn=.9*ss(.88,1,p);
+    const night=p=>{ST.night.frame(p*LAST);ST.night.u.zoom=1+p*.35;ST.night.u.dark=.25*(1-ss(0,.22,p));ST.night.u.burn=.9*ss(.88,1,p);
       beats($('#chNight'),p);tempT.textContent=Math.round(30+145*ss(.56,.8,p));meltA.scale=18+ss(.24,.52,p)*34;
       const Lt=$('#lights');if(Lt)Lt.style.opacity=1-ss(.08,.3,p);$('#chNight .night-ui').style.opacity=1-ss(.02,.12,p);$('#chNight .cue').style.opacity=1-ss(0,.06,p)};
     const oil=p=>{ST.oil.frame(p*LAST);ST.oil.u.burn=.9*(1-ss(0,.07,p));ST.oil.u.zoom=1.06-p*.06;const k=p<.34?0:p<.68?1:2;caps.forEach((c,i)=>c.classList.toggle('on',i===k));
@@ -1259,9 +1256,7 @@ const inits={
     if(!hasG||RM){$$('.chap').forEach(c=>c.classList.add('static'));$$('#chNight .beat').forEach(b=>b.classList.add('on'));lightsOn(0);
       ST.night.u.dark=.35;ST.night.frame(110);oil(1);ST.burst.frame(110);[ST.night,ST.oil,ST.burst].forEach(s=>s.load());return}
     night(0);oil(0);burst(0);
-    const nw=$('#neonTitle .neon-word');nw.style.animation='none';void nw.offsetWidth;nw.style.animation='';nw.style.animationDelay=first?'1.25s, 4s':'.2s, 3s';
     lightsOn(first?1.1:.15);
-    gsap.from('#chNight .kicker',{y:24,opacity:0,duration:1,delay:first?2.2:.9,ease:'expo.out'});
     gsap.from('#chNight .night-ui > *',{y:30,opacity:0,duration:.9,stagger:.12,delay:first?2.4:1,ease:'power3.out'});
     if(FINE){$('#chNight').addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to('#lights',{rotate:x*2.4,y:y*10,duration:1.4,ease:'power3.out'});gsap.to('#chNight .beat',{x:x*-26,y:y*-14,duration:1.4,ease:'power3.out'})})}
     const mob=innerWidth<761;
