@@ -236,10 +236,10 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 .chap{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#140504}
 .ch-stage{position:absolute;inset:0}
 .gl{position:absolute;inset:0;width:100%;height:100%;display:block}
-.beat{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding-left:var(--gutter);padding-right:var(--gutter-r);pointer-events:none;opacity:0;filter:blur(14px);transform:scale(1.06);transition:opacity .7s var(--ease),filter .7s var(--ease),transform .9s var(--ease)}
-.beat.on{opacity:1;filter:none;transform:none}
+.beat{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding-left:var(--gutter);padding-right:var(--gutter-r);pointer-events:none;opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease),transform .8s var(--ease)}
+.beat.on{opacity:1;transform:none}
 .beat h2.mega{font-size:clamp(64px,13vw,220px);font-variation-settings:"wdth" 66;text-shadow:0 12px 60px rgba(20,2,1,.6)}
-.melt-a{filter:url(#meltA)}
+
 .neon{margin:0;line-height:.8}
 .neon-word{display:inline-block;font-family:var(--display);font-style:italic;font-weight:900;font-variation-settings:"wdth" 125;font-size:clamp(84px,17vw,280px);letter-spacing:-.03em;color:#FFF3DA;-webkit-text-stroke:2px #FFF8EA;
   text-shadow:0 0 4px #fff,0 0 16px var(--mustard),0 0 40px var(--ember),0 0 90px var(--ember),0 0 160px #B5160F;animation:flick 2.6s .4s both,buzz 7s 3.2s infinite}
@@ -270,7 +270,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 .gauge-read b{font-family:var(--display);font-size:46px;font-variation-settings:"wdth" 70;font-weight:900;color:var(--mustard);font-variant-numeric:tabular-nums;line-height:1}
 
 /* burst */
-.hot-type{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding-left:var(--gutter);padding-right:var(--gutter-r);font-size:clamp(80px,18.5vw,320px);color:var(--cream);text-shadow:0 14px 60px rgba(20,2,1,.5);filter:url(#meltB);pointer-events:none}
+.hot-type{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding-left:var(--gutter);padding-right:var(--gutter-r);font-size:clamp(80px,18.5vw,320px);color:var(--cream);text-shadow:0 14px 60px rgba(20,2,1,.5);pointer-events:none}
 .hot-type .l1{align-self:flex-start}
 .hot-type .l2{align-self:flex-end}
 .hot-type .ch{font-variation-settings:"wdth" 66,"wght" 900;will-change:transform}
@@ -600,12 +600,6 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 
 <!-- ======================= HOME ======================= -->
 <main data-page="home">
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <defs>
-      <filter id="meltA" x="-5%" y="-30%" width="110%" height="170%"><feTurbulence id="meltANoise" type="fractalNoise" baseFrequency="0.006 0.045" numOctaves="2" seed="4" result="n"/><feDisplacementMap id="meltAMap" in="SourceGraphic" in2="n" scale="18" xChannelSelector="R" yChannelSelector="G"/></filter>
-      <filter id="meltB" x="-5%" y="-30%" width="110%" height="170%"><feTurbulence id="meltBNoise" type="fractalNoise" baseFrequency="0.005 0.05" numOctaves="2" seed="9" result="n"/><feDisplacementMap id="meltBMap" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter>
-    </defs>
-  </svg>
 
   <!-- 1. Night market: lights on, walk in -->
   <section class="chap ch-night" id="chNight" aria-labelledby="neonTitle">
@@ -617,7 +611,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
         <p class="kicker">Nashville hot chicken at the Night Market</p>
       </div>
       <div class="beat b1" data-from=".24" data-to=".52">
-        <h2 class="mega melt-a">Follow<br>the smoke</h2>
+        <h2 class="mega">Follow<br>the smoke</h2>
       </div>
       <div class="beat b2" data-from=".56" data-to=".86">
         <p class="temp"><b data-temp>30</b><span>°C</span></p>
@@ -1046,13 +1040,7 @@ float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}
 void main(){vec2 uv=v;float ca=res.x/res.y,ia=16./9.;vec2 s=ca>ia?vec2(1.,ia/ca):vec2(ca/ia,1.);
 vec2 q=(uv-.5)*s/zoom+.5;
-float amp=(.0018+.0055*heat)*haze*(1.2-uv.y);
-q.x+=(n(vec2(uv.x*7.,uv.y*12.-time*1.8))-.5)*amp*3.;
-q.y+=(n(vec2(uv.x*9.+7.,uv.y*9.-time*2.3))-.5)*amp*1.6;
-vec2 d=uv-mouse;d.x*=ca;float r=length(d);
-q+=d/(r+.001)*.011*exp(-r*6.)*sin(r*38.-time*5.)*(.45+heat)*haze;
-float c=.0012+min(abs(vel),3.)*.007;
-vec3 col=vec3(texture2D(t,q+vec2(c,0.)).r,texture2D(t,q).g,texture2D(t,q-vec2(c,0.)).b);
+vec3 col=texture2D(t,q).rgb;
 col+=burn*vec3(1.15,.42,.08);col=mix(col,vec3(1.,.94,.8),smoothstep(.55,1.,burn));
 col*=1.-dark;
 float vg=smoothstep(1.3,.25,length((uv-.5)*vec2(ca/ia,1.)*1.35));col*=mix(.45,1.,vg);
@@ -1114,13 +1102,13 @@ class Stage{
   }
 }
 const ST={night:new Stage('glNight','night_market','#0c0605'),oil:new Stage('glOil','oil_dunk','#3a0605'),burst:new Stage('glBurst','tender_burst','#4a0807')};
-const meltA={n:document.getElementById('meltANoise'),m:document.getElementById('meltAMap'),scale:18};
-const meltB={n:document.getElementById('meltBNoise'),m:document.getElementById('meltBMap'),scale:0};
+const meltA={scale:0};
+const meltB={scale:0};
 let lastSY=scrollY;
 requestAnimationFrame(function loop(now){requestAnimationFrame(loop);
   if(!lenis){const y=scrollY;VEL+=((y-lastSY)/30-VEL)*.2;lastSY=y}
   VEL*=.92;STAGES.forEach(s=>s.render(now));
-  melt(now); sizzleTick();
+  sizzleTick();
 });
 
 /* melting type: animate the turbulence so the letters drip */
