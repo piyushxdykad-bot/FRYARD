@@ -5,7 +5,7 @@ Concept website for [@fryardindia](https://www.instagram.com/fryardindia/), the 
 **Concept website · sample products and prices · not a real store**
 
 ## What's inside
-- **Home** — scroll-scrubbed hero video (192 frames, 1280×720), "Too hot to handle" headline that warps as you scroll, horizontal bestsellers reel, "Golden to glazed" chili-oil dunk sequence, site-wide heat dial, process steps, night-market dolly sequence
+- **Home** — a scroll story in six scenes: neon FRYARD sign and string lights flicker on, then a walk through the night market (video through a WebGL heat-haze shader) ending in a white-hot flash; "Into the oil" chili-oil dunk with a glaze gauge; "Too hot to handle" tender burst with letters that react to your cursor and melt on scroll; a draggable fryer knob that sets the heat for the whole site; bestsellers as swinging kitchen order tickets on a rail; and a pickle-physics "cool down" section. Optional procedural sizzle sound.
 - **Menu** — filterable menu, working order bag with pickup ticket (demo only), slider splash sequence in the header
 - **Heat scale** — five heat levels from No heat to Cluck yeah; your pick re-tints the whole site
 - **Our story** — draggable polaroids and a scroll timeline

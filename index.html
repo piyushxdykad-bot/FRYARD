@@ -232,6 +232,152 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 .foot-big{font-family:var(--display);font-style:italic;font-weight:900;font-variation-settings:"wdth" 125;font-size:23.5vw;line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--mustard) 60%,transparent);margin:48px 0 0;text-align:center;white-space:nowrap;user-select:none}
 .foot-note{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;opacity:.6;margin-top:20px}
 
+/* =================== HOME: the walk-in =================== */
+.chap{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#140504}
+.ch-stage{position:absolute;inset:0}
+.gl{position:absolute;inset:0;width:100%;height:100%;display:block}
+.beat{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding-left:var(--gutter);padding-right:var(--gutter-r);pointer-events:none;opacity:0;filter:blur(14px);transform:scale(1.06);transition:opacity .7s var(--ease),filter .7s var(--ease),transform .9s var(--ease)}
+.beat.on{opacity:1;filter:none;transform:none}
+.beat h2.mega{font-size:clamp(64px,13vw,220px);font-variation-settings:"wdth" 66;text-shadow:0 12px 60px rgba(20,2,1,.6)}
+.melt-a{filter:url(#meltA)}
+.neon{margin:0;line-height:.8}
+.neon-word{display:inline-block;font-family:var(--display);font-style:italic;font-weight:900;font-variation-settings:"wdth" 125;font-size:clamp(84px,17vw,280px);letter-spacing:-.03em;color:#FFF3DA;-webkit-text-stroke:2px #FFF8EA;
+  text-shadow:0 0 4px #fff,0 0 16px var(--mustard),0 0 40px var(--ember),0 0 90px var(--ember),0 0 160px #B5160F;animation:flick 2.6s .4s both,buzz 7s 3.2s infinite}
+@keyframes flick{0%{opacity:.04;text-shadow:none}6%{opacity:.9}8%{opacity:.08}15%{opacity:.85}17%{opacity:.15}30%{opacity:1}33%{opacity:.35}37%,100%{opacity:1}}
+@keyframes buzz{0%,92%,100%{opacity:1}93%{opacity:.55}94%{opacity:1}96%{opacity:.7}97%{opacity:1}}
+.kicker{margin:0;font-weight:700;font-size:clamp(14px,1.3vw,18px);letter-spacing:.08em;text-transform:uppercase;color:var(--mustard)}
+.temp{margin:0;display:flex;align-items:flex-start;font-family:var(--display);font-weight:900;color:var(--mustard);line-height:.8;font-variant-numeric:tabular-nums}
+.temp b{font-size:clamp(90px,14vw,220px);font-variation-settings:"wdth" 70;font-weight:900}
+.temp span{font-size:clamp(30px,4vw,64px);margin-top:.2em}
+.lights{position:absolute;left:0;right:0;top:0;height:34vh;z-index:2;pointer-events:none;transform-origin:50% -40%}
+.lights svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bulb{position:absolute;width:12px;height:12px;margin:-2px 0 0 -6px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFF6DD 0%,#FFCF6B 45%,#E88A1A 100%);box-shadow:0 0 10px 3px rgba(255,190,90,.75),0 0 34px 10px rgba(255,140,40,.35);opacity:.12;transition:opacity .25s}
+.bulb.lit{opacity:1}
+.night-ui{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;padding-left:var(--gutter);padding-right:var(--gutter-r);padding-block:0 calc(26px + env(safe-area-inset-bottom,0px))}
+.night-ui .live{margin:0}
+.night-btns{display:flex;gap:12px;flex-wrap:wrap}
+.cue{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
+.cue i{width:2px;height:44px;background:linear-gradient(var(--mustard),transparent);animation:cue 1.8s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* oil */
+.oil-copy{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;gap:26px;pointer-events:none}
+.oil-copy h2{font-size:clamp(52px,7vw,116px);font-variation-settings:"wdth" 68;text-shadow:0 10px 40px rgba(20,2,1,.6)}
+.ch-oil::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(20,4,3,.82) 0%,rgba(20,4,3,.2) 46%,transparent 60%)}
+.gauge{position:absolute;right:var(--gutter-r);bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:3;width:min(260px,40vw);text-align:center}
+.gauge svg{width:100%;height:auto;display:block}
+.gauge-read{margin-top:-6px;display:flex;justify-content:center;align-items:baseline;gap:6px;font-weight:700}
+.gauge-read b{font-family:var(--display);font-size:46px;font-variation-settings:"wdth" 70;font-weight:900;color:var(--mustard);font-variant-numeric:tabular-nums;line-height:1}
+
+/* burst */
+.hot-type{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding-left:var(--gutter);padding-right:var(--gutter-r);font-size:clamp(80px,18.5vw,320px);color:var(--cream);text-shadow:0 14px 60px rgba(20,2,1,.5);filter:url(#meltB);pointer-events:none}
+.hot-type .l1{align-self:flex-start}
+.hot-type .l2{align-self:flex-end}
+.hot-type .ch{font-variation-settings:"wdth" 66,"wght" 900;will-change:transform}
+.ch-burst{cursor:crosshair}
+.burst-note{position:absolute;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:4;margin:0;font-family:var(--hand);font-size:26px;color:var(--mustard);white-space:nowrap}
+
+/* fryer knob */
+.fryer{position:relative;background:var(--blood);padding-block:130px 120px;overflow:hidden}
+.fryer::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 55%,color-mix(in srgb,var(--ember) calc(var(--heat)*55%),transparent),transparent 70%);pointer-events:none}
+.fryer-grid{position:relative;display:grid;grid-template-columns:1.05fr auto 1fr;gap:4vw;align-items:center}
+.fryer-copy h2{font-size:clamp(56px,8vw,130px);font-variation-settings:"wdth" 66}
+.fryer-copy .heat-name{margin-top:28px}
+.knob-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.knob{width:min(340px,80vw);aspect-ratio:1;touch-action:none;cursor:grab;border-radius:50%;outline-offset:8px}
+.knob:active{cursor:grabbing}
+.knob svg{width:100%;height:100%;display:block;overflow:visible}
+.knob .lvl{cursor:pointer;font-family:var(--display);font-weight:900;font-size:22px;fill:color-mix(in srgb,var(--cream) 45%,transparent);transition:fill .3s}
+.knob .lvl.on{fill:var(--mustard)}
+.knob-hint{margin:0;font-size:13px;opacity:.75}
+.fryer .heat-visual{max-width:440px;justify-self:center;width:100%}
+
+/* ticket rail */
+.rail-sec{position:relative;background:linear-gradient(180deg,var(--char),#120806);overflow:hidden}
+.rail-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-block:120px 40px}
+.rail-head h2{font-size:clamp(56px,10vw,160px);font-variation-settings:"wdth" 66}
+.rail-head p{max-width:36ch;margin:0;color:color-mix(in srgb,var(--cream) 78%,transparent)}
+.rail-viewport{position:relative;padding-block:30px 120px}
+.rail-bar{position:absolute;left:0;right:0;top:30px;height:16px;background:linear-gradient(180deg,#8d8a86 0%,#e6e2dc 35%,#6d6a66 60%,#3b3936 100%);box-shadow:0 8px 18px rgba(0,0,0,.6);z-index:2}
+.rail-track{display:flex;gap:clamp(24px,3vw,48px);width:max-content;padding-left:max(var(--gutter),6vw);padding-right:12vw;position:relative;z-index:3}
+.ticket{position:relative;width:clamp(270px,24vw,340px);transform-origin:50% 0;padding-top:4px;flex:none}
+.ticket .clip{position:absolute;left:50%;top:-6px;translate:-50% 0;width:46px;height:30px;border-radius:6px 6px 10px 10px;background:linear-gradient(180deg,#d9d5cf,#7d7a75);box-shadow:0 4px 8px rgba(0,0,0,.5);z-index:3}
+.tk-paper{position:relative;margin-top:14px;background:#FBF3E4;color:#2A1410;padding:22px 22px 26px;border-radius:2px;box-shadow:0 30px 50px rgba(0,0,0,.55);
+  -webkit-mask:radial-gradient(9px at 50% 100%,#0000 98%,#000) 0 0/18px 100% repeat-x;mask:radial-gradient(9px at 50% 100%,#0000 98%,#000) 0 0/18px 100% repeat-x;padding-bottom:34px}
+.tk-paper::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 27px,rgba(42,20,16,.05) 27px 28px);pointer-events:none}
+.tk-top{display:flex;justify-content:space-between;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:2px dashed rgba(42,20,16,.35);padding-bottom:10px}
+.tk-img{height:200px;display:grid;place-items:center;margin:8px 0 0}
+.tk-img img{max-height:100%;width:auto;filter:drop-shadow(0 18px 18px rgba(42,20,16,.35))}
+.ticket h3{margin:6px 0 4px;font-family:var(--hand);font-weight:400;font-size:38px;line-height:1;color:#B3121B}
+.ticket p{margin:0;font-size:14px;line-height:1.4;color:rgba(42,20,16,.75)}
+.tk-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;font-size:14px;font-weight:700}
+.tk-row .hand{color:#2A1410;font-size:22px}
+.tk-total{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:2px dashed rgba(42,20,16,.35)}
+.tk-total b{font-family:var(--display);font-weight:900;font-size:34px;font-variation-settings:"wdth" 80;font-variant-numeric:tabular-nums}
+.ticket .add{background:#2A1410;color:var(--mustard)}
+.ticket .add:hover{background:#B3121B;color:#FBF3E4}
+.tk-bar{height:26px;margin-top:16px;background:repeating-linear-gradient(90deg,#2A1410 0 2px,transparent 2px 4px,#2A1410 4px 7px,transparent 7px 9px,#2A1410 9px 10px,transparent 10px 13px)}
+
+/* cool down */
+.cool{position:relative;min-height:100vh;background:radial-gradient(70% 80% at 70% 30%,#1f3a12 0%,#11200a 55%,#0b1407 100%);overflow:hidden;cursor:pointer;touch-action:manipulation}
+#pickleCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cool-copy{position:relative;z-index:2;padding-block:140px 60px;display:flex;flex-direction:column;gap:22px;pointer-events:none}
+.cool-copy h2{font-size:clamp(60px,11vw,180px);font-variation-settings:"wdth" 66;color:#E9F5C8}
+.cool-copy p{margin:0;max-width:38ch;font-size:18px;color:#E9F5C8}
+.cool-copy .row{display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto}
+.cool .btn-y{background:var(--pickle);color:#0b1407}
+.cool .btn-y:hover{background:#E9F5C8}
+.cool .btn-o{border-color:#E9F5C8;color:#E9F5C8}
+.cool .btn-o:hover{background:#E9F5C8;color:#0b1407}
+
+/* sizzle sound */
+.sizzle{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;gap:10px;border:2px solid color-mix(in srgb,var(--cream) 40%,transparent);background:color-mix(in srgb,var(--char) 70%,transparent);backdrop-filter:blur(10px);color:var(--cream);border-radius:99px;padding:9px 14px;font-weight:700;font-size:13px}
+.sizzle .bars{display:flex;gap:2px;align-items:flex-end;height:14px}
+.sizzle .bars i{width:3px;height:4px;background:var(--mustard);border-radius:2px}
+.sizzle[aria-pressed="true"] .bars i{animation:eq .5s ease-in-out infinite alternate}
+.sizzle[aria-pressed="true"] .bars i:nth-child(2){animation-delay:.15s}
+.sizzle[aria-pressed="true"] .bars i:nth-child(3){animation-delay:.3s}
+@keyframes eq{to{height:14px}}
+
+/* loader */
+.loader{background:#0c0403}
+.loader .neon-word{font-size:clamp(72px,16vw,240px)}
+.loader .bar{color:var(--mustard)}
+
+/* static fallback (reduced motion) */
+.chap.static{height:auto;min-height:0}
+.chap.static .ch-stage{position:relative}
+.chap.static .gl{position:absolute}
+.chap.static .beat{position:relative;opacity:1;filter:none;transform:none;padding-block:60px}
+.chap.static .cue{display:none}
+.chap.static .night-ui{position:relative;padding-block:20px 40px}
+.chap.static .oil-copy,.chap.static .hot-type{position:relative;padding-block:100px}
+.chap.static .cap{position:static;opacity:1;transform:none;margin-bottom:18px}
+.chap.static .caps{min-height:0}
+.chap.static .gauge,.chap.static .burst-note{display:none}
+
+@media (max-width:980px){
+  .fryer-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .fryer-copy{display:flex;flex-direction:column;align-items:center}
+  .fryer-copy .heat-desc{margin-inline:auto}
+  .fryer .heat-visual{max-width:320px}
+}
+@media (max-width:760px){
+  .beat h2.mega{font-size:clamp(56px,17vw,120px)}
+  .ch-night .neon-word{font-size:18.5vw;-webkit-text-stroke-width:1.5px}
+  .night-ui{flex-direction:column;align-items:flex-start;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .cue{display:none}
+  .ch-oil::after{background:linear-gradient(0deg,rgba(20,4,3,.9) 0%,rgba(20,4,3,.3) 55%,transparent 75%)}
+  .oil-copy{justify-content:flex-end;padding-block:0 170px}
+  .gauge{width:150px;left:var(--gutter);right:auto}
+  .gauge-read b{font-size:30px}
+  .hot-type{font-size:clamp(64px,21vw,140px)}
+  .burst-note{font-size:20px}
+  .rail-track{overflow-x:auto;width:auto;padding-right:var(--gutter-r);scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:20px}
+  .ticket{scroll-snap-align:center;width:78vw}
+  .sizzle .lbl{display:none}
+}
+
 /* =================== INNER PAGE HEADS =================== */
 .page-head{position:relative;padding-block:150px 60px;background:var(--blood);overflow:hidden}
 .page-head h1{font-size:clamp(76px,17vw,280px);font-variation-settings:"wdth" 64;position:relative;z-index:2}
@@ -419,8 +565,8 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 <div class="grain" aria-hidden="true"></div>
 
 <div class="loader" id="loader" aria-hidden="true">
-  <span class="logo"><span>FRYARD</span><span class="tm">™</span></span>
-  <div class="bar"><span>Heating the oil</span><span id="loadPct">0%</span></div>
+  <span class="neon-word">FRYARD</span>
+  <div class="bar"><span>Heating the oil</span><span id="loadPct">30°C</span></div>
 </div>
 
 <div class="wipe" aria-hidden="true"><div class="w1"></div><div class="w2"><span class="logo">FRYARD</span></div></div>
@@ -448,61 +594,84 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 
 <!-- ======================= HOME ======================= -->
 <main data-page="home">
-  <section class="hero" id="hero">
-    <div class="hero-stage">
-      <canvas class="seq-canvas" id="heroSeq" aria-label="A Nashville hot chicken tender turning in slow motion while pickles and chili flakes burst around it" role="img"></canvas>
-      <div class="shade" id="heroShade"></div>
-      <canvas class="embers" id="embers" aria-hidden="true"></canvas>
-      <h1 class="mega split" id="heroTitle" aria-label="Too hot to handle"><span class="l1">Too hot</span><span class="l2">To handle</span></h1>
-      <div class="sticker hand" id="sticker">Ye khilado!
-        <svg viewBox="0 0 200 90" aria-hidden="true"><path d="M20 70c40 18 140 14 168-12M24 78c50 10 120 6 150-10" fill="none" stroke="var(--mustard)" stroke-width="4" stroke-linecap="round"/></svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="meltA" x="-5%" y="-30%" width="110%" height="170%"><feTurbulence id="meltANoise" type="fractalNoise" baseFrequency="0.006 0.045" numOctaves="2" seed="4" result="n"/><feDisplacementMap id="meltAMap" in="SourceGraphic" in2="n" scale="18" xChannelSelector="R" yChannelSelector="G"/></filter>
+      <filter id="meltB" x="-5%" y="-30%" width="110%" height="170%"><feTurbulence id="meltBNoise" type="fractalNoise" baseFrequency="0.005 0.05" numOctaves="2" seed="9" result="n"/><feDisplacementMap id="meltBMap" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter>
+    </defs>
+  </svg>
+
+  <!-- 1. Night market: lights on, walk in -->
+  <section class="chap ch-night" id="chNight" aria-labelledby="neonTitle">
+    <div class="ch-stage">
+      <canvas class="gl" id="glNight" role="img" aria-label="Walking through the Night Market towards the red FRYARD stall"></canvas>
+      <div class="lights" id="lights" aria-hidden="true"></div>
+      <div class="beat b0 on" data-from="0" data-to=".2">
+        <h1 class="neon" id="neonTitle" aria-label="FRYARD, Nashville hot chicken"><span class="neon-word">FRYARD</span></h1>
+        <p class="kicker">Nashville hot chicken at the Night Market</p>
       </div>
-      <a class="meter" href="#heat" data-link="heat" aria-label="Current heat level, open heat scale" id="heroMeter"></a>
-      <div class="hero-foot">
-        <div>
-          <div class="live" data-live><span class="dot"></span><span data-live-text>Open daily, 6 PM to 11 PM</span></div>
-          <p>Nashville hot chicken, fried to order at the Night Market. Pick your heat, we bring the crunch.</p>
-        </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="beat b1" data-from=".24" data-to=".52">
+        <h2 class="mega melt-a">Follow<br>the smoke</h2>
+      </div>
+      <div class="beat b2" data-from=".56" data-to=".86">
+        <p class="temp"><b data-temp>30</b><span>°C</span></p>
+        <h2 class="mega">The oil is ready.<br>You're next.</h2>
+      </div>
+      <div class="night-ui">
+        <div class="live" data-live><span class="dot"></span><span data-live-text>Open daily, 6 PM to 11 PM</span></div>
+        <div class="night-btns">
           <a class="btn btn-y mag" href="#menu" data-link="menu">See the menu</a>
           <a class="btn btn-o mag" href="#heat" data-link="heat">Pick your heat</a>
         </div>
       </div>
+      <div class="cue" aria-hidden="true"><span>Walk in</span><i></i></div>
     </div>
   </section>
 
-  <div class="marquee" aria-hidden="true"><div class="mq-track" data-mq></div></div>
-
-  <section class="reel" id="reel" aria-labelledby="reelTitle">
-    <div class="reel-head wrap">
-      <h2 class="mega" id="reelTitle">Bestsellers</h2>
-      <p>The four things people come back for. Every order is fried fresh and dunked in cayenne oil at the heat you pick.</p>
-    </div>
-    <div class="reel-track" id="reelTrack"></div>
-  </section>
-
-  <section class="dunk" id="dunk" aria-labelledby="dunkTitle">
-    <canvas class="seq-canvas" id="dunkSeq" role="img" aria-label="A golden fried tender gets hit by a wave of red cayenne chili oil"></canvas>
-    <div class="dunk-copy wrap">
-      <h2 class="mega" id="dunkTitle">Golden to glazed</h2>
-      <div class="caps">
-        <div class="cap on"><b>Golden</b><p>Brined overnight and double fried until the crust cracks.</p></div>
-        <div class="cap"><b>Dunked</b><p>Straight out of the fryer and into hot oil loaded with cayenne.</p></div>
-        <div class="cap"><b>Glazed</b><p>Red, glossy and sticky. That's Nashville hot.</p></div>
+  <!-- 2. Into the oil -->
+  <section class="chap ch-oil" id="chOil" aria-labelledby="oilTitle">
+    <div class="ch-stage">
+      <canvas class="gl" id="glOil" role="img" aria-label="A golden tender gets hit by a wave of red cayenne chili oil"></canvas>
+      <div class="oil-copy wrap">
+        <h2 class="mega" id="oilTitle">Into the oil</h2>
+        <div class="caps">
+          <div class="cap on"><b>Golden</b><p>Brined overnight, double fried until the crust cracks.</p></div>
+          <div class="cap"><b>Dunked</b><p>Straight from the fryer into hot oil loaded with cayenne.</p></div>
+          <div class="cap"><b>Glazed</b><p>Red, glossy and sticky. That's Nashville hot.</p></div>
+        </div>
+        <div class="dunk-steps" aria-hidden="true"><i></i><i></i><i></i></div>
       </div>
-      <div class="dunk-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="gauge" aria-hidden="true">
+        <svg viewBox="0 0 220 130">
+          <path d="M20 120 A90 90 0 0 1 200 120" fill="none" stroke="rgba(247,232,207,.15)" stroke-width="14" stroke-linecap="round"/>
+          <path id="gaugeArc" d="M20 120 A90 90 0 0 1 200 120" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+          <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#F2C14E"/><stop offset=".55" stop-color="#E8321F"/><stop offset="1" stop-color="#7A0C08"/></linearGradient></defs>
+          <g id="gaugeNeedle" style="transform-origin:110px 120px;transform:rotate(-90deg)"><path d="M110 120 L106 118 L110 44 L114 118 Z" fill="#F7E8CF"/><circle cx="110" cy="120" r="8" fill="#F7E8CF"/></g>
+        </svg>
+        <div class="gauge-read"><b data-glaze>0</b><span>% glazed</span></div>
+      </div>
     </div>
   </section>
 
-  <section class="heat-sec" aria-labelledby="heatTitleHome">
-    <div class="wrap heat-grid">
-      <div class="heat-copy">
-        <h2 class="mega" id="heatTitleHome">How hot<br>can you go?</h2>
+  <!-- 3. Too hot to handle -->
+  <section class="chap ch-burst" id="chBurst" aria-labelledby="hotType">
+    <div class="ch-stage">
+      <canvas class="gl" id="glBurst" role="img" aria-label="A Nashville hot tender turning as pickles and chili flakes burst around it"></canvas>
+      <h2 class="mega hot-type" id="hotType" aria-label="Too hot to handle"><span class="l1">Too hot</span><span class="l2">to handle</span></h2>
+      <p class="burst-note" id="burstNote">Run your cursor over the letters</p>
+    </div>
+  </section>
+
+  <!-- 4. Set the fryer -->
+  <section class="fryer" id="fryer" aria-labelledby="fryerTitle">
+    <div class="wrap fryer-grid">
+      <div class="fryer-copy">
+        <h2 class="mega" id="fryerTitle">Set the<br>fryer</h2>
         <div class="heat-name" data-heat-name></div>
         <p class="heat-desc" data-heat-desc></p>
-        <div class="dial" data-dial role="group" aria-label="Heat level"></div>
-        <div class="heat-bar" aria-hidden="true"><i></i></div>
+        <a class="btn btn-y mag" href="#menu" data-link="menu">Order at this heat</a>
       </div>
+      <div class="knob-wrap"><div class="knob" data-knob tabindex="0" role="slider" aria-label="Heat level" aria-valuemin="0" aria-valuemax="4"></div><p class="knob-hint">Drag the knob, or use the arrow keys</p></div>
       <div class="heat-visual" aria-hidden="true">
         <div class="ring"></div><div class="ring2"></div>
         <img data-heat-img src="img/tender-hot.webp" alt="">
@@ -511,45 +680,29 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
     </div>
   </section>
 
-  <section class="process" aria-labelledby="procTitle">
-    <div class="wrap">
-      <h2 class="mega" id="procTitle">How we make it</h2>
-      <div class="process-grid">
-        <div class="process-media" aria-hidden="true">
-          <img class="cut on" src="img/tender-plain.webp" alt="">
-          <img src="img/cayenne-a.webp" alt="">
-          <img src="img/cayenne-b.webp" alt="">
-          <img class="cut" src="img/box.webp" alt="">
-        </div>
-        <ol class="steps">
-          <li class="on"><h3>Brine overnight</h3><p>Chicken thigh and tenders sit in spiced buttermilk so the meat stays juicy right through the fry.</p></li>
-          <li><h3>Dredge and double fry</h3><p>Seasoned flour, a quick rest, then two rounds in the oil for the craggy crust that cracks when you bite.</p></li>
-          <li><h3>Dunk in cayenne oil</h3><p>Hot fryer oil whisked with cayenne, paprika and brown sugar, brushed on straight away at the heat level you chose.</p></li>
-          <li><h3>Bread and pickles</h3><p>Served Nashville style on white bread with crinkle-cut pickles to cool things down, and comeback sauce for dipping.</p></li>
-        </ol>
-      </div>
+  <div class="marquee" aria-hidden="true"><div class="mq-track" data-mq></div></div>
+
+  <!-- 5. On the rail -->
+  <section class="rail-sec" id="rail" aria-labelledby="railTitle">
+    <div class="wrap rail-head">
+      <h2 class="mega" id="railTitle">On the rail</h2>
+      <p>The four orders the kitchen prints the most. Add one to yours and it comes at the heat you set on the fryer.</p>
+    </div>
+    <div class="rail-viewport">
+      <div class="rail-bar" aria-hidden="true"></div>
+      <div class="rail-track" id="railTrack"></div>
     </div>
   </section>
 
-  <section class="night" id="night" aria-labelledby="nightTitle">
-    <img src="img/stall-b.webp" alt="" loading="lazy">
-    <canvas class="seq-canvas" id="nightSeq" role="img" aria-label="Moving through the Night Market towards the red FRYARD stall, tables full of people"></canvas>
-    <div class="night-copy wrap">
-      <h2 class="mega" id="nightTitle">Every night<br>6 to 11</h2>
+  <!-- 6. Cool down -->
+  <section class="cool" id="cool" aria-labelledby="coolTitle">
+    <canvas id="pickleCanvas" aria-hidden="true"></canvas>
+    <div class="wrap cool-copy">
+      <h2 class="mega" id="coolTitle">Too hot?<br>Cool down.</h2>
+      <p>Tap anywhere in here to drop pickles. Then come say hi on Instagram, where <b data-count="2424">2,424</b> people already follow the stall.</p>
       <div class="row">
-        <p>Find the red stall at the Night Market, in front of Company Garden No. 1, Civil Lines.</p>
-        <a class="btn btn-y mag" href="#find" data-link="find">Find us</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="follow">
-    <div class="wrap inner">
-      <h2 class="mega">Follow<br>the heat</h2>
-      <div style="display:grid;gap:14px">
-        <div class="follow-stat"><span data-count="2424">2,424</span> people</div>
-        <span>already follow @fryardindia for drops, specials and stall updates.</span>
-        <a class="btn mag" href="https://www.instagram.com/fryardindia/" target="_blank" rel="noopener">Follow on Instagram</a>
+        <button class="btn btn-y" type="button" id="dropPickles">Drop pickles</button>
+        <a class="btn btn-o" href="https://www.instagram.com/fryardindia/" target="_blank" rel="noopener">Follow @fryardindia</a>
       </div>
     </div>
   </section>
@@ -769,6 +922,7 @@ function setHeat(n,user){
   });
   $$('[data-stamp]').forEach(s=>s.classList.toggle('show',n===4));
   const w=$('#waiver'); if(w) w.classList.toggle('show',n===4);
+  $$('[data-knob]').forEach(k=>k.__set&&k.__set(n));
   const meter=$('#heroMeter'); if(meter) meter.innerHTML=[4,3,2,1,0].map(i=>`<span class="${i<=n?'on':''}">${chili(i<=n?'var(--mustard)':'var(--cream)')}</span>`).join('')+`<small>${h.name}</small>`;
   if(user && hasG && !RM){const nm=$$('[data-heat-name]');gsap.fromTo(nm,{yPercent:40,opacity:0},{yPercent:0,opacity:1,duration:.5,ease:'power3.out'})}
 }
@@ -790,15 +944,6 @@ function renderGrid(anim){
     <div class="item-foot"><span class="price">${inr(m.price)}</span><button class="add" type="button" data-add="${m.id}">Add to order</button></div></div></article>`).join('');
   bindAdds(g); if(FINE&&!RM) bindTilt(g);
   if(anim&&hasG&&!RM) gsap.from($$('.item',g),{y:60,opacity:0,rotate:2,duration:.7,stagger:.07,ease:'power3.out'});
-}
-function buildReel(){
-  const best=MENU.filter(m=>m.best);
-  $('#reelTrack').innerHTML=best.map(m=>`<article class="dish">
-    <div class="ghost" aria-hidden="true">${m.name.split(',')[0]}</div>
-    <div class="dish-info"><h3>${m.name}</h3><p>${m.desc}</p>
-      <div class="dish-row"><span class="price">${inr(m.price)}</span><button class="add mag" type="button" data-add="${m.id}">Add to order</button></div></div>
-    <div class="dish-img"><img src="${imgFor(m)}" alt="${m.name}" loading="lazy"></div></article>`).join('');
-  bindAdds($('#reelTrack'));
 }
 function bindAdds(root){$$('[data-add]',root).forEach(b=>b.addEventListener('click',e=>{addToCart(b.dataset.add,b)}))}
 function bindTilt(root){$$('.item',root).forEach(card=>{const im=$('.item-img',card);
@@ -888,6 +1033,7 @@ let lenis=null;
 if(!RM && typeof Lenis!=='undefined' && hasG){
   lenis=new Lenis({lerp:.1,smoothWheel:true});
   lenis.on('scroll',ScrollTrigger.update);
+  lenis.on('scroll',e=>{VEL=e.velocity/18});
   gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
 }
 const scrollTop=()=>{lenis?lenis.scrollTo(0,{immediate:true,force:true}):scrollTo(0,0)};
@@ -926,72 +1072,265 @@ class Seq{
     this.x.drawImage(img,(j%COLS)*FW,Math.floor(j/COLS)*FH,FW,FH,(cw-dw)/2,(ch-dh)/2,dw,dh);
     this.shown=(ff===f)?f:-1}
 }
-const SEQ={hero:new Seq('heroSeq','tender_burst'),dunk:new Seq('dunkSeq','oil_dunk'),night:new Seq('nightSeq','night_market'),menu:new Seq('menuSeq','slider_stack')};
+const SEQ={menu:new Seq('menuSeq','slider_stack')};
 const seqIO=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.__seq&&e.target.__seq.load();seqIO.unobserve(e.target)}}),{rootMargin:'200% 0px'}):null;
 function watchSeq(seq,sel){const el=$(sel);if(!el)return;if(!seqIO){seq.load();return}el.__seq=seq;seqIO.observe(el)}
+
+/* ---------------- WebGL heat-haze stages (frame sequences rendered through a shader) ---------------- */
+let VEL=0; const STAGES=[];
+const VS='attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+const FS=`precision mediump float;varying vec2 v;uniform sampler2D t;uniform vec2 res,mouse;uniform float time,heat,vel,burn,dark,zoom,haze;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}
+void main(){vec2 uv=v;float ca=res.x/res.y,ia=16./9.;vec2 s=ca>ia?vec2(1.,ia/ca):vec2(ca/ia,1.);
+vec2 q=(uv-.5)*s/zoom+.5;
+float amp=(.0018+.0055*heat)*haze*(1.2-uv.y);
+q.x+=(n(vec2(uv.x*7.,uv.y*12.-time*1.8))-.5)*amp*3.;
+q.y+=(n(vec2(uv.x*9.+7.,uv.y*9.-time*2.3))-.5)*amp*1.6;
+vec2 d=uv-mouse;d.x*=ca;float r=length(d);
+q+=d/(r+.001)*.011*exp(-r*6.)*sin(r*38.-time*5.)*(.45+heat)*haze;
+float c=.0012+min(abs(vel),3.)*.007;
+vec3 col=vec3(texture2D(t,q+vec2(c,0.)).r,texture2D(t,q).g,texture2D(t,q-vec2(c,0.)).b);
+col+=burn*vec3(1.15,.42,.08);col=mix(col,vec3(1.,.94,.8),smoothstep(.55,1.,burn));
+col*=1.-dark;
+float vg=smoothstep(1.3,.25,length((uv-.5)*vec2(ca/ia,1.)*1.35));col*=mix(.45,1.,vg);
+col+=(h(uv*res+fract(time*.37))-.5)*.05;
+gl_FragColor=vec4(col,1.);}`;
+class Stage{
+  constructor(id,name,bg){
+    this.view=document.getElementById(id);this.name=name;this.sheets=new Array(SHEETS);this.f=0;this.dirty=true;this.started=false;this.active=false;
+    this.u={burn:0,dark:0,zoom:1,haze:1};this.mouse=[.5,.5];this.mt=[.5,.5];
+    this.off=document.createElement('canvas');this.off.width=FW;this.off.height=FH;this.ox=this.off.getContext('2d');this.ox.fillStyle=bg||'#1a0505';this.ox.fillRect(0,0,FW,FH);
+    if(!this.view)return;
+    let gl=null;try{gl=this.view.getContext('webgl',{antialias:false,alpha:false})||this.view.getContext('experimental-webgl')}catch(e){}
+    if(gl&&this.setup(gl))this.gl=gl;else{this.gl=null;this.x2=this.view.getContext('2d')}
+    new ResizeObserver(()=>this.resize()).observe(this.view);this.resize();
+    if('IntersectionObserver' in window)new IntersectionObserver(es=>{this.active=es[0].isIntersecting;if(this.active)this.load()},{rootMargin:'60% 0px'}).observe(this.view);else{this.active=true;this.load()}
+    const host=this.view.closest('section')||this.view;
+    host.addEventListener('pointermove',e=>{const r=this.view.getBoundingClientRect();this.mt=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height]});
+    host.addEventListener('pointerleave',()=>{this.mt=[.5,.5]});
+    STAGES.push(this);
+  }
+  setup(gl){
+    const sh=(type,src)=>{const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return gl.getShaderParameter(s,gl.COMPILE_STATUS)?s:null};
+    const vs=sh(gl.VERTEX_SHADER,VS),fs=sh(gl.FRAGMENT_SHADER,FS);if(!vs||!fs)return false;
+    const pr=gl.createProgram();gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return false;
+    gl.useProgram(pr);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    const tx=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tx);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+    [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T].forEach(k=>gl.texParameteri(gl.TEXTURE_2D,k,gl.CLAMP_TO_EDGE));
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    this.loc={};['t','res','mouse','time','heat','vel','burn','dark','zoom','haze'].forEach(k=>this.loc[k]=gl.getUniformLocation(pr,k));
+    gl.uniform1i(this.loc.t,0);return true;
+  }
+  resize(){const d=Math.min(devicePixelRatio||1,1.5),w=this.view.clientWidth,h=this.view.clientHeight;if(!w||!h)return;this.view.width=Math.round(w*d);this.view.height=Math.round(h*d);if(this.gl)this.gl.viewport(0,0,this.view.width,this.view.height);this.dirty=true;this.render(performance.now(),true)}
+  load(){if(this.started)return;this.started=true;let i=0;
+    const next=()=>{if(i>=ORDER.length)return;const k=ORDER[i++];const im=new Image();im.decoding='async';
+      im.onload=()=>{(im.decode?im.decode():Promise.resolve()).catch(()=>{}).then(()=>{this.sheets[k]=im;this.paint(true);next()})};
+      im.onerror=next;im.src=`seq/${this.name}/s${String(k).padStart(2,'0')}.webp`};
+    next();next();next()}
+  frame(f){f=Math.max(0,Math.min(LAST,Math.round(f)));if(f===this.f&&this.exact)return;this.f=f;this.paint()}
+  paint(force){const f=this.f;let s=Math.floor(f/PER),img=this.sheets[s],ff=f;
+    if(!img){let best=-1,bd=1e9;for(let k=0;k<SHEETS;k++)if(this.sheets[k]){const dd=Math.abs(k*PER+PER/2-f);if(dd<bd){bd=dd;best=k}}
+      if(best<0)return;img=this.sheets[best];ff=best<s?best*PER+PER-1:best*PER;s=best}
+    const j=ff-s*PER;this.ox.drawImage(img,(j%COLS)*FW,Math.floor(j/COLS)*FH,FW,FH,0,0,FW,FH);this.exact=(ff===f);this.dirty=true;
+    if(force||!this.active)this.render(performance.now(),true)}
+  to2d(){const c=document.createElement('canvas');c.className=this.view.className;c.setAttribute('role','img');c.setAttribute('aria-label',this.view.getAttribute('aria-label')||'');this.view.replaceWith(c);this.view=c;this.gl=null;this.x2=c.getContext('2d');new ResizeObserver(()=>this.resize()).observe(c);this.resize()}
+  render(now,force){if(!this.view||(!this.active&&!force))return;
+    this.mouse[0]+=(this.mt[0]-this.mouse[0])*.08;this.mouse[1]+=(this.mt[1]-this.mouse[1])*.08;
+    if(this.gl){const gl=this.gl,L=this.loc;
+      if(this.dirty){try{gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,this.off)}catch(e){this.to2d();return}this.dirty=false}
+      gl.uniform2f(L.res,this.view.width,this.view.height);gl.uniform2f(L.mouse,this.mouse[0],this.mouse[1]);
+      gl.uniform1f(L.time,RM?0:now/1000);gl.uniform1f(L.heat,heat/4);gl.uniform1f(L.vel,RM?0:VEL);
+      gl.uniform1f(L.burn,this.u.burn);gl.uniform1f(L.dark,this.u.dark);gl.uniform1f(L.zoom,this.u.zoom);gl.uniform1f(L.haze,RM?0:this.u.haze);
+      gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    } else if(this.x2&&(this.dirty||force)){const cw=this.view.width,ch=this.view.height,sc=Math.max(cw/FW,ch/FH)*this.u.zoom,dw=FW*sc,dh=FH*sc;
+      this.x2.drawImage(this.off,(cw-dw)/2,(ch-dh)/2,dw,dh);
+      if(this.u.dark){this.x2.fillStyle=`rgba(0,0,0,${this.u.dark})`;this.x2.fillRect(0,0,cw,ch)}
+      if(this.u.burn){this.x2.fillStyle=`rgba(255,${Math.round(150+this.u.burn*90)},120,${this.u.burn*.9})`;this.x2.fillRect(0,0,cw,ch)}
+      this.dirty=false}
+  }
+}
+const ST={night:new Stage('glNight','night_market','#0c0605'),oil:new Stage('glOil','oil_dunk','#3a0605'),burst:new Stage('glBurst','tender_burst','#4a0807')};
+const meltA={n:document.getElementById('meltANoise'),m:document.getElementById('meltAMap'),scale:18};
+const meltB={n:document.getElementById('meltBNoise'),m:document.getElementById('meltBMap'),scale:0};
+let lastSY=scrollY;
+requestAnimationFrame(function loop(now){requestAnimationFrame(loop);
+  if(!lenis){const y=scrollY;VEL+=((y-lastSY)/30-VEL)*.2;lastSY=y}
+  VEL*=.92;STAGES.forEach(s=>s.render(now));
+  melt(now); sizzleTick();
+});
+
+/* melting type: animate the turbulence so the letters drip */
+function melt(now){ if(RM) return; const t=now/1000;
+  [meltA,meltB].forEach((o,i)=>{ if(!o.n) return; o.n.setAttribute('baseFrequency',`${(.006+Math.sin(t*.7+i)*.0015).toFixed(4)} ${(.045+Math.sin(t*1.3+i)*.012).toFixed(4)}`); o.m.setAttribute('scale',o.scale.toFixed(1)) })}
+
+/* string lights */
+function buildLights(){ const L=$('#lights'); if(!L||L.dataset.b) return; L.dataset.b=1;
+  const strands=[{y0:6,sag:16,n:15,off:0},{y0:2,sag:24,n:13,off:.035}];
+  let svg='<svg viewBox="0 0 100 34" preserveAspectRatio="none">'; let html='';
+  strands.forEach(s=>{const pts=[];for(let k=0;k<=40;k++){const t=k/40,x=-2+t*104,y=s.y0+s.sag*4*t*(1-t);pts.push(`${x.toFixed(2)},${y.toFixed(2)}`)}
+    svg+=`<polyline points="${pts.join(' ')}" fill="none" stroke="rgba(20,10,8,.9)" stroke-width=".25" vector-effect="non-scaling-stroke" style="stroke-width:2px"/>`;
+    for(let k=0;k<s.n;k++){const t=(k+.5)/s.n+s.off,x=-2+t*104,y=s.y0+s.sag*4*t*(1-t);html+=`<span class="bulb" style="left:${x}%;top:${y/34*100}%"></span>`}});
+  L.innerHTML=svg+'</svg>'+html;
+}
+function lightsOn(delay){ const b=$$('#lights .bulb'); if(RM||!hasG){b.forEach(x=>x.classList.add('lit'));return}
+  b.forEach(x=>x.classList.remove('lit'));
+  b.sort((a,c)=>parseFloat(a.style.left)-parseFloat(c.style.left)).forEach((x,i)=>setTimeout(()=>x.classList.add('lit'),delay*1000+i*55+Math.random()*60));
+}
+
+/* fryer knob */
+const KC=160,KR=128;
+const kpt=(a,r)=>[KC+r*Math.sin(a*Math.PI/180),KC-r*Math.cos(a*Math.PI/180)];
+function buildKnob(){ $$('[data-knob]').forEach(k=>{ if(k.dataset.b) return; k.dataset.b=1;
+  let ticks='';for(let a=-135;a<=135;a+=9){const big=Math.abs((a+120)%60)<1&&a>=-120&&a<=120;const [x1,y1]=kpt(a,big?116:120),[x2,y2]=kpt(a,128);ticks+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="rgba(247,232,207,${big?.9:.3})" stroke-width="${big?3:1.5}" stroke-linecap="round"/>`}
+  let labels='';HEAT.forEach((h,i)=>{const [x,y]=kpt(-120+i*60,148);labels+=`<text class="lvl" data-l="${i}" x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle">${i}</text>`});
+  let grip='';for(let i=0;i<32;i++){const a=i*360/32;const [x1,y1]=kpt(a,72),[x2,y2]=kpt(a,84);grip+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#0d0504" stroke-width="5" stroke-linecap="round"/>`}
+  const C=2*Math.PI*100;
+  k.innerHTML=`<svg viewBox="0 0 320 320" aria-hidden="true"><defs>
+      <radialGradient id="kb" cx="40%" cy="32%" r="75%"><stop offset="0" stop-color="#5a2a20"/><stop offset=".55" stop-color="#2a100b"/><stop offset="1" stop-color="#0f0504"/></radialGradient>
+      <linearGradient id="ka" x1="0" x2="1"><stop offset="0" stop-color="#F2C14E"/><stop offset=".5" stop-color="#E8321F"/><stop offset="1" stop-color="#5a0508"/></linearGradient>
+      <filter id="kg"><feGaussianBlur stdDeviation="4"/></filter></defs>
+    <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="10" stroke-dasharray="${C*.75} ${C}" transform="rotate(135 160 160)" stroke-linecap="round"/>
+    <circle class="k-glow" cx="160" cy="160" r="100" fill="none" stroke="url(#ka)" stroke-width="10" stroke-dasharray="0 ${C}" transform="rotate(135 160 160)" stroke-linecap="round" filter="url(#kg)" opacity=".8"/>
+    <circle class="k-arc" cx="160" cy="160" r="100" fill="none" stroke="url(#ka)" stroke-width="10" stroke-dasharray="0 ${C}" transform="rotate(135 160 160)" stroke-linecap="round"/>
+    ${ticks}${labels}
+    <g class="k-body"><circle cx="160" cy="166" r="86" fill="rgba(0,0,0,.45)" filter="url(#kg)"/><circle cx="160" cy="160" r="86" fill="url(#kb)" stroke="#000" stroke-width="2"/>${grip}
+      <circle cx="160" cy="160" r="62" fill="url(#kb)" stroke="rgba(247,232,207,.08)" stroke-width="2"/>
+      <rect x="156" y="84" width="8" height="46" rx="4" fill="#F6B72C"/><circle cx="160" cy="160" r="10" fill="#1c0d0a" stroke="rgba(247,232,207,.15)"/></g></svg>`;
+  const body=$('.k-body',k),arc=$('.k-arc',k),glow=$('.k-glow',k);let dragging=false,ang=-120+heat*60;
+  const paint=a=>{body.setAttribute('transform',`rotate(${a} 160 160)`);const len=(a+135)/360*C;arc.setAttribute('stroke-dasharray',`${len} ${C}`);glow.setAttribute('stroke-dasharray',`${len} ${C}`)};
+  const to=(a,anim)=>{ if(hasG&&anim&&!RM){const o={a:ang};gsap.to(o,{a,duration:.7,ease:'elastic.out(1,.5)',onUpdate:()=>paint(o.a)})}else paint(a); ang=a };
+  k.__set=n=>{ $$('.lvl',k).forEach(l=>l.classList.toggle('on',+l.dataset.l===n)); k.setAttribute('aria-valuenow',n);k.setAttribute('aria-valuetext',HEAT[n].name); if(!dragging) to(-120+n*60,true) };
+  k.__set(heat);
+  const angleOf=e=>{const r=k.getBoundingClientRect();const x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);let a=Math.atan2(x,-y)*180/Math.PI;return Math.max(-130,Math.min(130,a))};
+  k.addEventListener('pointerdown',e=>{const lv=e.target.closest('.lvl');if(lv){setHeat(+lv.dataset.l,true);return}
+    dragging=true;k.setPointerCapture(e.pointerId);ang=angleOf(e);paint(ang)});
+  k.addEventListener('pointermove',e=>{if(!dragging)return;ang=angleOf(e);paint(ang);const lv=Math.max(0,Math.min(4,Math.round((ang+120)/60)));if(lv!==heat)setHeat(lv,true)});
+  const up=()=>{if(!dragging)return;dragging=false;to(-120+heat*60,true)};
+  k.addEventListener('pointerup',up);k.addEventListener('pointercancel',up);
+  k.addEventListener('keydown',e=>{const m={ArrowRight:1,ArrowUp:1,ArrowLeft:-1,ArrowDown:-1}[e.key];
+    if(m){e.preventDefault();setHeat(Math.max(0,Math.min(4,heat+m)),true)} else if(e.key==='Home'){e.preventDefault();setHeat(0,true)} else if(e.key==='End'){e.preventDefault();setHeat(4,true)}});
+})}
+
+/* ticket rail */
+function buildRail(){ const tr=$('#railTrack'); if(!tr) return;
+  tr.innerHTML=MENU.filter(m=>m.best).map((m,i)=>`<article class="ticket">
+    <span class="clip" aria-hidden="true"></span>
+    <div class="tk-paper">
+      <div class="tk-top"><span>FRYARD</span><span>Order ${String(i+1).padStart(3,'0')}</span></div>
+      <div class="tk-img"><img src="${imgFor(m)}" alt="${m.name}" loading="lazy"></div>
+      <h3>${m.name}</h3><p>${m.desc}</p>
+      <div class="tk-row"><span>Heat</span><span class="hand" data-heat-short>${HEAT[heat].name}</span></div>
+      <div class="tk-total"><b>${inr(m.price)}</b><button class="add" type="button" data-add="${m.id}">Add to order</button></div>
+      <div class="tk-bar" aria-hidden="true"></div>
+    </div></article>`).join('');
+  bindAdds(tr);
+  if(FINE&&hasG&&!RM)$$('.ticket',tr).forEach(t=>{t.addEventListener('pointerenter',e=>gsap.fromTo(t,{rotate:(e.movementX||2)>0?6:-6},{rotate:0,duration:1.6,ease:'elastic.out(1,.25)'}))});
+}
+
+/* pickle physics */
+const PK={on:false,bodies:[],imgs:[],ctx:null,W:0,H:0,dpr:1,started:false};
+function pickles(){ const c=$('#pickleCanvas'); if(!c||PK.ctx) return; PK.ctx=c.getContext('2d');
+  PK.imgs=[0,1,2,3,4,5].map(i=>{const im=new Image();im.src=`img/pickle${i}.webp`;return im});
+  const size=()=>{PK.dpr=Math.min(devicePixelRatio||1,2);PK.W=c.clientWidth;PK.H=c.clientHeight;c.width=PK.W*PK.dpr;c.height=PK.H*PK.dpr;PK.ctx.setTransform(PK.dpr,0,0,PK.dpr,0,0)};
+  new ResizeObserver(size).observe(c);size();
+  const sec=$('#cool');
+  const drop=(x,y,n)=>{for(let i=0;i<n;i++){const r=(PK.W<700?20:28)+Math.random()*16;PK.bodies.push({x:x+(Math.random()-.5)*80,y:y-Math.random()*120,vx:(Math.random()-.5)*6,vy:Math.random()*2,r,a:Math.random()*6.28,va:(Math.random()-.5)*.2,img:PK.imgs[Math.floor(Math.random()*PK.imgs.length)]})}
+    while(PK.bodies.length>90)PK.bodies.shift()};
+  sec.addEventListener('pointerdown',e=>{if(e.target.closest('a,button'))return;const r=c.getBoundingClientRect();drop(e.clientX-r.left,e.clientY-r.top,5)});
+  $('#dropPickles').addEventListener('click',()=>{for(let k=0;k<4;k++)setTimeout(()=>drop(PK.W*(.2+Math.random()*.6),-40,5),k*160)});
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{PK.on=es[0].isIntersecting;if(PK.on&&!PK.started){PK.started=true;for(let k=0;k<5;k++)setTimeout(()=>drop(PK.W*(.15+Math.random()*.7),-60,5),k*220)}}).observe(sec);
+  (function step(){requestAnimationFrame(step);if(!PK.on)return;const B=PK.bodies,W=PK.W,H=PK.H,g=RM?0:.42;
+    for(const b of B){b.vy+=g;b.x+=b.vx;b.y+=b.vy;b.a+=b.va;
+      if(b.y>H-b.r){b.y=H-b.r;b.vy*=-.32;b.vx*=.9;b.va=b.vx/b.r}
+      if(b.x<b.r){b.x=b.r;b.vx*=-.5}if(b.x>W-b.r){b.x=W-b.r;b.vx*=-.5}}
+    for(let it=0;it<2;it++)for(let i=0;i<B.length;i++)for(let j=i+1;j<B.length;j++){const a=B[i],b=B[j],dx=b.x-a.x,dy=b.y-a.y,rr=a.r+b.r,d2=dx*dx+dy*dy;
+      if(d2<rr*rr&&d2>.01){const d=Math.sqrt(d2),nx=dx/d,ny=dy/d,o=(rr-d)/2;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;
+        const rv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;if(rv<0){const im=-(1.3)*rv/2;a.vx-=im*nx;a.vy-=im*ny;b.vx+=im*nx;b.vy+=im*ny;a.va+=(Math.random()-.5)*.04;b.va-=(Math.random()-.5)*.04}}}
+    const x=PK.ctx;x.clearRect(0,0,W,H);
+    for(const b of B){if(!b.img.complete)continue;x.save();x.translate(b.x,b.y);x.rotate(b.a);x.drawImage(b.img,-b.r,-b.r,b.r*2,b.r*2);x.restore()}
+  })();
+}
+
+/* sizzle sound (procedural, starts only from the button) */
+const SZ={ac:null,g:null,on:false,next:0};
+function buildSizzle(){ const b=document.createElement('button');b.className='sizzle';b.type='button';b.setAttribute('aria-pressed','false');
+  b.innerHTML='<span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">Sizzle sound</span>';b.setAttribute('aria-label','Sizzle sound');
+  document.body.appendChild(b);
+  b.addEventListener('click',()=>{ try{
+    if(!SZ.ac){const AC=window.AudioContext||window.webkitAudioContext;SZ.ac=new AC();const ac=SZ.ac;
+      const buf=ac.createBuffer(1,ac.sampleRate*2,ac.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;SZ.buf=buf;
+      const src=ac.createBufferSource();src.buffer=buf;src.loop=true;const bp=ac.createBiquadFilter();bp.type='bandpass';bp.frequency.value=5200;bp.Q.value=.5;
+      const hp=ac.createBiquadFilter();hp.type='highpass';hp.frequency.value=1400;SZ.g=ac.createGain();SZ.g.gain.value=0;src.connect(bp);bp.connect(hp);hp.connect(SZ.g);SZ.g.connect(ac.destination);src.start()}
+    SZ.on=!SZ.on;if(SZ.on)SZ.ac.resume();b.setAttribute('aria-pressed',SZ.on);toast(SZ.on?'Sizzle on. Scroll faster for more.':'Sizzle off');
+  }catch(err){toast('Sound is not available in this browser')} });
+}
+function sizzleTick(){ if(!SZ.ac||!SZ.g) return; const ac=SZ.ac,now=ac.currentTime;
+  const target=SZ.on?(.025+heat*.014+Math.min(Math.abs(VEL),3)*.03):0; SZ.g.gain.setTargetAtTime(target,now,.12);
+  if(SZ.on&&now>SZ.next){SZ.next=now+.02+Math.random()*(.18-heat*.03);
+    const s=ac.createBufferSource();s.buffer=SZ.buf;const f=ac.createBiquadFilter();f.type='highpass';f.frequency.value=2500+Math.random()*3000;const g=ac.createGain();
+    const v=.05+Math.random()*.12*(1+heat*.3);g.gain.setValueAtTime(v,now);g.gain.exponentialRampToValueAtTime(.0001,now+.02+Math.random()*.04);
+    s.connect(f);f.connect(g);g.connect(ac.destination);s.start(now,Math.random()*1.5,.08)}
+}
+
+/* heat-touch letters: letters near the pointer stretch and glow */
+function heatTouch(el){ if(!el||el.dataset.ht) return; el.dataset.ht=1; const L=$$('.ch',el); const st=L.map(()=>({w:66,c:0,y:0}));
+  let px=-9999,py=-9999,live=false; const host=el.closest('section');
+  host.addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;live=true});
+  host.addEventListener('pointerleave',()=>{px=-9999;py=-9999});
+  (function tick(){requestAnimationFrame(tick); if(!live) return; let moving=false;
+    L.forEach((ch,i)=>{const r=ch.getBoundingClientRect();const d=Math.hypot(px-(r.left+r.width/2),py-(r.top+r.height/2));const t=Math.max(0,1-d/(innerWidth<760?180:300));
+      const s=st[i],tw=66+t*59,tc=t,ty=-t*18;s.w+=(tw-s.w)*.15;s.c+=(tc-s.c)*.15;s.y+=(ty-s.y)*.15;if(Math.abs(tw-s.w)>.1)moving=true;
+      ch.style.fontVariationSettings=`"wdth" ${s.w.toFixed(1)}, "wght" 900`;ch.style.color=`color-mix(in srgb, var(--mustard) ${Math.round(s.c*100)}%, var(--cream))`;ch.style.translate=`0 ${s.y.toFixed(1)}px`;ch.style.textShadow=s.c>.05?`0 0 ${Math.round(s.c*40)}px rgba(232,50,31,${(s.c*.9).toFixed(2)})`:''});
+    if(!moving&&px<-9000)live=false})();
+}
+
 
 /* ---------------- page inits ---------------- */
 let ctx=null;
 const inits={
   home(first){
-    const page=$('main[data-page="home"]');
-    split($('#heroTitle')); split($('#nightTitle'));
-    emberOn=true;
-    SEQ.hero.load(); watchSeq(SEQ.dunk,'#dunk'); watchSeq(SEQ.night,'#night');
-    const caps=$$('#dunk .cap'), bars=$$('#dunk .dunk-steps i');
-    const setDunk=p=>{SEQ.dunk.draw(p*191);const k=p<.34?0:p<.68?1:2;caps.forEach((c,i)=>c.classList.toggle('on',i===k));bars.forEach((b,i)=>b.style.setProperty('--p',Math.max(0,Math.min(1,p*3-i))))};
-    if(!hasG||RM){$('#dunk').classList.add('static');SEQ.hero.draw(40);SEQ.dunk.draw(191);SEQ.night.draw(150);return}
-    const chars=$$('#heroTitle .ch'), l1=$$('#heroTitle .l1 .ch'), l2=$$('#heroTitle .l2 .ch');
-    // hero: intro plays the first frames, scroll plays the rest
-    const INTRO=48, play={f:0};
-    SEQ.hero.draw(0);
-    const tl=gsap.timeline({delay:first?1.05:.05});
-    tl.to(play,{f:INTRO,duration:2.6,ease:'power2.out',onUpdate:()=>SEQ.hero.draw(play.f)},0)
-      .from('#heroSeq',{scale:1.18,duration:2.6,ease:'expo.out'},0)
-      .from(chars,{yPercent:120,rotate:8,opacity:0,duration:1.1,stagger:.035,ease:'expo.out'},.15)
-      .from('#sticker',{scale:0,rotate:-40,duration:.8,ease:'back.out(3)'},.9)
-      .from('.hero-foot > *, #heroMeter',{y:30,opacity:0,duration:.8,stagger:.1,ease:'power3.out'},1);
-    if(FINE){$('#hero').addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
-      gsap.to('#heroSeq',{x:x*-24,y:y*-16,duration:1.2,ease:'power3.out'});gsap.to('#heroTitle',{x:x*22,duration:1.2,ease:'power3.out'})})}
+    buildLights(); split($('#hotType')); heatTouch($('#hotType')); pickles();
+    $('#burstNote').textContent=FINE?'Run your cursor over the letters':'Drag your finger across the letters';
+    const caps=$$('#chOil .cap'),bars=$$('#chOil .dunk-steps i'),arcG=$('#gaugeArc'),needle=$('#gaugeNeedle'),glazeT=$('[data-glaze]'),tempT=$('[data-temp]');
+    const ss=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
+    const beats=(sec,p)=>$$('.beat',sec).forEach(b=>b.classList.toggle('on',p>=+b.dataset.from&&p<=+b.dataset.to));
+    const night=p=>{ST.night.frame(p*LAST);ST.night.u.zoom=1+p*.35;ST.night.u.dark=.55*(1-ss(0,.22,p));ST.night.u.burn=.9*ss(.88,1,p);
+      beats($('#chNight'),p);tempT.textContent=Math.round(30+145*ss(.56,.8,p));meltA.scale=18+ss(.24,.52,p)*34;
+      const Lt=$('#lights');if(Lt)Lt.style.opacity=1-ss(.08,.3,p);$('#chNight .night-ui').style.opacity=1-ss(.02,.12,p);$('#chNight .cue').style.opacity=1-ss(0,.06,p)};
+    const oil=p=>{ST.oil.frame(p*LAST);ST.oil.u.burn=.9*(1-ss(0,.07,p));ST.oil.u.zoom=1.06-p*.06;const k=p<.34?0:p<.68?1:2;caps.forEach((c,i)=>c.classList.toggle('on',i===k));
+      bars.forEach((b,i)=>b.style.setProperty('--p',Math.max(0,Math.min(1,p*3-i))));const g=Math.round(ss(.25,.9,p)*100);arcG.setAttribute('stroke-dasharray',`${g} 100`);needle.style.transform=`rotate(${-90+g*1.8}deg)`;glazeT.textContent=g};
+    const letters=$$('#hotType .ch');letters.forEach(c=>c.__v={x:(Math.random()-.5)*900,y:(Math.random()-.5)*700,r:(Math.random()-.5)*120});
+    const stage=$('#chBurst .ch-stage');
+    const burst=p=>{ST.burst.frame(p*LAST);ST.burst.u.dark=ss(.88,1,p)*.55;ST.burst.u.zoom=1+p*.1;meltB.scale=ss(.3,.85,p)*80;
+      const sc=ss(.62,1,p);letters.forEach(c=>{const v=c.__v;c.style.transform=sc?`translate(${(v.x*sc).toFixed(1)}px,${(v.y*sc).toFixed(1)}px) rotate(${(v.r*sc).toFixed(1)}deg)`:'';c.style.opacity=1-sc*.85});
+      const k=ss(.66,.76,p)*(1-ss(.86,.92,p));stage.style.transform=k>.01?`translate(${((Math.random()-.5)*10*k).toFixed(1)}px,${((Math.random()-.5)*8*k).toFixed(1)}px)`:''};
+    if(!hasG||RM){$$('.chap').forEach(c=>c.classList.add('static'));$$('#chNight .beat').forEach(b=>b.classList.add('on'));lightsOn(0);
+      ST.night.u.dark=.35;ST.night.frame(110);oil(1);ST.burst.frame(110);[ST.night,ST.oil,ST.burst].forEach(s=>s.load());return}
+    night(0);oil(0);burst(0);
+    const nw=$('#neonTitle .neon-word');nw.style.animation='none';void nw.offsetWidth;nw.style.animation='';nw.style.animationDelay=first?'1.25s, 4s':'.2s, 3s';
+    lightsOn(first?1.1:.15);
+    gsap.from('#chNight .kicker',{y:24,opacity:0,duration:1,delay:first?2.2:.9,ease:'expo.out'});
+    gsap.from('#chNight .night-ui > *',{y:30,opacity:0,duration:.9,stagger:.12,delay:first?2.4:1,ease:'power3.out'});
+    if(FINE){$('#chNight').addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to('#lights',{rotate:x*2.4,y:y*10,duration:1.4,ease:'power3.out'});gsap.to('#chNight .beat',{x:x*-26,y:y*-14,duration:1.4,ease:'power3.out'})})}
+    const mob=innerWidth<761;
+    ScrollTrigger.create({trigger:'#chNight',start:'top top',end:mob?'+=230%':'+=320%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>night(s.progress)});
+    ScrollTrigger.create({trigger:'#chOil',start:'top top',end:mob?'+=180%':'+=240%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>oil(s.progress)});
+    ScrollTrigger.create({trigger:'#chBurst',start:'top top',end:mob?'+=180%':'+=240%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>burst(s.progress)});
+    gsap.from('.knob',{rotate:-200,scale:.6,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'#fryer',start:'top 70%'}});
+    gsap.from('#fryerTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#fryer',start:'top 75%'}});
+    gsap.from('#fryer .heat-visual',{scale:.6,rotate:-30,opacity:0,ease:'power3.out',scrollTrigger:{trigger:'#fryer',start:'top 75%',end:'top 25%',scrub:1}});
     const mm=gsap.matchMedia();
-    mm.add('(min-width:761px)',()=>{
-      const st=gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'+=160%',scrub:1,pin:true,anticipatePin:1,
-        onUpdate:s=>{if(!tl.isActive())SEQ.hero.draw(INTRO+s.progress*(191-INTRO))}}});
-      st.to('#heroTitle',{'--w':125,duration:1,ease:'none'},0)
-        .to(l1,{x:i=>(i-l1.length/2)*-18,y:()=>gsap.utils.random(-30,30),rotate:()=>gsap.utils.random(-10,10),duration:1},0)
-        .to(l2,{x:i=>(i-l2.length/2)*22,y:()=>gsap.utils.random(-30,30),rotate:()=>gsap.utils.random(-10,10),duration:1},0)
-        .to('#heroSeq',{scale:1.12,duration:1,ease:'none'},0)
-        .to('#sticker,.hero-foot,#heroMeter',{opacity:0,y:-40,duration:.3},0)
-        .to('#heroTitle',{opacity:.15,duration:.4},.45)
-        .to('#heroShade',{opacity:.55,duration:.3},.7);
-    });
-    mm.add('(max-width:760px)',()=>{
-      ScrollTrigger.create({trigger:'#hero',start:'top top',end:'bottom top',scrub:true,onUpdate:s=>{if(!tl.isActive())SEQ.hero.draw(INTRO+s.progress*(191-INTRO))}});
-    });
-    // reel horizontal
-    mm.add('(min-width:761px)',()=>{
-      const track=$('#reelTrack'); const dist=()=>track.scrollWidth-innerWidth;
-      const h=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#reel',start:'top top',end:()=>'+='+dist(),scrub:1,pin:true,invalidateOnRefresh:true,anticipatePin:1}});
-      $$('.dish',track).forEach(d=>{
-        gsap.fromTo($('.dish-img img',d),{rotate:-14,scale:.8},{rotate:8,scale:1.05,ease:'none',scrollTrigger:{trigger:d,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
-        gsap.fromTo($('.ghost',d),{xPercent:20},{xPercent:-30,ease:'none',scrollTrigger:{trigger:d,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
-      });
-    });
-    // golden to glazed: pinned frame scrub
-    setDunk(0);
-    ScrollTrigger.create({trigger:'#dunk',start:'top top',end:'+=220%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>setDunk(s.progress)});
-    gsap.from('#dunkTitle',{yPercent:40,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#dunk',start:'top 70%'}});
-    // marquee velocity skew
-    let skew=0; ScrollTrigger.create({trigger:page,start:'top top',end:'bottom bottom',onUpdate:s=>{const v=s.getVelocity();if(mqTween)mqTween.timeScale(1+Math.min(Math.abs(v)/300,6)*(v<0?-1:1));skew=gsap.utils.clamp(-8,8,v/250);gsap.to('.mq-track',{skewX:-skew,duration:.4,overwrite:true})}});
-    // heat teaser
-    gsap.from('.heat-sec .heat-visual',{scale:.6,rotate:-30,opacity:0,ease:'power3.out',scrollTrigger:{trigger:'.heat-sec',start:'top 75%',end:'top 25%',scrub:1}});
-    // process steps
-    const imgs=$$('.process-media img'),steps=$$('.steps li');
-    steps.forEach((s,i)=>ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:self=>{if(self.isActive){steps.forEach(x=>x.classList.toggle('on',x===s));imgs.forEach((im,k)=>im.classList.toggle('on',k===i))}}}));
-    // night: dolly through the market as you scroll
-    SEQ.night.draw(0);
-    ScrollTrigger.create({trigger:'#night',start:'top bottom',end:'bottom top',scrub:true,onUpdate:s=>SEQ.night.draw(s.progress*191)});
-    gsap.from('#nightTitle .ch',{yPercent:110,stagger:.03,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#night',start:'top 40%'}});
+    mm.add('(min-width:761px)',()=>{const track=$('#railTrack');const dist=()=>Math.max(0,track.scrollWidth-innerWidth+80);
+      const tickets=$$('.ticket',track);const rot=tickets.map(t=>gsap.quickTo(t,'rotate',{duration:1.1,ease:'elastic.out(1,.28)'}));
+      gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#rail',start:'top top',end:()=>'+='+Math.max(innerHeight*.6,dist()),scrub:1,pin:true,invalidateOnRefresh:true,anticipatePin:1,
+        onUpdate:s=>{const v=gsap.utils.clamp(-16,16,s.getVelocity()/110);rot.forEach((f,i)=>f(-v*(1+(i%2)*.45)))}}});
+      const settle=()=>rot.forEach(f=>f(0));ScrollTrigger.addEventListener('scrollEnd',settle);
+      gsap.from(tickets,{y:-120,rotate:()=>gsap.utils.random(-20,20),opacity:0,stagger:.12,duration:1.2,ease:'elastic.out(1,.4)',scrollTrigger:{trigger:'#rail',start:'top 70%'}});
+      return()=>ScrollTrigger.removeEventListener('scrollEnd',settle)});
+    let skew=0;ScrollTrigger.create({trigger:'main[data-page="home"]',start:'top top',end:'bottom bottom',onUpdate:s=>{const v=s.getVelocity();if(mqTween)mqTween.timeScale(1+Math.min(Math.abs(v)/300,6)*(v<0?-1:1));skew=gsap.utils.clamp(-8,8,v/250);gsap.to('.mq-track',{skewX:-skew,duration:.4,overwrite:true})}});
+    gsap.from('#coolTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#cool',start:'top 70%'}});
   },
   menu(){ const h=$('main[data-page="menu"] h1'); split(h); SEQ.menu.load();
     if(!hasG||RM){SEQ.menu.draw(120);return}
@@ -1081,21 +1420,21 @@ function toggleMobile(open){mob.classList.toggle('open',open);burger.setAttribut
 burger.addEventListener('click',()=>toggleMobile(!mob.classList.contains('open')));
 
 /* ---------------- boot ---------------- */
-buildDials(); buildMenu(); buildReel(); buildMarquee(); renderCart(); setHeat(heat,false); liveStatus(); setInterval(liveStatus,30000);
+buildDials(); buildMenu(); buildRail(); buildKnob(); buildSizzle(); buildMarquee(); renderCart(); setHeat(heat,false); liveStatus(); setInterval(liveStatus,30000);
 bindLinks(); embers();
 const loader=$('#loader');
 function boot(){ show(getRoute(),true) }
 if(!hasG||RM){loader.remove();boot()}
 else{
-  const imgs=['seq/tender_burst/s00.webp','seq/tender_burst/s05.webp','img/slider.webp','img/tender-hot.webp'];let done=0;const pct=$('#loadPct');const o={v:0};
-  const prog=()=>{done++;gsap.to(o,{v:done/imgs.length*100,duration:.4,onUpdate:()=>pct.textContent=Math.round(o.v)+'%'})};
+  const imgs=['seq/night_market/s00.webp','seq/night_market/s23.webp','seq/oil_dunk/s00.webp','seq/tender_burst/s00.webp'];let done=0;const pct=$('#loadPct');const o={v:0};
+  const prog=()=>{done++;gsap.to(o,{v:done/imgs.length*100,duration:.4,onUpdate:()=>pct.textContent=Math.round(30+o.v*1.45)+'°C'})};
   const loads=imgs.map(s=>new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>{prog();r()};i.src=s}));
   const timeout=new Promise(r=>setTimeout(r,3500));
-  gsap.from('#loader .logo',{yPercent:60,opacity:0,scale:.8,duration:.9,ease:'expo.out'});
+  
   Promise.race([Promise.all(loads),timeout]).then(()=>{
     boot();
     gsap.timeline({onComplete:()=>loader.remove()})
-      .to('#loader .logo',{scale:1.15,duration:.35,ease:'power2.in'},'+=.2')
+      .to('#loader .neon-word',{scale:1.08,opacity:0,duration:.4,ease:'power2.in'},'+=.35')
       .to(loader,{clipPath:'inset(0 0 100% 0)',duration:.9,ease:'expo.inOut'});
   });
 }
