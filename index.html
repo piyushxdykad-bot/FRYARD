@@ -410,6 +410,14 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 .heat-note{font-size:13px;color:var(--mustard);font-weight:700}
 .heat-note button{background:none;border:0;padding:0;text-decoration:underline;color:inherit;font-weight:700;font-size:13px}
 
+.heat-pick{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.hp-label{font-weight:700;font-size:14px}
+.hp-label b{color:var(--mustard)}
+.dial-sm{grid-template-columns:repeat(5,auto);gap:6px}
+.dial-sm button{flex-direction:row;padding:8px 12px;border-radius:99px;font-size:12px;gap:6px}
+.dial-sm button .n{font-size:16px}
+.dial-sm button[aria-pressed="true"]{transform:none}
+@media (max-width:760px){.dial-sm{grid-template-columns:repeat(3,auto)}}
 /* bag drawer */
 .scrim{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .4s}
 .scrim.open{opacity:1;pointer-events:auto}
@@ -577,7 +585,6 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
   </a>
   <ul class="nav" id="nav">
     <li><a href="#menu" data-link="menu">Menu</a></li>
-    <li><a href="#heat" data-link="heat">Heat scale</a></li>
     <li><a href="#story" data-link="story">Our story</a></li>
     <li><a href="#find" data-link="find">Find us</a></li>
   </ul>
@@ -587,7 +594,6 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
   <a href="#" data-link="home">Home</a>
   <a href="#menu" data-link="menu">Menu</a>
-  <a href="#heat" data-link="heat">Heat scale</a>
   <a href="#story" data-link="story">Our story</a>
   <a href="#find" data-link="find">Find us</a>
 </nav>
@@ -621,7 +627,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
         <div class="live" data-live><span class="dot"></span><span data-live-text>Open daily, 6 PM to 11 PM</span></div>
         <div class="night-btns">
           <a class="btn btn-y mag" href="#menu" data-link="menu">See the menu</a>
-          <a class="btn btn-o mag" href="#heat" data-link="heat">Pick your heat</a>
+          <a class="btn btn-o mag" href="#find" data-link="find">Find the stall</a>
         </div>
       </div>
       <div class="cue" aria-hidden="true"><span>Walk in</span><i></i></div>
@@ -662,31 +668,13 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
     </div>
   </section>
 
-  <!-- 4. Set the fryer -->
-  <section class="fryer" id="fryer" aria-labelledby="fryerTitle">
-    <div class="wrap fryer-grid">
-      <div class="fryer-copy">
-        <h2 class="mega" id="fryerTitle">Set the<br>fryer</h2>
-        <div class="heat-name" data-heat-name></div>
-        <p class="heat-desc" data-heat-desc></p>
-        <a class="btn btn-y mag" href="#menu" data-link="menu">Order at this heat</a>
-      </div>
-      <div class="knob-wrap"><div class="knob" data-knob tabindex="0" role="slider" aria-label="Heat level" aria-valuemin="0" aria-valuemax="4"></div><p class="knob-hint">Drag the knob, or use the arrow keys</p></div>
-      <div class="heat-visual" aria-hidden="true">
-        <div class="ring"></div><div class="ring2"></div>
-        <img data-heat-img src="img/tender-hot.webp" alt="">
-        <div class="stamp" data-stamp>Cluck yeah<br>sign the waiver</div>
-      </div>
-    </div>
-  </section>
-
   <div class="marquee" aria-hidden="true"><div class="mq-track" data-mq></div></div>
 
   <!-- 5. On the rail -->
   <section class="rail-sec" id="rail" aria-labelledby="railTitle">
     <div class="wrap rail-head">
       <h2 class="mega" id="railTitle">On the rail</h2>
-      <p>The four orders the kitchen prints the most. Add one to yours and it comes at the heat you set on the fryer.</p>
+      <p>The four orders the kitchen prints the most. Add one to your order and pick your heat on the menu.</p>
     </div>
     <div class="rail-viewport">
       <div class="rail-bar" aria-hidden="true"></div>
@@ -714,38 +702,12 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
     <canvas class="seq-canvas menu-head-seq" id="menuSeq" role="img" aria-label="A Nashville hot chicken slider as chili oil splashes around it"></canvas>
     <h1 class="mega split">The menu</h1>
     <span class="hand" style="right:6%;top:18%">Kuchupuchu!</span>
-    <div class="sub"><p>Everything is fried when you order. Sliders, tenders and fries come at the heat level you pick, from golden to Cluck yeah.</p>
-      <p class="heat-note">Ordering at <span data-heat-short></span>. <button type="button" data-link="heat">Change heat</button></p></div>
+    <div class="sub"><p>Everything is fried when you order. Pick a heat below, from golden to Cluck yeah, and every slider, tender and fries order comes that hot.</p>
+      <div class="heat-pick"><span class="hp-label">Heat for your order: <b data-heat-short></b></span><div class="dial dial-sm" data-dial role="group" aria-label="Heat level"></div></div></div>
   </section>
   <section class="menu-sec wrap">
     <div class="filters" id="filters" role="group" aria-label="Filter menu"></div>
     <div class="menu-grid" id="menuGrid"></div>
-  </section>
-</main>
-
-<!-- ======================= HEAT ======================= -->
-<main data-page="heat" class="heat-page" hidden>
-  <section class="page-head wrap">
-    <h1 class="mega split">Pick your poison</h1>
-    <div class="sub"><p>Five levels of cayenne oil. Your pick sticks to everything you add to your order, and the whole site heats up with you.</p></div>
-  </section>
-  <section class="heat-sec">
-    <div class="wrap heat-grid">
-      <div class="heat-copy">
-        <div class="heat-name" data-heat-name></div>
-        <p class="heat-desc" data-heat-desc></p>
-        <div class="dial" data-dial role="group" aria-label="Heat level"></div>
-        <div class="heat-bar" aria-hidden="true"><i></i></div>
-        <label class="waiver" id="waiver"><input type="checkbox" id="waiverBox"> I know what I'm doing. No refunds for tears.</label>
-        <div style="margin-top:28px"><a class="btn btn-y mag" href="#menu" data-link="menu">Order at this heat</a></div>
-      </div>
-      <div class="heat-visual" aria-hidden="true">
-        <div class="ring"></div><div class="ring2"></div>
-        <img data-heat-img src="img/tender-hot.webp" alt="">
-        <div class="stamp" data-stamp>Cluck yeah<br>sign the waiver</div>
-      </div>
-    </div>
-    <div class="wrap"><div class="lineup" id="lineup" role="group" aria-label="Heat levels"></div></div>
   </section>
 </main>
 
@@ -844,7 +806,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
   <div class="wrap">
     <div class="foot-grid">
       <div><span class="logo" style="font-size:44px">FRYARD<span class="tm">™</span></span><p style="max-width:30ch;margin-top:24px;opacity:.8">Nashville hot chicken at the Night Market. Open every night, 6 to 11.</p></div>
-      <div><h4>Eat</h4><ul><li><a href="#menu" data-link="menu">Menu</a></li><li><a href="#heat" data-link="heat">Heat scale</a></li></ul></div>
+      <div><h4>Eat</h4><ul><li><a href="#menu" data-link="menu">Menu</a></li></ul></div>
       <div><h4>Visit</h4><ul><li><a href="#find" data-link="find">Find us</a></li><li><a href="#story" data-link="story">Our story</a></li></ul></div>
       <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/fryardindia/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
     </div>
@@ -903,7 +865,7 @@ function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearT
 /* ---------------- heat ---------------- */
 function buildDials(){
   $$('[data-dial]').forEach(d=>{d.innerHTML=HEAT.map((h,i)=>`<button type="button" data-h="${i}" aria-pressed="false"><span class="n">${i}</span>${h.name}</button>`).join('')});
-  const lu=$('#lineup'); lu.innerHTML=HEAT.map((h,i)=>`<button type="button" data-h="${i}" aria-pressed="false"><img src="img/${h.img}.webp" alt="" style="filter:${h.f} drop-shadow(0 14px 16px rgba(0,0,0,.5))"><b>${h.name}</b><span class="chilis">${Array.from({length:5},(_,k)=>chili(k<i?'var(--ember)':'rgba(247,232,207,.18)')).join('')}</span><small>${h.short}</small></button>`).join('');
+  const lu=$('#lineup'); if(lu) lu.innerHTML=HEAT.map((h,i)=>`<button type="button" data-h="${i}" aria-pressed="false"><img src="img/${h.img}.webp" alt="" style="filter:${h.f} drop-shadow(0 14px 16px rgba(0,0,0,.5))"><b>${h.name}</b><span class="chilis">${Array.from({length:5},(_,k)=>chili(k<i?'var(--ember)':'rgba(247,232,207,.18)')).join('')}</span><small>${h.short}</small></button>`).join('');
   $$('[data-h]').forEach(b=>b.addEventListener('click',()=>setHeat(+b.dataset.h,true)));
 }
 function setHeat(n,user){
@@ -1318,9 +1280,6 @@ const inits={
     ScrollTrigger.create({trigger:'#chNight',start:'top top',end:mob?'+=230%':'+=320%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>night(s.progress)});
     ScrollTrigger.create({trigger:'#chOil',start:'top top',end:mob?'+=180%':'+=240%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>oil(s.progress)});
     ScrollTrigger.create({trigger:'#chBurst',start:'top top',end:mob?'+=180%':'+=240%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>burst(s.progress)});
-    gsap.from('.knob',{rotate:-200,scale:.6,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'#fryer',start:'top 70%'}});
-    gsap.from('#fryerTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#fryer',start:'top 75%'}});
-    gsap.from('#fryer .heat-visual',{scale:.6,rotate:-30,opacity:0,ease:'power3.out',scrollTrigger:{trigger:'#fryer',start:'top 75%',end:'top 25%',scrub:1}});
     const mm=gsap.matchMedia();
     mm.add('(min-width:761px)',()=>{const track=$('#railTrack');const dist=()=>Math.max(0,track.scrollWidth-innerWidth+80);
       const tickets=$$('.ticket',track);const rot=tickets.map(t=>gsap.quickTo(t,'rotate',{duration:1.1,ease:'elastic.out(1,.28)'}));
@@ -1340,11 +1299,6 @@ const inits={
     gsap.from($$('.ch',h),{yPercent:120,rotate:10,opacity:0,stagger:.04,duration:1,ease:'expo.out'});
     gsap.from('main[data-page="menu"] .hand',{scale:0,rotate:-40,duration:.8,delay:.5,ease:'back.out(3)'});
     gsap.from('.item',{y:80,opacity:0,stagger:.08,duration:.9,ease:'power3.out',delay:.3});
-  },
-  heat(){ const h=$('main[data-page="heat"] h1'); split(h); if(!hasG||RM) return;
-    gsap.from($$('.ch',h),{yPercent:120,opacity:0,stagger:.03,duration:1,ease:'expo.out'});
-    gsap.from('.heat-page .heat-visual',{scale:.5,rotate:-40,opacity:0,duration:1.2,ease:'expo.out',delay:.2});
-    gsap.from('#lineup button',{y:80,opacity:0,stagger:.08,duration:.9,ease:'back.out(1.6)',scrollTrigger:{trigger:'#lineup',start:'top 90%'}});
   },
   story(){ const h=$('main[data-page="story"] h1'); split(h); bindBoard(); if(!hasG||RM) return;
     gsap.from($$('.ch',h),{yPercent:120,opacity:0,stagger:.02,duration:1,ease:'expo.out'});
@@ -1380,7 +1334,7 @@ $('#partyForm').addEventListener('submit',async e=>{e.preventDefault();const f=e
 });
 
 /* ---------------- router ---------------- */
-const ROUTES=['home','menu','heat','story','find'];
+const ROUTES=['home','menu','story','find'];
 const getRoute=()=>{const h=location.hash.slice(1);return ROUTES.includes(h)?h:'home'};
 let current=null,busy=false;
 function show(route,first){
@@ -1389,7 +1343,7 @@ function show(route,first){
   $$('main[data-page]').forEach(m=>m.hidden=m.dataset.page!==route);
   $$('.nav [data-link], .mobile-nav [data-link]').forEach(a=>{if(a.dataset.link===route)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   emberOn=false; current=route; scrollTop();
-  document.title=route==='home'?'FRYARD Hot Chicken':`${({menu:'Menu',heat:'Heat scale',story:'Our story',find:'Find us'})[route]} | FRYARD`;
+  document.title=route==='home'?'FRYARD Hot Chicken':`${({menu:'Menu',story:'Our story',find:'Find us'})[route]} | FRYARD`;
   if(hasG){ctx=gsap.context(()=>inits[route](first));} else inits[route](first);
   runMarquee(); magnets(); countUps($(`main[data-page="${route}"]`));
   if(hasG&&typeof ScrollTrigger!=='undefined') requestAnimationFrame(()=>ScrollTrigger.refresh());
