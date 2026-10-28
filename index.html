@@ -527,6 +527,28 @@ main[data-page]{min-width:0}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
 
+/* ================= HEAT: steam, embers, glow, spotlight ================= */
+.steam{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.ps .steam{z-index:2}
+.cat b,.cat small{position:relative;z-index:6}
+.placed-in,.cart-empty{position:relative}
+.placed-in .steam{inset:-40px -60px auto;height:calc(100% + 40px);width:calc(100% + 120px)}
+.puff{position:fixed;z-index:121;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(255,246,232,.75),rgba(255,246,232,0) 70%);filter:blur(3px)}
+/* the fryer glow under every dish, breathing */
+.mi-img,.pc-img,.cb-art,.it-art{position:relative;isolation:isolate}
+.mi-img::after,.pc-img::after,.cb-art::after,.it-art::after{content:"";position:absolute;left:10%;right:10%;bottom:-20%;height:55%;z-index:-1;pointer-events:none;background:radial-gradient(50% 50% at 50% 50%,rgba(255,110,40,.42),rgba(255,60,20,.12) 55%,transparent 75%);filter:blur(6px);animation:fryglow 3.6s ease-in-out infinite alternate}
+.mgrid .mi:nth-child(2n) .mi-img::after,.rail .pc:nth-child(2n) .pc-img::after{animation-delay:-1.8s}
+@keyframes fryglow{0%{opacity:.55;transform:scale(.92)}100%{opacity:1;transform:scale(1.06)}}
+.it-art::before{z-index:0}
+/* spotlight that follows the cursor across cards */
+.mi,.pc,.cb,.cat,.again,.li,.kpi{--mx:-200px;--my:-200px}
+.cb,.again,.kpi{position:relative}
+.mi::before,.pc::before,.cb::before,.again::before,.kpi::before,.li::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;background:radial-gradient(360px circle at var(--mx) var(--my),rgba(246,183,44,.09),transparent 45%);opacity:0;transition:opacity .4s}
+.li{position:relative}
+.mi:hover::before,.pc:hover::before,.cb:hover::before,.again:hover::before,.kpi:hover::before,.li:hover::before{opacity:1}
+.mi>*,.cb>*,.again>*,.kpi>*,.li>*{position:relative;z-index:1}
+.pc-b{position:relative;z-index:1}
+
 /* =================== APP: sign in, orders, kitchen =================== */
 .auth-h{margin:0;font-family:var(--display);line-height:.95;letter-spacing:-.02em;display:flex;flex-direction:column;font-size:clamp(44px,5vw,84px)}
 .auth-h .lt{font-weight:250;font-variation-settings:"wdth" 100}
@@ -1098,7 +1120,7 @@ function bagTarget(){const t=$('#tbBag');if(t&&t.offsetParent)return t;return $(
 function fly(src){if(!hasG||RM||!src)return;const t=bagTarget();if(!t)return;const r=src.getBoundingClientRect(),tr=t.getBoundingClientRect();if(!r.width)return;
   const f=src.cloneNode();Object.assign(f.style,{position:'fixed',left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',zIndex:120,pointerEvents:'none',objectFit:'contain',margin:0,maxWidth:'none',maxHeight:'none',translate:'none'});document.body.appendChild(f);
   const dx=tr.left+tr.width/2-(r.left+r.width/2),dy=tr.top+tr.height/2-(r.top+r.height/2);
-  gsap.timeline({onComplete:()=>{f.remove();t.classList.remove('bump');void t.offsetWidth;t.classList.add('bump')}})
+  gsap.timeline({onComplete:()=>{f.remove();t.classList.remove('bump');void t.offsetWidth;t.classList.add('bump');bagPuff(t)}})
     .to(f,{x:dx,duration:.75,ease:'power1.inOut'},0)
     .to(f,{keyframes:{y:[0,Math.min(-60,dy*.15-90),dy],easeEach:'sine.inOut'},duration:.75},0)
     .to(f,{scale:.18,rotate:240,duration:.75,ease:'power2.in'},0)
@@ -1361,6 +1383,88 @@ function initMenuJump(){if(PEND.sec){const id=PEND.sec;PEND.sec=null;const t=$('
 function bindLinks(){}
 addEventListener('popstate',()=>go(getRoute()));
 addEventListener('hashchange',()=>go(getRoute()));
+
+/* =====================================================================
+   STEAM: soft volumetric steam rising off every hot dish (+ embers on the spicy ones)
+   One shared sprite set, one rAF loop, a canvas per dish so it layers and clips with its card.
+   ===================================================================== */
+const STEAM={hosts:new Map(),vis:new Set(),sprites:[],ember:null,on:!RM&&!!window.requestAnimationFrame,last:0,t:0};
+(function makeSprites(){
+  // value-noise fbm so every puff has torn, wispy edges instead of a perfect circle
+  const rnd=(s=>()=>(s=(s*16807)%2147483647)/2147483647);
+  for(let v=0;v<5;v++){const N=96,c=document.createElement('canvas');c.width=c.height=N;const g=c.getContext('2d');const id=g.createImageData(N,N);const R=rnd(1234+v*977);
+    const G=8,grid=[...Array((G+1)*(G+1))].map(()=>R()),grid2=[...Array((G*2+1)*(G*2+1))].map(()=>R());
+    const sm=t=>t*t*(3-2*t);
+    const vn=(x,y,gr,n)=>{const gx=x*n,gy=y*n,ix=Math.floor(gx),iy=Math.floor(gy),fx=sm(gx-ix),fy=sm(gy-iy),w=n+1,a=gr[iy*w+ix],b=gr[iy*w+ix+1],c2=gr[(iy+1)*w+ix],d=gr[(iy+1)*w+ix+1];return a+(b-a)*fx+(c2-a)*fy+(a-b-c2+d)*fx*fy};
+    const ox=(R()-.5)*.25,oy=(R()-.5)*.25,st=.9+R()*.5;
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++){const u=x/N,w=y/N,dx=(u-.5-ox)*2,dy=(w-.5-oy)*2*st,r=Math.sqrt(dx*dx+dy*dy);
+      const n=.55*vn(Math.min(u,.999),Math.min(w,.999),grid,G)+.45*vn(Math.min(u,.999),Math.min(w,.999),grid2,G*2);
+      let a=Math.max(0,1-r);a=a*a*(3-2*a);a*=Math.max(0,Math.min(1,(n-.28)*1.9));
+      const i=(y*N+x)*4;id.data[i]=255;id.data[i+1]=246;id.data[i+2]=232;id.data[i+3]=Math.round(a*255)}
+    g.putImageData(id,0,0);
+    const c2=document.createElement('canvas');c2.width=c2.height=N;const g2=c2.getContext('2d');g2.filter='blur(2px)';g2.drawImage(c,0,0);STEAM.sprites.push(c2)}
+  const e=document.createElement('canvas');e.width=e.height=24;const g=e.getContext('2d');const gr=g.createRadialGradient(12,12,0,12,12,12);
+  gr.addColorStop(0,'rgba(255,240,200,1)');gr.addColorStop(.25,'rgba(255,170,60,.9)');gr.addColorStop(.6,'rgba(232,60,20,.35)');gr.addColorStop(1,'rgba(232,50,31,0)');g.fillStyle=gr;g.fillRect(0,0,24,24);STEAM.ember=e;
+})();
+class Steamer{
+  constructor(host,o){this.host=host;this.o=o;this.p=[];this.e=[];this.acc=0;this.eacc=0;this.n=0;this.w=0;this.h=0;this.src={x:.5,y:.4,w:.5};
+    const c=this.cv=document.createElement('canvas');c.className='steam';c.setAttribute('aria-hidden','true');host.appendChild(c);this.ctx=c.getContext('2d');this.measure()}
+  measure(){const r=this.host.getBoundingClientRect();if(!r.width)return;const d=Math.min(devicePixelRatio||1,1.5);this.d=d;this.w=r.width;this.h=r.height;
+    this.cv.width=Math.round(r.width*d);this.cv.height=Math.round(r.height*d);
+    const s=this.o.src&&this.o.src();if(s){const q=s.getBoundingClientRect();if(q.width){this.src={x:(q.left-r.left+q.width/2)/r.width,y:(q.top-r.top+q.height*(this.o.top??.3))/r.height,w:q.width/r.width*(this.o.spread??.55)}}}
+    else if(this.o.at)this.src=this.o.at}
+  spawn(){const s=this.src,W=this.w,H=this.h,k=this.o.k||1,base=Math.min(W,H*1.3);
+    this.p.push({x:(s.x+(Math.random()-.5)*s.w)*W,y:s.y*H+(Math.random()-.3)*base*.06,vx:(Math.random()-.5)*base*.03,vy:-(base*(.2+Math.random()*.16))*(this.o.speed||1),
+      life:0,max:2.6+Math.random()*2.2,s0:base*(.09+Math.random()*.07)*k,grow:2.8+Math.random()*1.8,rot:Math.random()*6.28,vr:(Math.random()-.5)*.5,spr:(Math.random()*STEAM.sprites.length)|0,a:(.12+Math.random()*.12)*(this.o.alpha||1),seed:Math.random()*100,sq:1.1+Math.random()*.5})}
+  spawnEmber(){const s=this.src,W=this.w,H=this.h,base=Math.min(W,H*1.3);
+    this.e.push({x:(s.x+(Math.random()-.5)*s.w*.8)*W,y:s.y*H+base*.05,vx:(Math.random()-.5)*base*.25,vy:-(base*(.35+Math.random()*.4)),life:0,max:.9+Math.random()*1.1,r:base*(.012+Math.random()*.014),seed:Math.random()*100})}
+  tick(dt,t){if(!this.w)return;const ctx=this.ctx,d=this.d,W=this.w;
+    const rate=(this.o.rate||1)*Math.max(3,Math.min(16,W/26));this.acc+=dt*rate;while(this.acc>1){this.acc--;if(this.p.length<90)this.spawn()}
+    if(this.o.embers){this.eacc+=dt*(this.o.embers*Math.max(.6,W/180));while(this.eacc>1){this.eacc--;if(this.e.length<16)this.spawnEmber()}}
+    ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,this.cv.width,this.cv.height);ctx.globalCompositeOperation='screen';
+    for(let i=this.p.length-1;i>=0;i--){const p=this.p[i];p.life+=dt;const k=p.life/p.max;if(k>=1){this.p.splice(i,1);continue}
+      const sway=(Math.sin(t*.9+p.seed+p.y*.015)*W*.03+Math.sin(t*2.3+p.seed*2)*W*.01)*(.3+k*1.4);
+      p.x+=(p.vx+sway)*dt;p.y+=p.vy*dt;p.vy*=1-.12*dt;p.vx*=1-.4*dt;p.rot+=p.vr*dt;
+      const env=k<.32?Math.pow(k/.32,1.5):Math.pow(1-(k-.32)/.68,1.4);const a=p.a*env;if(a<.003)continue;
+      const sz=p.s0*(1+(p.grow-1)*Math.sqrt(k));
+      ctx.globalAlpha=a;ctx.setTransform(d,0,0,d,p.x*d,p.y*d);ctx.rotate(p.rot);ctx.scale(1,p.sq);ctx.drawImage(STEAM.sprites[p.spr],-sz/2,-sz/2,sz,sz)}
+    if(this.e.length){ctx.globalCompositeOperation='lighter';
+      for(let i=this.e.length-1;i>=0;i--){const e=this.e[i];e.life+=dt;const k=e.life/e.max;if(k>=1){this.e.splice(i,1);continue}
+        e.x+=(e.vx+Math.sin(t*6+e.seed)*W*.04)*dt;e.y+=e.vy*dt;e.vy*=1-.6*dt;
+        const fl=.6+.4*Math.sin(t*25+e.seed*7);ctx.globalAlpha=(k<.1?k/.1:1-k)*fl;const r=e.r*(1-k*.5)*4;ctx.setTransform(d,0,0,d,e.x*d,e.y*d);ctx.drawImage(STEAM.ember,-r,-r,r*2,r*2)}}
+    ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over'}
+  warm(){for(let i=0;i<40;i++)this.tick(1/15,STEAM.t+i/15)}
+}
+const isHot=m=>m&&/nashville|nuclear|nitro|fury|feast|squad|hot honey/i.test(m.name+' '+m.desc);
+const isSteamy=m=>m&&m.sec!=='dips'&&!m.addon;
+function steamOpts(host){
+  const id=host.closest('[data-mi]')?.dataset.mi||host.dataset.openItem||host.closest('[data-steam-id]')?.dataset.steamId;
+  const m=id?MENU.find(x=>x.id===id):null;
+  if(host.matches('.mi-img,.pc-img,.cb-art')){if(!isSteamy(m))return null;return {src:()=>$('img',host),embers:isHot(m)?1.2:0,rate:1,alpha:1.35}}
+  if(host.matches('.cat')){if(host.dataset.sec==='dips')return null;return {src:()=>$('img',host),embers:host.dataset.sec==='tenders'?1:0,rate:.9,alpha:1.7}}
+  if(host.matches('.it-art')){if(!isSteamy(IT.m))return null;return {src:()=>$('img',host),top:.22,spread:.75,embers:isHot(IT.m)?2.2:0,rate:1.2,k:1,alpha:1}}
+  if(host.matches('.ps')){const i=$$('#promo .ps').indexOf(host);return i===0?{at:{x:.6,y:.5,w:.28},embers:1.5,rate:.9,k:.8,alpha:.8}:i===1?{at:{x:.6,y:.32,w:.3},embers:1,rate:.9,k:.8,alpha:.8}:null}
+  if(host.matches('.placed-in')){return {src:()=>$('.placed-bag',host),top:.12,spread:.4,rate:1.1,k:1.1,alpha:1.1,speed:1.2}}
+  if(host.matches('.cart-empty')){return {src:()=>$('img',host),top:.35,spread:.45,rate:.9,alpha:1.7}}
+  return null}
+const steamIO=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{const s=STEAM.hosts.get(e.target);if(!s)return;if(e.isIntersecting){s.measure();STEAM.vis.add(s);if(!s.p.length)s.warm()}else STEAM.vis.delete(s)}),{rootMargin:'80px'}):null;
+const steamRO=('ResizeObserver' in window)?new ResizeObserver(es=>es.forEach(e=>{const s=STEAM.hosts.get(e.target);s&&s.measure()})):null;
+const STEAM_SEL='.mi-img,.pc-img,.cb-art,.cat,.it-art,#promo .ps,.placed-in,.cart-empty';
+function steamScan(root=document){if(!STEAM.on)return;
+  for(const [h,s] of STEAM.hosts){if(!h.isConnected){steamIO&&steamIO.unobserve(h);steamRO&&steamRO.unobserve(h);STEAM.vis.delete(s);STEAM.hosts.delete(h)}}
+  $$(STEAM_SEL,root.nodeType===1?root:document).concat(root.nodeType===1&&root.matches&&root.matches(STEAM_SEL)?[root]:[]).forEach(h=>{if(STEAM.hosts.has(h))return;const o=steamOpts(h);if(!o)return;const s=new Steamer(h,o);STEAM.hosts.set(h,s);steamIO?steamIO.observe(h):STEAM.vis.add(s);steamRO&&steamRO.observe(h)})}
+function steamFrame(now){requestAnimationFrame(steamFrame);const dt=Math.min(.05,(now-(STEAM.last||now))/1000);STEAM.last=now;STEAM.t=now/1000;if(document.hidden)return;
+  for(const s of STEAM.vis){const h=s.host;if(h.offsetParent===null&&!h.closest('.placed.open,.bs.open'))continue;if(h.closest('.bs:not(.open),.placed:not(.open)'))continue;if(h.matches('.ps')&&!h.matches('.on,.leaving'))continue;if(++s.n%120===1)s.measure();s.tick(dt,STEAM.t)}}
+let steamPend=0;
+const steamMO=new MutationObserver(()=>{if(steamPend)return;steamPend=requestAnimationFrame(()=>{steamPend=0;steamScan()})});
+function startSteam(){if(!STEAM.on)return;steamScan();steamMO.observe(document.body,{childList:true,subtree:true});requestAnimationFrame(steamFrame);
+  addEventListener('resize',()=>STEAM.hosts.forEach(s=>s.measure()))}
+/* a little puff of steam from the bag when something lands in it */
+function bagPuff(el){if(RM||!hasG||!el)return;const r=el.getBoundingClientRect();for(let i=0;i<7;i++){const p=document.createElement('i');p.className='puff';const s=18+Math.random()*22;
+  Object.assign(p.style,{left:(r.left+r.width/2-s/2+(Math.random()-.5)*r.width*.5)+'px',top:(r.top+r.height*.2)+'px',width:s+'px',height:s+'px'});document.body.appendChild(p);
+  gsap.fromTo(p,{opacity:0,scale:.4,y:0},{keyframes:{opacity:[0,.55,0]},scale:1.8+Math.random(),y:-(40+Math.random()*50),x:(Math.random()-.5)*30,duration:1.1+Math.random()*.6,ease:'power2.out',delay:i*.04,onComplete:()=>p.remove()})}}
+/* cursor spotlight on cards (desktop) */
+if(FINE)document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.mi,.pc,.cb,.cat,.again,.li,.kpi');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
 
 /* =====================================================================
    APP DATA LAYER
@@ -1731,7 +1835,7 @@ onApp(()=>{syncChrome();watchMine();
 
 
 /* ---------------- boot ---------------- */
-bindGlobal();renderCart();paintOpen();setInterval(paintOpen,60000);syncChrome();
+bindGlobal();renderCart();startSteam();paintOpen();setInterval(paintOpen,60000);syncChrome();
 onApp(()=>{if(current==='home')renderHome();if(current==='me')renderMe();refreshCtls()});
 initApp();
 requestAnimationFrame(promoFrame);
