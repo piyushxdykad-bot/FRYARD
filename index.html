@@ -310,8 +310,14 @@ main[data-page]{min-width:0}
 .mi-r .ctl .add{background:var(--s1)}
 .mi-r .ctl .add:hover{background:var(--mustard)}
 .mi-r small{margin-top:6px;font-size:11px;color:var(--faint);font-weight:700}
-.addons{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.ao{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 16px;border-radius:var(--r-m);background:var(--s1);border:1px solid var(--line)}
+.addons{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.ao{display:flex;align-items:center;gap:14px;padding:10px 12px 10px 10px;border-radius:var(--r-m);background:var(--s1);border:1px solid var(--line);transition:border-color .3s,background .3s}
+.ao:hover{border-color:var(--line2);background:var(--s2)}
+.ao-img{position:relative;flex:none;width:76px;height:76px;border-radius:14px;display:grid;place-items:center;background:radial-gradient(85% 85% at 50% 45%,#861313 0%,#3a0907 62%,#1c0806 100%);overflow:visible}
+.ao-img img{max-width:84%;max-height:84%;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.5));transition:transform .6s var(--spring)}
+.ao:hover .ao-img img{transform:translateY(-12%) scale(1.15) rotate(-6deg)}
+.ao-t{flex:1;min-width:0}
+.ao>span{flex:none}
 .ao b{display:block;font-size:14px}
 .ao small{color:var(--faint);font-size:12px}
 .ao .add{min-width:64px;height:34px}
@@ -1245,6 +1251,8 @@ const secOf=id=>SECTIONS.find(s=>s.id===id);
 /* =====================================================================
    FRYARD APP CORE: cart, home, menu, item sheet, visit, me, router
    ===================================================================== */
+const AO_IMG={'Single cheese slice':'ao-cheese','Single tender':'ao-tender','Mac n cheese':'ao-mac','Fries':'ao-fries','Coleslaw':'ao-coleslaw','Pickles':'ao-pickles','Nashville seasoning':'ao-seasoning','Honey glazing':'ao-honey'};
+MENU.forEach(m=>{if(m.addon&&AO_IMG[m.name])m.img=[AO_IMG[m.name]]});
 const SEC_UI=[...SECTIONS,{id:'addons',name:'Add-ons',note:'Make it yours. Add-ons for sliders, burritos and loaded bowls.',tint:'#6a2a0e'}];
 const SEC_IMG={tenders:'img/menu/t-nashville.webp',sliders:'img/menu/s-nuclear.webp',burritos:'img/menu/b-bigb.webp',bowls:'img/menu/bw-fury.webp',combos:'img/box.webp',dips:'img/menu/d-cheese.webp',addons:'img/fries.webp'};
 const SEC_SHORT={tenders:'Tenders',sliders:'Sliders',burritos:'Burritos',bowls:'Bowls',combos:'Combos',dips:'Dips & drinks',addons:'Add-ons'};
@@ -1455,7 +1463,7 @@ function menuItemHTML(m){return `<article class="mi" data-mi="${m.id}" data-s="$
 function buildMenuApp(){if(menuBuilt)return;menuBuilt=true;
   $('#chips').insertAdjacentHTML('beforeend',SEC_UI.map(s=>`<button type="button" class="chip" data-chip="${s.id}"><img src="${SEC_IMG[s.id]}" alt="">${SEC_SHORT[s.id]}</button>`).join(''));
   $('#mlist').innerHTML=SEC_UI.map(s=>{const items=MENU.filter(m=>m.sec===s.id);
-    if(s.id==='addons')return `<section class="msec" id="sec-addons" data-sec-el="addons"><div class="msec-h"><h2>${s.name}</h2><span>${items.length} items</span></div><p>${s.note}</p>${ADDONS.map((g,gi)=>`<h3 style="margin:14px 0 10px;font-size:14px;color:var(--muted)">${g.title}</h3><div class="addons">${items.filter(m=>m.id.startsWith('a'+gi+'-')).map(m=>`<div class="ao" data-mi="${m.id}" data-s="${esc(m.name.toLowerCase())} add-on"><div><b>${esc(m.name)}</b><small>${inr(m.price)}</small></div><span data-ctl="${m.id}">${ctlHTML(m)}</span></div>`).join('')}</div>`).join('')}</section>`;
+    if(s.id==='addons')return `<section class="msec" id="sec-addons" data-sec-el="addons"><div class="msec-h"><h2>${s.name}</h2><span>${items.length} items</span></div><p>${s.note}</p>${ADDONS.map((g,gi)=>`<h3 style="margin:14px 0 10px;font-size:14px;color:var(--muted)">${g.title}</h3><div class="addons">${items.filter(m=>m.id.startsWith('a'+gi+'-')).map(m=>`<div class="ao" data-mi="${m.id}" data-s="${esc(m.name.toLowerCase())} add-on"><div class="ao-img"><img src="${itemImg(m)}" alt="" loading="lazy"></div><div class="ao-t"><b>${esc(m.name)}</b><small>${inr(m.price)}</small></div><span data-ctl="${m.id}">${ctlHTML(m)}</span></div>`).join('')}</div>`).join('')}</section>`;
     return `<section class="msec" id="sec-${s.id}" data-sec-el="${s.id}"><div class="msec-h"><h2>${s.name}</h2><span>${items.length} items</span></div><p>${s.note}</p><div class="mgrid">${items.map(menuItemHTML).join('')}</div></section>`}).join('')+`<div class="nores" id="nores" hidden><b>Nothing matches that</b>Try "nashville", "mac" or "combo".</div>`;
   $('#chips').addEventListener('click',e=>{const c=e.target.closest('[data-chip]');if(!c)return;const t=$('#sec-'+c.dataset.chip);if(!t)return;setChip(c.dataset.chip);spyLock=Date.now()+900;scrollTo({top:t.getBoundingClientRect().top+scrollY-(innerWidth<1000?130:150),behavior:RM?'auto':'smooth'})});
   const q=$('#mq');q.addEventListener('input',()=>filterMenu(q.value));$('#mqClear').addEventListener('click',()=>{q.value='';filterMenu('');q.focus()});
@@ -1631,8 +1639,8 @@ function packArt(m,o,anim){const art=$('#itBody .it-art');if(!art||m.img.length>
 
 /* ---------- headline word reveals ---------- */
 function splitWords(el){if(!el||el.dataset.sw)return;el.dataset.sw=1;const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const parts=c.textContent.split(/(\s+)/);const f=document.createDocumentFragment();parts.forEach(p=>{if(!p)return;if(/^\s+$/.test(p))f.appendChild(document.createTextNode(p));else{const w=document.createElement('span');w.className='w';w.innerHTML=`<span class="wi">${p.replace(/[&<>]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[s])}</span>`;f.appendChild(w)}});c.replaceWith(f)}else if(c.nodeType===1&&!c.classList.contains('w'))walk(c)})};walk(el)}
-const wIO=('IntersectionObserver' in window)&&hasG&&!RM?new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;wIO.unobserve(e.target);gsap.fromTo($$('.wi',e.target),{yPercent:105,rotate:4},{yPercent:0,rotate:0,duration:1,ease:'expo.out',stagger:.05})}),{rootMargin:'0px 0px -10% 0px'}):null;
-function wordReveals(root){if(!wIO)return;$$('.sh h2, .msec-h h2, .legend h3, .ic h3, .prof h2',root).forEach(h=>{splitWords(h);if(h.getBoundingClientRect().top>innerHeight*.9){$$('.wi',h).forEach(w=>w.style.transform='translateY(105%)');wIO.observe(h)}})}
+const wIO=('IntersectionObserver' in window)&&hasG&&!RM?new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;wIO.unobserve(e.target);gsap.fromTo($$('.wi',e.target),{y:0,yPercent:105,rotate:4},{y:0,yPercent:0,rotate:0,duration:1,ease:'expo.out',stagger:.05,clearProps:'transform'})}),{rootMargin:'0px 0px -10% 0px'}):null;
+function wordReveals(root){if(!wIO)return;$$('.sh h2, .msec-h h2, .legend h3, .ic h3, .prof h2',root).forEach(h=>{splitWords(h);if(h.getBoundingClientRect().top>innerHeight*.9){gsap.set($$('.wi',h),{y:0,yPercent:105});wIO.observe(h)}})}
 
 /* ---------- scroll progress + appbar state ---------- */
 function bindScrollFx(){const bar=$('#scrollBar');const f=()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`;$('#appbar').classList.toggle('scrolled',scrollY>12)};addEventListener('scroll',f,{passive:true});f()}
