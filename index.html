@@ -60,13 +60,6 @@ input,textarea{font:inherit}
 @keyframes pulse{70%{box-shadow:0 0 0 10px transparent}}
 
 /* ================= SPLASH ================= */
-.splash{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;transition:opacity .6s,visibility .6s}
-.splash.out{opacity:0;visibility:hidden}
-.splash-in{display:flex;flex-direction:column;align-items:center;gap:26px}
-.splash img{width:min(300px,62vw);filter:drop-shadow(0 0 40px rgba(246,183,44,.25))}
-.splash .pb{width:160px;height:3px;border-radius:3px;background:var(--s3);overflow:hidden}
-.splash .pb i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--ember),var(--mustard));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.splash small{font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
 
 /* ================= APP BAR ================= */
 .appbar{position:fixed;top:0;left:0;right:0;z-index:60;height:calc(var(--bar) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) var(--gr) 0 var(--g);display:flex;align-items:center;gap:18px;background:rgba(13,6,5,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line)}
@@ -693,6 +686,40 @@ main[data-page]{min-width:0}
 .cur[data-mode="text"] .cur-ring,.cur[data-mode="text"] .cur-dot{opacity:0}
 .cur.down .cur-ring{border-width:3px}
 
+/* ================= LOADING: the fryer ================= */
+.splash{position:fixed;inset:0;z-index:200;background:transparent;overflow:hidden;--heat:0}
+.sp-edge{position:absolute;inset:0;background:var(--mustard)}
+.sp-in{position:absolute;inset:0;background:radial-gradient(120vw 80vh at 50% 110%,color-mix(in srgb,#5a0d07 calc(var(--heat)*100%),#0d0605) 0%,#0d0605 65%);overflow:hidden}
+.sp-glow{position:absolute;left:50%;bottom:20vh;width:120vw;height:70vh;translate:-50% 50%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,96,24,.55),rgba(232,50,31,.18) 50%,transparent 75%);opacity:var(--heat);filter:blur(20px);pointer-events:none}
+.sp-top{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));left:var(--g);right:var(--gr);display:flex;justify-content:space-between;gap:16px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.sp-stage{position:absolute;inset:0}
+.sp-logo{position:absolute;left:50%;top:8vh;width:min(380px,70vw);translate:-50% 0;clip-path:inset(0 100% 0 0);filter:drop-shadow(0 0 40px rgba(246,183,44,.35));z-index:4}
+.sp-tender{position:absolute;left:50%;bottom:31vh;height:min(34vh,300px);aspect-ratio:.82;translate:-50% 0;z-index:2;transform-origin:50% 80%}
+.sp-tender img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 30px 30px rgba(0,0,0,.6))}
+.sp-tender .t-hot{opacity:0;transform:scale(1.18)}
+.sp-shine{position:absolute;inset:0;-webkit-mask:url(img/tender-hot.webp) center/contain no-repeat;mask:url(img/tender-hot.webp) center/contain no-repeat;background:linear-gradient(105deg,transparent 35%,rgba(255,240,200,.75) 50%,transparent 65%) -100% 0/250% 100% no-repeat;opacity:0;transform:scale(1.18)}
+.sp-oil{position:absolute;left:0;right:0;bottom:0;height:34vh;z-index:3}
+.sp-wave{position:absolute;left:0;top:-38px;width:200%;height:80px;animation:wave 3.2s linear infinite}
+.sp-line{stroke-dasharray:2600;stroke-dashoffset:2600;filter:drop-shadow(0 0 6px rgba(246,183,44,.8))}
+@keyframes wave{to{transform:translateX(-50%)}}
+.sp-body{position:absolute;inset:40px 0 0;top:41px;background:linear-gradient(180deg,rgba(58,24,6,.95),rgba(20,8,4,.98) 70%)}
+.sp-oil::before{content:"";position:absolute;inset:0;top:0;background:linear-gradient(180deg,rgba(138,74,12,.95),rgba(58,24,6,.96) 30%,rgba(18,7,3,.99));z-index:-1}
+.sp-bub{position:absolute;inset:0;overflow:hidden}
+.sp-bub i{position:absolute;bottom:0;border-radius:50%;border:1.5px solid rgba(255,200,120,.55);background:radial-gradient(circle at 35% 35%,rgba(255,230,180,.45),transparent 60%);animation:bub var(--t,2s) cubic-bezier(.4,0,.8,.6) forwards}
+@keyframes bub{0%{transform:translateY(0) scale(.4);opacity:0}15%{opacity:1}92%{transform:translateY(calc(-1*var(--d))) scale(1);opacity:1}100%{transform:translateY(calc(-1*var(--d))) scale(1.6);opacity:0}}
+.sp-drop{position:absolute;z-index:5;border-radius:50%;pointer-events:none}
+.sp-foot{position:absolute;left:var(--g);right:var(--gr);bottom:calc(22px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:flex-end;gap:20px;z-index:6}
+.sp-temp{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:4px;line-height:.8}
+.sp-temp b{font-family:var(--display);font-weight:900;font-size:clamp(84px,13vw,190px);font-variation-settings:"wdth" 66;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:color-mix(in srgb,var(--mustard) calc(var(--heat)*100%),var(--cream));text-shadow:0 0 calc(var(--heat)*40px) rgba(246,140,30,.5)}
+.sp-temp span{font-family:var(--display);font-weight:300;font-size:clamp(34px,4.6vw,64px)}
+.sp-temp small{flex-basis:100%;margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.sp-stat{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;min-width:0}
+.sp-stat small{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--mustard);font-variant-numeric:tabular-nums}
+.sp-stat b{font-family:var(--display);font-weight:800;font-size:clamp(18px,2vw,26px);text-transform:uppercase;font-variation-settings:"wdth" 80;white-space:nowrap}
+.sp-bar{width:min(260px,40vw);height:3px;border-radius:3px;background:rgba(247,232,207,.15);overflow:hidden}
+.sp-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ember),var(--mustard));transform-origin:left;transform:scaleX(0)}
+@media (max-width:640px){.sp-top span:last-child{display:none}.sp-tender{bottom:33vh;height:27vh}.sp-logo{top:11vh;width:62vw}.sp-foot{flex-direction:column;align-items:flex-start}.sp-stat{align-items:flex-start;text-align:left}}
+
 /* =================== APP: sign in, orders, kitchen =================== */
 .auth-h{margin:0;font-family:var(--display);line-height:.95;letter-spacing:-.02em;display:flex;flex-direction:column;font-size:clamp(44px,5vw,84px)}
 .auth-h .lt{font-weight:250;font-variation-settings:"wdth" 100}
@@ -924,7 +951,28 @@ main[data-page]{min-width:0}
 </style>
 </head>
 <body>
-<div class="splash" id="splash" aria-hidden="true"><div class="splash-in"><img src="img/menu/logo-full.webp" alt=""><div class="pb"><i id="splashBar"></i></div><small>Heating the oil</small></div></div>
+<div class="splash" id="splash" aria-hidden="true">
+  <div class="sp-edge"></div>
+  <div class="sp-in">
+    <div class="sp-glow"></div>
+    <header class="sp-top"><span>FRYARD · Nashville hot chicken</span><span>Night Market · Civil Lines · 6 to 11 PM</span></header>
+    <div class="sp-stage">
+      <img class="sp-logo" src="img/menu/logo-full.webp" alt="">
+      <div class="sp-tender"><img class="t-plain" src="img/tender-plain.webp" alt=""><img class="t-hot" src="img/tender-hot.webp" alt=""><i class="sp-shine"></i></div>
+      <div class="sp-oil">
+        <svg class="sp-wave" viewBox="0 0 2400 80" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="oilg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a4a0c" stop-opacity=".95"/><stop offset="1" stop-color="#3a1806" stop-opacity=".95"/></linearGradient></defs>
+          <path d="M0 40 Q150 10 300 40 T600 40 T900 40 T1200 40 T1500 40 T1800 40 T2100 40 T2400 40 V80 H0Z" fill="url(#oilg)"/>
+          <path class="sp-line" d="M0 40 Q150 10 300 40 T600 40 T900 40 T1200 40 T1500 40 T1800 40 T2100 40 T2400 40" fill="none" stroke="#F6B72C" stroke-width="3"/></svg>
+        <div class="sp-body"><div class="sp-bub" id="spBub"></div></div>
+      </div>
+    </div>
+    <footer class="sp-foot">
+      <div class="sp-temp"><b id="spTemp">30</b><span>°C</span><small>Oil temperature</small></div>
+      <div class="sp-stat"><small id="spStep">01 / 05</small><b id="spMsg">Heating the oil</b><div class="sp-bar"><i id="spBar"></i></div></div>
+    </footer>
+  </div>
+</div>
+
 
 <header class="appbar" id="appbar">
   <i class="scrollbar" id="scrollBar" aria-hidden="true"></i><div class="ab-in">
@@ -1730,6 +1778,60 @@ function wrapInits(){const o=inits.orders;if(o)inits.orders=f=>{o(f);if(MO)gsap.
   const h=inits.home;inits.home=f=>{h(f);choreo($('main[data-page="home"]'))};
   const v=inits.visit;inits.visit=f=>{v(f);choreo($('main[data-page="visit"]'))}}
 
+/* ---------------- loading: heat the oil, dunk a tender, reveal the app ---------------- */
+function runSplash(){
+  const sp=$('#splash');const done=()=>{show(getRoute(),true)};
+  if(!sp){done();return}
+  const need=['img/menu/logo-full.webp','img/tender-plain.webp','img/tender-hot.webp','seq/tender_burst/s00.webp','img/menu/logo-word.webp','img/menu/s-nuclear.webp','img/menu/t-nashville.webp'];
+  let loaded=0;need.forEach(s=>{const i=new Image();i.onload=i.onerror=()=>loaded++;i.src=s});
+  if(!hasG||RM){const iv=setInterval(()=>{if(loaded>=need.length){clearInterval(iv);done();sp.remove()}},100);setTimeout(()=>{clearInterval(iv);if(sp.isConnected){done();sp.remove()}},3000);return}
+  let seen=false;try{seen=sessionStorage.getItem('fry_seen')==='1';sessionStorage.setItem('fry_seen','1')}catch(e){}
+  const MIN=seen?1:2.4,MAX=7,t0=performance.now();
+  const ten=$('.sp-tender'),plain=$('.t-plain',ten),hot=$('.t-hot',ten),shine=$('.sp-shine',ten),oil=$('.sp-oil'),bub=$('#spBub'),temp=$('#spTemp'),msg=$('#spMsg'),step=$('#spStep'),bar=$('#spBar');
+  const MSG=['Heating the oil','Breading the tenders','Dunking in Nashville glaze','Stacking the sliders','Hot and ready'];
+  const H={v:0};let phase=0,lastMsg=-1,bubAcc=0,lt=t0,dunked=false,finished=false;
+  // intro
+  gsap.timeline()
+    .from('.sp-top span',{y:-20,opacity:0,stagger:.1,duration:.8,ease:'expo.out'},0)
+    .to('.sp-line',{strokeDashoffset:0,duration:1.2,ease:'power2.inOut'},0)
+    .from('.sp-oil',{yPercent:60,duration:1.1,ease:'expo.out'},0)
+    .from('.sp-foot > *',{y:40,opacity:0,stagger:.1,duration:.9,ease:'expo.out'},.2)
+    .fromTo(ten,{y:-innerHeight*.75,rotate:-25},{y:0,rotate:-6,duration:1,ease:'bounce.out'},.25)
+    .to(ten,{rotate:6,duration:1.4,yoyo:true,repeat:-1,ease:'sine.inOut'},'>');
+  const splash=(x,y)=>{for(let i=0;i<18;i++){const d=document.createElement('i');d.className='sp-drop';const s=4+Math.random()*10;Object.assign(d.style,{left:x+'px',top:y+'px',width:s+'px',height:s*1.2+'px',background:Math.random()>.5?'#F6B72C':'#c2410c',boxShadow:'0 0 8px rgba(246,183,44,.6)'});sp.appendChild(d);
+      const a=-Math.PI/2+(Math.random()-.5)*2.2,v=120+Math.random()*260;gsap.to(d,{x:Math.cos(a)*v,y:Math.sin(a)*v*.9,duration:.5+Math.random()*.3,ease:'power2.out'});gsap.to(d,{y:'+=240',opacity:0,duration:.6,delay:.45,ease:'power2.in',onComplete:()=>d.remove()})}
+    gsap.fromTo('.sp-wave',{scaleY:1},{scaleY:2.4,duration:.18,yoyo:true,repeat:3,ease:'sine.inOut',transformOrigin:'50% 100%'})};
+  const dunk=()=>{dunked='going';gsap.killTweensOf(ten);const r=ten.getBoundingClientRect(),o=oil.getBoundingClientRect();
+    gsap.timeline({onComplete:()=>{dunked=true;gsap.to(ten,{rotate:4,duration:1.2,yoyo:true,repeat:-1,ease:'sine.inOut'})}})
+      .to(ten,{y:-30,rotate:0,duration:.25,ease:'power2.out'})
+      .to(ten,{y:o.top-r.top+r.height*.75,duration:.32,ease:'power3.in',onComplete:()=>splash(r.left+r.width/2,o.top)})
+      .set(plain,{opacity:0}).set(hot,{opacity:1})
+      .to({},{duration:.18})
+      .to(ten,{y:-innerHeight*.04,duration:.75,ease:'back.out(2)',onStart:()=>splash(r.left+r.width/2,o.top)})
+      .fromTo(shine,{opacity:1,backgroundPosition:'-100% 0'},{backgroundPosition:'200% 0',duration:.7,ease:'power2.inOut'},'-=.35')
+      .to(shine,{opacity:0,duration:.2})
+      .to('.sp-logo',{clipPath:'inset(0 0% 0 0)',duration:.8,ease:'expo.inOut'},'-=.9')
+      .fromTo('.sp-logo',{scale:.9},{scale:1,duration:1,ease:'back.out(2)'},'<')};
+  const finish=()=>{finished=true;msg.textContent=MSG[4];step.textContent='05 / 05';
+    gsap.timeline()
+      .fromTo(msg,{yPercent:100,opacity:0},{yPercent:0,opacity:1,duration:.5,ease:'expo.out'})
+      .to('.sp-temp b',{scale:1.08,duration:.2,yoyo:true,repeat:1,ease:'power2.out',transformOrigin:'0 100%'},'<')
+      .add(()=>{done()},'+=.3')
+      .to(ten,{y:-innerHeight,rotate:-30,scale:.7,duration:.7,ease:'power3.in'},'<')
+      .to('.sp-logo',{y:-60,opacity:0,duration:.5,ease:'power2.in'},'<.1')
+      .to('.sp-in',{clipPath:'inset(0% 0% 100% 0%)',duration:.85,ease:'expo.inOut'},'<.15')
+      .to('.sp-edge',{clipPath:'inset(0% 0% 100% 0%)',duration:.85,ease:'expo.inOut'},'<.08')
+      .add(()=>sp.remove())};
+  (function tick(now){if(finished)return;requestAnimationFrame(tick);const dt=Math.min(.1,(now-lt)/1000);lt=now;const el=(now-t0)/1000;
+    const target=el>MAX?1:Math.min(loaded/need.length,el/MIN);H.v+=(target-H.v)*Math.min(1,dt*3.5);if(target>=1&&H.v>.985)H.v=1;
+    sp.style.setProperty('--heat',H.v.toFixed(3));temp.textContent=Math.round(30+H.v*145);bar.style.transform=`scaleX(${H.v})`;
+    const m=Math.min(3,Math.floor(H.v*4));if(m!==lastMsg){lastMsg=m;msg.textContent=MSG[m];step.textContent=`0${m+1} / 05`;gsap.fromTo(msg,{yPercent:100,opacity:0},{yPercent:0,opacity:1,duration:.5,ease:'expo.out'})}
+    bubAcc+=dt*(2+H.v*26);const oh=oil.clientHeight;while(bubAcc>1){bubAcc--;const b=document.createElement('i');const s=4+Math.random()*(6+H.v*14);Object.assign(b.style,{left:Math.random()*100+'%',width:s+'px',height:s+'px'});b.style.setProperty('--d',(oh*(.5+Math.random()*.42))+'px');b.style.setProperty('--t',(2.4-H.v*1.2+Math.random()*.6)+'s');b.addEventListener('animationend',()=>b.remove());bub.appendChild(b)}
+    if(!dunked&&H.v>.42&&el>(seen?.4:1.1))dunk();
+    if(dunked===true&&H.v>=1&&loaded>=need.length)finish();
+    if(el>MAX+3&&!finished)finish()})(t0);
+}
+
 /* =====================================================================
    APP DATA LAYER
    Cloud mode: the artifact's shared db + the viewer's Claude identity.
@@ -2103,13 +2205,7 @@ bindGlobal();bindScrollFx();bindMagnet();bindNavInd();bindDepth();bindCursor();w
 onApp(()=>{if(current==='home')renderHome();if(current==='me')renderMe();refreshCtls()});
 initApp();
 requestAnimationFrame(promoFrame);
-(()=>{const sp=$('#splash'),bar=$('#splashBar');let n=0;const need=['img/menu/logo-full.webp','seq/tender_burst/s00.webp'];const t0=performance.now();
-  const step=()=>{n++;bar.style.transform=`scaleX(${n/need.length})`};
-  const loads=need.map(s=>new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>{step();r()};i.src=s}));
-  const min=new Promise(r=>setTimeout(r,RM?0:700)),max=new Promise(r=>setTimeout(r,2600));
-  if(hasG&&!RM)gsap.from('#splash img',{scale:.8,opacity:0,duration:.8,ease:'back.out(1.8)'});
-  Promise.race([Promise.all([...loads,min]),max]).then(()=>{show(getRoute(),true);sp.classList.add('out');setTimeout(()=>sp.remove(),800)});
-})();
+runSplash();
 })();
 </script>
 
