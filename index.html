@@ -528,7 +528,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 }
 @media (max-width:420px){.bd-tags span{font-size:11px}.stepper{height:46px}.bd-buy .add{height:46px;padding:0 16px}}
 
-.pass-bg{transition:--tint .9s var(--ease)}
+.pass,.pass-bg{transition:--tint .9s var(--ease)}
 /* =================== MENU v2: real FRYARD menu =================== */
 .mx-kicker{margin:0;font-weight:800;font-size:clamp(13px,1.2vw,16px);letter-spacing:.14em;text-transform:uppercase;color:var(--mustard)}
 .plate-stack{position:relative;width:100%;height:100%}
@@ -613,6 +613,30 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
   .bd-info .stats{display:none}
 }
 
+/* pass layout v3 */
+.pass{--cx:66%;--cy:52%;--ps:min(40vw,70vh)}
+.bd-plate{left:var(--cx);top:var(--cy);width:var(--ps);height:var(--ps);aspect-ratio:auto}
+.bd-plate.solo img{max-width:88%;max-height:88%}
+.bd-plate .pi{width:100%;height:100%;display:grid;place-items:center;will-change:transform}
+.pass-orbit{left:var(--cx);top:var(--cy)}
+.pass-ring{position:absolute;left:var(--cx);top:var(--cy);width:calc(var(--ps) * 1.32);aspect-ratio:1;translate:-50% -50%;z-index:2;pointer-events:none}
+.pass-ring svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;animation:ringspin 40s linear infinite}
+.pass-ring .ring-in{position:absolute;inset:0}
+.pass-ring text{font-family:var(--display);font-weight:800;font-size:19px;fill:rgba(247,232,207,.55)}
+.pass-ring .spot{position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--tint,#9E0F14) 60%,#ffb36b) 0%,color-mix(in srgb,var(--tint,#9E0F14) 85%,transparent) 42%,transparent 70%);filter:blur(6px);opacity:.85;transition:background .9s}
+@keyframes ringspin{to{transform:rotate(360deg)}}
+.pass-ghost{top:auto;bottom:4%;translate:none;text-align:right}
+.pass-ghost span{-webkit-text-stroke:1.5px rgba(247,232,207,.09);padding:0 2vw 0 0;font-size:clamp(120px,20vw,340px)}
+.bd-info{width:min(34vw,470px)}
+.pass-count{left:auto;right:var(--gutter-r);margin-left:0;bottom:calc(26px + env(safe-area-inset-bottom,0px))}
+.pass-index{top:auto;bottom:calc(110px + env(safe-area-inset-bottom,0px));translate:none}
+@media (max-width:900px){
+  .pass{--cx:50%;--cy:27%;--ps:min(62vw,36vh)}
+  .bd-plate{width:var(--ps);height:var(--ps)}
+  .pass-ring text{font-size:19px}
+  .bd-info{width:auto}
+  .pass-ghost{bottom:auto;top:40%}
+}
 /* bag drawer */
 .scrim{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .4s}
 .scrim.open{opacity:1;pointer-events:auto}
@@ -901,6 +925,12 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
     <div class="pass-stage">
       <div class="pass-bg" id="passBg"></div>
       <div class="pass-ghost" aria-hidden="true"><span id="passGhost"></span></div>
+      <div class="pass-ring" aria-hidden="true"><div class="ring-in">
+        <span class="spot"></span>
+        <svg viewBox="0 0 400 400"><defs><path id="ringPath" d="M200,200 m-176,0 a176,176 0 1,1 352,0 a176,176 0 1,1 -352,0"/></defs>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(247,232,207,.18)" stroke-width="1.5" stroke-dasharray="3 9"/>
+          <text><textPath href="#ringPath" startOffset="0" textLength="1100" lengthAdjust="spacing">HAND-STACKED ✦ ALWAYS FRESH ✦ FRYIN' SO HARD ✦</textPath></text></svg>
+      </div></div>
       <div class="pass-orbit" aria-hidden="true">
         <img class="orb" src="img/pickle1.webp" alt="" style="--r:0deg;--d:38vmin">
         <img class="orb" src="img/chili1.webp" alt="" style="--r:72deg;--d:42vmin">
@@ -1170,7 +1200,7 @@ function buildMenu(){
   MENU.forEach(m=>{QTY[m.id]=1;OPT[m.id]=0});
   const sigs=MENU.filter(m=>m.sig);
   items.innerHTML=sigs.map((m,i)=>{const s=secOf(m.sec),count=MENU.filter(x=>x.sec===m.sec).length;return `<article class="bd-item${i===0?' on':''}" data-i="${i}">
-    <figure class="bd-plate${m.img.length>1?'':' solo'}">${visual(m)}</figure>
+    <figure class="bd-plate${m.img.length>1?'':' solo'}"><div class="pi">${visual(m)}</div></figure>
     <div class="bd-info">
       <span class="bd-sec">${s.name}</span>
       <h2>${m.name}</h2>
@@ -1184,7 +1214,7 @@ function buildMenu(){
       </div>
       <button class="bd-more" type="button" data-jump="${m.sec}">See all ${count} ${s.name.replace('Chicken ','').toLowerCase()}</button>
     </div></article>`}).join('');
-  $('#passIndex').innerHTML=sigs.map((m,i)=>`<button type="button" data-go="${i}" aria-current="${i===0}">${secOf(m.sec).name.replace('Chicken ','')}</button>`).join('');
+  $('#passIndex').innerHTML=sigs.map((m,i)=>`<button type="button" data-go="${i}" aria-current="${i===0}">${({tenders:'Tenders',sliders:'Sliders',burritos:'Burritos',bowls:'Bowls',combos:'Combos',dips:'Dips & drinks'})[m.sec]}</button>`).join('');
   // full menu
   $('#tabsIn').innerHTML=SECTIONS.map(s=>`<button type="button" data-tab="${s.id}">${s.name.replace('Chicken ','')}</button>`).join('')+`<button type="button" data-tab="addons">Add-ons</button>`;
   $('#sections').innerHTML=SECTIONS.map(s=>`<section class="msec" id="sec-${s.id}" style="--t:${s.tint}" aria-labelledby="h-${s.id}">
@@ -1583,15 +1613,15 @@ const inits={
   },
   menu(){ const h=$('#menuTitle'); split(h); SEQ.menu.load();
     const SIGS=MENU.filter(m=>m.sig);
-    const pass=$('#pass'),N=SIGS.length,items=$$('#passItems .bd-item'),plates=items.map(it=>$('.bd-plate',it)),idx=$$('#passIndex button'),ghost=$('#passGhost'),count=$('#passCount'),bg=$('#passBg'),orbit=$('.pass-orbit');
+    const pass=$('#pass'),N=SIGS.length,items=$$('#passItems .bd-item'),plates=items.map(it=>$('.bd-plate',it)),idx=$$('#passIndex button'),ghost=$('#passGhost'),count=$('#passCount'),bg=$('#passBg'),orbit=$('.pass-orbit'),ring=$('.pass-ring .ring-in');
     $('#passTotal').textContent=N;
     $('#toCard').onclick=e=>{e.preventDefault();const t=$('#fullMenu');lenis?lenis.scrollTo(t,{offset:-70,duration:1.6}):t.scrollIntoView({behavior:'smooth'})};
     let cur=-1;
     const show=k=>{if(k===cur)return;cur=k;
       items.forEach((it,i)=>{it.classList.toggle('on',i===k);it.inert=i!==k});
       idx.forEach((b,i)=>b.setAttribute('aria-current',i===k?'true':'false'));
-      count.textContent=String(k+1).padStart(2,'0');bg.style.setProperty('--tint',secOf(SIGS[k].sec).tint);
-      ghost.textContent=secOf(SIGS[k].sec).name.replace('Chicken ','');
+      count.textContent=String(k+1).padStart(2,'0');pass.style.setProperty('--tint',secOf(SIGS[k].sec).tint);
+      ghost.textContent=({tenders:'Tenders',sliders:'Sliders',burritos:'Burritos',bowls:'Bowls',combos:'Combos',dips:'Dips'})[SIGS[k].sec];
       if(hasG&&!RM)gsap.fromTo(ghost,{yPercent:30,opacity:0},{yPercent:0,opacity:1,duration:.7,ease:'expo.out',overwrite:true})};
     // tabs follow the section in view
     const tabs=$$('#tabsIn button');
@@ -1602,7 +1632,7 @@ const inits={
     const setF=f=>{plates.forEach((pl,i)=>{const d=f-i,a=Math.min(Math.abs(d),1.5);
         pl.style.opacity=Math.max(0,1-Math.abs(d)*1.6).toFixed(3);
         pl.style.transform=`translateY(${(-d*58).toFixed(2)}vh) rotate(${(-d*38).toFixed(2)}deg) scale(${(1-a*.35).toFixed(3)})`});
-      orbit.style.transform=`rotate(${(f*72).toFixed(1)}deg)`;
+      orbit.style.transform=`rotate(${(f*72).toFixed(1)}deg)`;ring.style.transform=`rotate(${(f*-60).toFixed(1)}deg) scale(${(1-Math.abs(f-Math.round(f))*.18).toFixed(3)})`;
       ghost.parentElement.style.transform=`translateX(${(-(f-Math.round(f))*14).toFixed(2)}vw)`;
       show(Math.round(f))};
     setF(0);
@@ -1622,7 +1652,8 @@ const inits={
     ScrollTrigger.addEventListener('scrollEnd',settle);
     CLEANUPS.push(()=>ScrollTrigger.removeEventListener('scrollEnd',settle));
     idx.forEach((b,i)=>b.addEventListener('click',()=>{const y=st.start+(st.end-st.start)*i/(N-1);lenis?lenis.scrollTo(y,{duration:1.3}):scrollTo({top:y,behavior:'smooth'})}));
-    gsap.from(plates[0],{yPercent:60,rotate:30,scale:.6,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'#pass',start:'top 65%'}});
+    gsap.from($('.pi',plates[0]),{yPercent:40,rotate:25,scale:.6,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'#pass',start:'top 65%'}});
+    gsap.from('.pass-ring',{opacity:0,duration:1.6,ease:'power2.out',scrollTrigger:{trigger:'#pass',start:'top 65%'}});
     if(FINE)pass.addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to('#passItems',{x:x*24,y:y*16,duration:1.2,ease:'power3.out'});gsap.to('.pass-orbit',{x:x*-40,y:y*-30,duration:1.4,ease:'power3.out'})});
     gsap.from('#fullTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#fullMenu',start:'top 75%'}});
     ScrollTrigger.batch('.mcard',{start:'top 90%',once:true,onEnter:b=>gsap.from(b,{y:70,opacity:0,rotate:2,stagger:.08,duration:.9,ease:'power3.out'})});
