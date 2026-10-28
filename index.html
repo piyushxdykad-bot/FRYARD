@@ -529,6 +529,90 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 @media (max-width:420px){.bd-tags span{font-size:11px}.stepper{height:46px}.bd-buy .add{height:46px;padding:0 16px}}
 
 .pass-bg{transition:--tint .9s var(--ease)}
+/* =================== MENU v2: real FRYARD menu =================== */
+.mx-kicker{margin:0;font-weight:800;font-size:clamp(13px,1.2vw,16px);letter-spacing:.14em;text-transform:uppercase;color:var(--mustard)}
+.plate-stack{position:relative;width:100%;height:100%}
+.plate-stack img{position:absolute;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.plate-stack.n2 img:nth-child(1){left:2%;top:10%;width:74%;height:80%}
+.plate-stack.n2 img:nth-child(2){right:2%;bottom:6%;width:34%;height:58%;rotate:8deg}
+.plate-stack.n3 img:nth-child(1){left:0;top:4%;width:60%;height:60%;z-index:2}
+.plate-stack.n3 img:nth-child(2){right:4%;top:34%;width:60%;height:56%}
+.plate-stack.n3 img:nth-child(3){left:6%;bottom:2%;width:26%;height:44%;rotate:-6deg;z-index:3}
+.plate-stack.n4 img:nth-child(1){left:2%;top:6%;width:48%;height:48%;z-index:2}
+.plate-stack.n4 img:nth-child(2){right:4%;top:2%;width:30%;height:56%;rotate:10deg}
+.plate-stack.n4 img:nth-child(3){left:18%;bottom:2%;width:56%;height:50%;z-index:3}
+.plate-stack.n4 img:nth-child(4){right:0;bottom:4%;width:22%;height:40%;z-index:4}
+.bd-plate.solo img{max-height:84%}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:74px;height:74px;border-radius:50%;text-align:center;line-height:1;font-weight:900;font-family:var(--display);font-variation-settings:"wdth" 80}
+.stat b{font-size:20px}
+.stat small{font-family:var(--body);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:3px;opacity:.85}
+.stat.prot{background:#B3121B;color:#FFE9C7;box-shadow:inset 0 0 0 3px rgba(255,233,199,.25)}
+.stat.kcal{background:var(--mustard);color:#3a0a06}
+.stat.up b{font-size:16px}
+.opts{display:flex;gap:6px;flex-wrap:wrap}
+.opts button{border:2px solid rgba(247,232,207,.3);background:transparent;border-radius:12px;padding:8px 12px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.1;transition:background .25s,color .25s,border-color .25s}
+.opts button small{font-size:11px;font-weight:700;opacity:.8}
+.opts button b{font-size:15px;font-variant-numeric:tabular-nums}
+.opts button[aria-pressed="true"]{background:var(--mustard);border-color:var(--mustard);color:var(--char)}
+.bd-more{background:none;border:0;padding:0;font-weight:800;font-size:14px;color:var(--mustard);text-decoration:underline;text-underline-offset:4px;align-self:flex-start}
+.bd-sec{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mustard)}
+
+/* full menu */
+.full{background:#160806;padding-block:120px 120px;position:relative}
+.full-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.full-head h2{font-size:clamp(60px,10vw,170px);font-variation-settings:"wdth" 64}
+.full-head p{margin:0;max-width:34ch;color:rgba(247,232,207,.8)}
+.tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 74px);z-index:20;background:color-mix(in srgb,#160806 88%,transparent);backdrop-filter:blur(12px);border-block:1px solid rgba(247,232,207,.1)}
+.tabs-in{display:flex;gap:6px;overflow-x:auto;padding-block:12px;scrollbar-width:none}
+.tabs-in::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:0;background:transparent;border-radius:99px;padding:9px 16px;font-weight:800;font-size:14px;color:rgba(247,232,207,.65);transition:background .3s,color .3s}
+.tabs button[aria-current="true"]{background:var(--mustard);color:var(--char)}
+.msec{padding-top:70px;scroll-margin-top:150px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px;border-bottom:2px solid rgba(247,232,207,.12);padding-bottom:16px}
+.sec-title{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,5vw,76px);line-height:.9;font-variation-settings:"wdth" 72;color:var(--mustard)}
+.sec-head p{margin:0;max-width:52ch;font-size:15px;color:rgba(247,232,207,.75)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.mcard{position:relative;border-radius:24px;background:linear-gradient(180deg,#2c0d09,#1f0806);border:1px solid rgba(247,232,207,.06);display:flex;flex-direction:column;overflow:hidden;min-width:0;transition:transform .5s var(--ease),border-color .4s}
+.mcard:hover{transform:translateY(-6px);border-color:rgba(246,183,44,.35)}
+.mc-img{position:relative;height:230px;display:grid;place-items:center;background:radial-gradient(70% 70% at 50% 60%,color-mix(in srgb,var(--t,#9E0F14) 70%,transparent),transparent 72%)}
+.mc-img>img{max-width:78%;max-height:86%;object-fit:contain;filter:drop-shadow(0 22px 24px rgba(0,0,0,.55));transition:transform .7s var(--ease)}
+.mcard:hover .mc-img>img,.mcard:hover .plate-stack{transform:scale(1.07) rotate(-3deg)}
+.mc-img .plate-stack{width:88%;height:90%;transition:transform .7s var(--ease)}
+.mc-img .stat{position:absolute;top:14px;width:58px;height:58px}
+.mc-img .stat b{font-size:15px}
+.mc-img .stat.up b{font-size:12px}
+.mc-img .stat small{font-size:8px}
+.mc-img .stat.prot{left:14px}
+.mc-img .stat.kcal{right:14px}
+.mc-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.mc-body h4{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:26px;line-height:.95;font-variation-settings:"wdth" 80}
+.mc-body p{margin:0;font-size:14px;line-height:1.45;color:rgba(247,232,207,.72);flex:1}
+.mc-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px}
+.mc-foot .price{font-size:26px}
+.mcard .opts button{padding:6px 10px;border-radius:10px}
+.mcard .opts button b{font-size:13px}
+.addons{padding-top:80px;scroll-margin-top:150px}
+.addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.addon-card{background:#FBF3E4;color:#2A1410;border-radius:6px;padding:28px 30px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.addon-card:nth-child(1){transform:rotate(-.8deg)}
+.addon-card:nth-child(2){transform:rotate(.7deg)}
+.addon-card h4{margin:0 0 12px;font-family:var(--hand);font-weight:400;font-size:30px;color:#B3121B;line-height:1}
+.arow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(42,20,16,.25)}
+.arow b{font-weight:800;font-size:16px}
+.arow .lead{flex:1;border-bottom:2px dotted rgba(42,20,16,.4);transform:translateY(-3px)}
+.arow .pr{font-family:var(--display);font-weight:900;font-size:20px;font-variant-numeric:tabular-nums}
+.arow .plus{width:38px;height:38px;border-radius:50%;border:2px solid #2A1410;background:none;color:#2A1410;font-size:20px;font-weight:800;line-height:1;flex:none;transition:background .3s,color .3s,transform .3s var(--ease)}
+.arow .plus:hover{background:#2A1410;color:var(--mustard);transform:rotate(90deg)}
+.arow .plus.done{background:#5d8a26;border-color:#5d8a26;color:#fff}
+@media (max-width:900px){
+  .addon-grid{grid-template-columns:1fr}
+  .addon-card{transform:none!important}
+  .stat{width:60px;height:60px}.stat b{font-size:16px}
+  .bd-info .opts button{padding:6px 9px}
+  .bd-info .stats{display:none}
+}
+
 /* bag drawer */
 .scrim{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .4s}
 .scrim.open{opacity:1;pointer-events:auto}
@@ -803,16 +887,17 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
   <section class="mx-hero" aria-labelledby="menuTitle">
     <canvas class="seq-canvas" id="menuSeq" role="img" aria-label="A Nashville hot chicken slider as chili oil splashes around it"></canvas>
     <div class="mx-hero-copy wrap">
-      <span class="hand mx-sticker">Kuchupuchu!</span>
+      <span class="hand mx-sticker">Fryin' so hard</span>
+      <p class="mx-kicker">Hand-stacked. Always fresh.</p>
       <h1 class="mega split" id="menuTitle">The menu</h1>
       <div class="mx-hero-row">
-        <p>Seven things, all fried when you order. Scroll to meet them one at a time, or skip straight to the full card.</p>
-        <a class="btn btn-o mag" href="#menuCard" id="toCard">See the full card</a>
+        <p>Tenders, sliders, burritos, loaded bowls and combos. Scroll to meet the signatures, or jump straight to everything.</p>
+        <a class="btn btn-o mag" href="#fullMenu" id="toCard">See the full menu</a>
       </div>
     </div>
   </section>
 
-  <section class="pass" id="pass" aria-label="Menu, one dish at a time">
+  <section class="pass" id="pass" aria-label="Signature dishes, one at a time">
     <div class="pass-stage">
       <div class="pass-bg" id="passBg"></div>
       <div class="pass-ghost" aria-hidden="true"><span id="passGhost"></span></div>
@@ -824,25 +909,25 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
         <img class="orb" src="img/pickle5.webp" alt="" style="--r:288deg;--d:40vmin">
       </div>
       <div class="pass-items" id="passItems"></div>
-      <nav class="pass-index" id="passIndex" aria-label="Jump to a dish"></nav>
-      <div class="pass-count" aria-hidden="true"><b id="passCount">01</b><span>/ 0<span id="passTotal">7</span></span></div>
+      <nav class="pass-index" id="passIndex" aria-label="Jump to a signature"></nav>
+      <div class="pass-count" aria-hidden="true"><b id="passCount">01</b><span>/ 0<span id="passTotal">6</span></span></div>
     </div>
   </section>
 
-  <section class="card-sec" id="menuCard" aria-labelledby="cardTitle">
+  <section class="full" id="fullMenu" aria-labelledby="fullTitle">
     <div class="wrap">
-      <article class="paper">
-        <span class="stain" aria-hidden="true"></span>
-        <header class="paper-head">
-          <span class="logo" style="font-size:40px">FRYARD<span class="tm">™</span></span>
-          <div><h2 id="cardTitle">The full card</h2><p>Night Market, open 6 PM to 11 PM</p></div>
-        </header>
-        <div class="paper-cols" id="paperCols"></div>
-        <footer class="paper-foot">
-          <div class="legend" id="heatLegend"></div>
-          <p class="hand paper-note">Heat goes on everything marked with a chili. Sample prices for this concept.</p>
-        </footer>
-      </article>
+      <div class="full-head">
+        <h2 class="mega" id="fullTitle">Everything<br>we fry</h2>
+        <p>Prices straight from the FRYARD menu. Tap a size, then add it to your order.</p>
+      </div>
+    </div>
+    <nav class="tabs" id="menuTabs" aria-label="Menu sections"><div class="wrap tabs-in" id="tabsIn"></div></nav>
+    <div class="wrap" id="sections"></div>
+    <div class="wrap">
+      <section class="addons" id="sec-addons" aria-labelledby="addonsTitle">
+        <h3 class="sec-title" id="addonsTitle">Add-ons</h3>
+        <div class="addon-grid" id="addonGrid"></div>
+      </section>
     </div>
   </section>
 </main>
@@ -873,7 +958,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
     </div>
     <div class="facts">
       <div><b>6–11</b><span>PM, every night</span></div>
-      <div><b>5</b><span>heat levels, golden to Cluck yeah</span></div>
+      <div><b>3</b><span>tender flavours: original, Nashville hot, honey glazed</span></div>
       <div><b data-count="2424">2,424</b><span>followers on Instagram</span></div>
     </div>
   </section>
@@ -947,7 +1032,7 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
       <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/fryardindia/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
     </div>
     <div class="foot-big" aria-hidden="true">FRYARD</div>
-    <div class="foot-note"><span>Concept website · sample products and prices · not a real store</span><span>© FRYARD India</span></div>
+    <div class="foot-note"><span>Concept website · menu and prices from FRYARD's menu · not the official site</span><span>© FRYARD India</span></div>
   </div>
 </footer>
 
@@ -978,19 +1063,63 @@ const HEAT=[
   {name:'Hot',short:'Sweat starts here',desc:'Double dunked. Your lips will tingle and your nose will know.',img:'tender-hot',f:'none'},
   {name:'Cluck yeah',short:'Sign the waiver',desc:'Our hottest oil, loaded with extra cayenne. Keep the pickles close and the milk closer.',img:'tender-hot',f:'saturate(1.5) contrast(1.12) brightness(.9)'}
 ];
-const MENU=[
-  {id:'og',name:'OG hot slider',cat:'Sliders',price:189,img:'slider',desc:'Cayenne-glazed fried thigh, slaw, pickles and comeback sauce on toasted brioche.',heat:true,best:true},
-  {id:'tenders',name:'Hot tenders, 3 pc',cat:'Tenders',price:229,img:'tender-hot',desc:'Three hand-breaded tenders dunked in cayenne oil, with pickles and a dip.',heat:true,best:true},
-  {id:'box',name:'Nashville box',cat:'Combos',price:379,img:'box',desc:'Four hot tenders on white bread with crinkle-cut pickles and comeback sauce.',heat:true,best:true},
-  {id:'fries',name:'Loaded hot fries',cat:'Fries',price:219,img:'fries',desc:'Crispy fries, cheddar sauce, hot chicken bites, jalapeños and spring onion.',heat:true,best:true},
-  {id:'classic',name:'Classic tenders, 3 pc',cat:'Tenders',price:199,img:'tender-plain',desc:'Golden buttermilk tenders with no cayenne, for the ones who want only crunch.',heat:false},
-  {id:'party',name:'Party fries tray',cat:'Combos',price:449,img:'fries-2',desc:'A big boat of loaded fries and hot chicken bites made for sharing.',heat:true},
-  {id:'pickles',name:'Pickle pack',cat:'Sides',price:49,img:'pickles',desc:'A pile of extra crinkle-cut dill pickles. Your best friend at Cluck yeah.',heat:false},
+const SECTIONS=[
+  {id:'tenders',name:'Chicken tenders',note:'Hand-breaded and fried to order. Every pack comes with a free dip: 30 ml with 2 pcs, 65 ml with 4, 130 ml with 8 and 250 ml with 12.',tint:'#B8321A'},
+  {id:'sliders',name:'Chicken sliders',note:'Crispy chicken, fresh coleslaw, pickles and signature sauce on a toasted sesame bun.',tint:'#A3121A'},
+  {id:'burritos',name:'Chicken burritos',note:'Crispy tenders rolled up with coleslaw, pickles and sauce.',tint:'#8E3A12'},
+  {id:'bowls',name:'Loaded bowls',note:'Two sizes. Prices shown smaller / larger.',tint:'#B5620C'},
+  {id:'combos',name:'Combos',note:'Every combo comes with a Coke or Masala Coke.',tint:'#7E1A10'},
+  {id:'dips',name:'Dips and drinks',note:'Pick your sauce, or add an extra dip to anything.',tint:'#6E1410'}
 ];
-const CATS=['All','Sliders','Tenders','Fries','Combos','Sides'];
+const TEN=[{l:'2 pcs, 250 g',p:0},{l:'4 pcs, 500 g',p:0},{l:'8 pcs, 1 kg',p:0},{l:'12 pcs, 1.5 kg',p:0}];
+const tenderOpts=ps=>TEN.map((o,i)=>({l:o.l,p:ps[i]}));
+const bowlOpts=(a,b)=>[{l:'Smaller',p:a},{l:'Larger',p:b}];
+const dipOpts=(a,b,c)=>[{l:'30 ml',p:a},{l:'65 ml',p:b},{l:'250 ml',p:c}];
+const MENU=[
+  {id:'t-original',sec:'tenders',name:"Fryard's original",desc:'The classic crunch. Golden, crispy tenders, no glaze.',img:['t-original'],opts:tenderOpts([119,219,399,699])},
+  {id:'t-nashville',sec:'tenders',name:'Nashville hot',desc:'Our tenders dunked in fiery Nashville glaze.',img:['t-nashville'],opts:tenderOpts([149,249,469,799]),best:true,sig:true},
+  {id:'t-honey',sec:'tenders',name:'Honey glazed',desc:'Crispy tenders finished with a sticky honey glaze.',img:['t-honey'],opts:tenderOpts([149,249,469,799])},
+  {id:'s-classic',sec:'sliders',name:'Classic crunch',desc:'Crispy chicken, fresh coleslaw, pickles, signature sauce.',img:['s-classic'],price:119,prot:'28g',kcal:430},
+  {id:'s-cheesy',sec:'sliders',name:'Cheesy charge',desc:'Crispy chicken, melted cheese, fresh coleslaw, pickles, signature sauce.',img:['s-cheesy'],price:129,prot:'31g',kcal:500},
+  {id:'s-honeybbq',sec:'sliders',name:'Hot honey BBQ',desc:'Crispy chicken glazed in hot honey sauce, melted cheese, fresh coleslaw, pickles, signature sauce.',img:['s-honeybbq'],price:149,prot:'31g',kcal:550},
+  {id:'s-nuclear',sec:'sliders',name:'Nashville nuclear',desc:'Crispy chicken, fiery Nashville glaze, melted cheese, fresh coleslaw, pickles, signature sauce.',img:['s-nuclear'],price:149,prot:'31g',kcal:608,best:true,sig:true},
+  {id:'s-legend',sec:'sliders',name:'Loaded legend',desc:'Double crispy chicken, golden fries, melted cheese, fresh coleslaw, pickles, loaded signature sauce.',img:['s-legend'],price:199,prot:'48g',kcal:760},
+  {id:'b-twist',sec:'burritos',name:'Tender twist',desc:'Crispy chicken tender, fresh coleslaw, cucumber pickles and signature sauce.',img:['b-twist'],price:119,prot:'27g',kcal:520},
+  {id:'b-mac',sec:'burritos',name:'Mac monster',desc:'Crispy chicken tender, creamy mac and cheese, fresh coleslaw, pickles and cheese sauce.',img:['b-mac'],price:149,prot:'31g',kcal:670},
+  {id:'b-nitro',sec:'burritos',name:'Nashville nitro',desc:'Nashville hot chicken tender, cheese slice, fresh coleslaw, pickles and house sauce.',img:['b-nitro'],price:149,prot:'30g',kcal:630},
+  {id:'b-bigb',sec:'burritos',name:'Big burrito (Big B)',desc:'Double chicken tenders, golden fries, melted cheese, mac and cheese, fresh coleslaw, pickles, loaded mixed sauces.',img:['b-bigb'],price:199,prot:'50g',kcal:900,best:true,sig:true},
+  {id:'bw-macfries',sec:'bowls',name:'Mac n fries',desc:'Golden fries, mac and cheese, loaded sauces, fresh coleslaw.',img:['bw-macfries'],opts:bowlOpts(89,129),prot:'up to 21g',kcal:'up to 900'},
+  {id:'bw-friestenders',sec:'bowls',name:'Fries & tenders',desc:'Golden fries, chicken tenders, loaded sauces, fresh coleslaw.',img:['bw-friestenders'],opts:bowlOpts(119,189),prot:'up to 48g',kcal:'up to 1100'},
+  {id:'bw-mactenders',sec:'bowls',name:'Mac n tenders',desc:'Mac and cheese, chicken tenders, loaded sauces, fresh coleslaw.',img:['bw-mactenders'],opts:bowlOpts(119,179),prot:'up to 52g',kcal:'up to 1200'},
+  {id:'bw-fury',sec:'bowls',name:'Fryard fury',desc:'Golden fries, mac and cheese, chicken tenders, loaded sauces, fresh coleslaw.',img:['bw-fury'],opts:bowlOpts(149,219),prot:'up to 60g',kcal:'up to 1500',best:true,sig:true},
+  {id:'c-crunch',sec:'combos',name:'Crunch break',desc:'1 Classic crunch slider + 1 Coke or Masala Coke (350 ml).',img:['s-classic','coke'],price:149,prot:'up to 28g',kcal:'up to 520'},
+  {id:'c-hhkick',sec:'combos',name:'Hot honey BBQ kick',desc:'2 pcs hot honey BBQ tenders (free 30 ml dip) + 1 Coke or Masala Coke (350 ml).',img:['t-honey','coke'],price:169,prot:'up to 52g',kcal:'up to 1030'},
+  {id:'c-twistmac',sec:'combos',name:'Twist n mac',desc:'1 Tender twist burrito + 1 Mac n fries (smaller) + 1 Coke or Masala Coke (350 ml).',img:['b-twist','bw-macfries','coke'],price:219,prot:'up to 52g',kcal:'up to 1195'},
+  {id:'c-chargemac',sec:'combos',name:'Charge n mac',desc:'1 Cheesy charge slider + 1 Mac n fries (smaller) + 1 Coke or Masala Coke (350 ml).',img:['s-cheesy','bw-macfries','coke'],price:229,prot:'up to 48g',kcal:'up to 1200'},
+  {id:'c-honeyrush',sec:'combos',name:'Honey rush',desc:'1 Hot honey BBQ slider + 1 Mac n tenders (smaller) + 1 Coke or Masala Coke (500 ml).',img:['s-honeybbq','bw-mactenders','coke'],price:299,prot:'up to 65g',kcal:'up to 1455'},
+  {id:'c-feast',sec:'combos',name:'Nashville feast',desc:'4 pcs Nashville hot tenders (free 65 ml dip) + 1 Coke or Masala Coke (500 ml).',img:['t-nashville','coke'],price:269,prot:'up to 100g',kcal:'up to 1628'},
+  {id:'c-nuclear',sec:'combos',name:'Nuclear loadout',desc:'1 Nashville nuclear slider + 1 Fries & tenders (smaller) + 1 Coke or Masala Coke (500 ml).',img:['s-nuclear','bw-friestenders','coke'],price:299,prot:'up to 66g',kcal:'up to 1448'},
+  {id:'c-legend',sec:'combos',name:"Legend's hunger",desc:'1 Loaded legend slider + 1 Mac n tenders (larger) + 1 Coke or Masala Coke (500 ml).',img:['s-legend','bw-mactenders','coke'],price:379,prot:'up to 100g',kcal:'up to 2085'},
+  {id:'c-bigfury',sec:'combos',name:'Big fury feast',desc:'1 Big burrito (Big B) + 1 Fryard fury (larger) + 1 Coke or Masala Coke (500 ml).',img:['b-bigb','bw-fury','coke'],price:419,prot:'up to 110g',kcal:'up to 2525'},
+  {id:'c-squad',sec:'combos',name:"Fryard's squad",desc:'2 Cheesy charge sliders + 8 pcs Nashville hot tenders (free 130 ml dip) + 1 Mac n fries (larger) + 2 Coke or Masala Coke (500 ml).',img:['s-cheesy','t-nashville','bw-macfries','coke'],price:799,prot:'up to 289g',kcal:'up to 5609',best:true,sig:true},
+  {id:'d-fryard',sec:'dips',name:"Fryard's dip",desc:'The house dip.',img:['d-fryard'],opts:dipOpts(20,35,95)},
+  {id:'d-ranch',sec:'dips',name:'Ranch dip',desc:'Cool and creamy.',img:['d-ranch'],opts:dipOpts(20,35,95)},
+  {id:'d-cheese',sec:'dips',name:'Cheese dip',desc:'Warm, gooey cheese sauce.',img:['d-cheese'],opts:dipOpts(25,45,100),sig:true},
+  {id:'d-honeybbq',sec:'dips',name:'Hot honey BBQ dip',desc:'Sweet heat.',img:['d-honeybbq'],opts:dipOpts(20,35,95)},
+  {id:'coke',sec:'dips',name:'Coke / Masala Coke',desc:'Ice-cold, in the red FRYARD cup.',img:['coke'],opts:[{l:'Coke 350 ml',p:49},{l:'Masala Coke 350 ml',p:49},{l:'Coke 500 ml',p:69},{l:'Masala Coke 500 ml',p:69}]}
+];
+const ADDONS=[
+  {title:'Add-ons for sliders and burritos',items:[['Single cheese slice',20],['Single tender',80],['Mac n cheese',50],['Fries',20],['Coleslaw',20],['Pickles',10]]},
+  {title:'Add-ons for loaded bowls',items:[['Nashville seasoning',20],['Honey glazing',20],['Single tender',80],['Single cheese slice',20],['Mac n cheese',50],['Fries',40],['Pickles',10]]}
+];
+ADDONS.forEach((g,gi)=>g.items.forEach(([n,p],i)=>MENU.push({id:`a${gi}-${i}`,sec:'addons',name:n,desc:g.title,img:[],price:p,addon:true})));
+const CATS=['All'];
 const inr=n=>'₹'+n.toLocaleString('en-IN');
 const chili=(c='var(--ember)')=>`<svg class="chili-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.2c.6-.9 1.7-1.3 2.7-.9l-.6 1.1c-.4-.1-.8 0-1 .3.9.4 1.6 1.2 1.8 2.2.4 2.4-1 5.6-3.9 8.6-3.3 3.4-7.4 5.5-10.6 5.9-.6.1-1-.6-.6-1 2.6-2.4 5-5.3 6.3-8.5.9-2.4 2.6-4.9 5-5.2.3-.9.6-1.8.9-2.5z" fill="${c}"/><path d="M17.4 4.4c.8.5 1.3 1.3 1.2 2.2-1-.7-2.3-.9-3.4-.4.5-1 1.3-1.7 2.2-1.8z" fill="var(--pickle)"/></svg>`;
-const imgFor=m=>m.img==='pickles'?null:`img/${m.img}.webp`;
+const priceOf=(m,o)=>m.opts?m.opts[o||0].p:m.price;
+const optLabel=(m,o)=>m.opts?m.opts[o||0].l:(m.addon?m.desc:'');
+const fromPrice=m=>m.opts?(m.sec==='bowls'?`${inr(m.opts[0].p)} / ${inr(m.opts[1].p)}`:`from ${inr(m.opts[0].p)}`):inr(m.price);
+const imgFor=m=>m.img&&m.img[0]?`img/menu/${m.img[0]}.webp`:null;
 
 /* ---------------- state ---------------- */
 let heat=Math.min(4,Math.max(0,store.get('heat',3)));
@@ -1021,45 +1150,59 @@ function setHeat(n,user){
   $$('[data-stamp]').forEach(s=>s.classList.toggle('show',n===4));
   const w=$('#waiver'); if(w) w.classList.toggle('show',n===4);
   $$('[data-knob]').forEach(k=>k.__set&&k.__set(n));
-  $$('[data-food-heat]').forEach(im=>im.style.filter=`${FOODF[n]} drop-shadow(0 40px 50px rgba(0,0,0,.5)) drop-shadow(0 0 ${n*14}px rgba(232,50,31,.5))`);
   const meter=$('#heroMeter'); if(meter) meter.innerHTML=[4,3,2,1,0].map(i=>`<span class="${i<=n?'on':''}">${chili(i<=n?'var(--mustard)':'var(--cream)')}</span>`).join('')+`<small>${h.name}</small>`;
   if(user && hasG && !RM){const nm=$$('[data-heat-name]');gsap.fromTo(nm,{yPercent:40,opacity:0},{yPercent:0,opacity:1,duration:.5,ease:'power3.out'})}
 }
 
 /* ---------------- menu & reel ---------------- */
 function pickleArt(){return `<div class="pickle-stack">${[0,1,2,3,4].map((k,i)=>`<img src="img/pickle${k}.webp" alt="" style="left:${[6,40,22,52,30][i]}%;top:${[8,4,38,40,62][i]}%;rotate:${[-12,18,6,-20,10][i]}deg">`).join('')}</div>`}
-const TINT={og:'#A3121A',tenders:'#B8321A',box:'#7E3110',fries:'#B5620C',classic:'#97701A',party:'#8A3A0C',pickles:'#3D5C17'};
-const FOODF=['saturate(.8) brightness(1.06)','saturate(.95)','saturate(1.08)','saturate(1.22) contrast(1.05)','saturate(1.5) contrast(1.12) brightness(.9)'];
-const QTY={};
+const QTY={},OPT={};
+const secOf=id=>SECTIONS.find(s=>s.id===id);
+const visual=(m,cls='')=>m.img.length>1?`<div class="plate-stack n${m.img.length}">${m.img.map(k=>`<img src="img/menu/${k}.webp" alt="" loading="lazy">`).join('')}</div>`:`<img src="img/menu/${m.img[0]}.webp" alt="${m.name}" loading="lazy">`;
+const statsHTML=m=>(m.prot?`<span class="stat prot${String(m.prot).startsWith('up')?' up':''}"><b>${String(m.prot).replace('up to ','')}</b><small>${String(m.prot).startsWith('up')?'up to prot':'protein'}</small></span>`:'')+(m.kcal?`<span class="stat kcal${String(m.kcal).startsWith('up')?' up':''}"><b>${String(m.kcal).replace('up to ','')}</b><small>${String(m.kcal).startsWith('up')?'up to kcal':'kcal'}</small></span>`:'');
+const optsHTML=m=>m.opts?`<div class="opts" role="group" aria-label="Choose a size for ${m.name}">${m.opts.map((o,i)=>`<button type="button" data-opt="${m.id}" data-o="${i}" aria-pressed="${i===(OPT[m.id]||0)}"><small>${o.l}</small><b>${inr(o.p)}</b></button>`).join('')}</div>`:'';
+const addLabel=id=>{const m=MENU.find(x=>x.id===id),q=QTY[id]||1,p=priceOf(m,OPT[id]);return q>1?`Add ${q} for ${inr(p*q)}`:`Add for ${inr(p)}`};
+function refreshItem(id){ $$(`[data-addq="${id}"]`).forEach(b=>{if(!b.classList.contains('done'))b.textContent=addLabel(id)}); $$(`[data-qo="${id}"]`).forEach(o=>o.textContent=QTY[id]||1);
+  const m=MENU.find(x=>x.id===id); $$(`[data-price="${id}"]`).forEach(e=>e.textContent=inr(priceOf(m,OPT[id])));
+  $$(`[data-opt="${id}"]`).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.o===(OPT[id]||0))) }
 function buildMenu(){
   const items=$('#passItems'); if(!items) return;
-  const chipRow=()=>HEAT.map((h,i)=>`<button type="button" data-h="${i}" aria-pressed="${i===heat}">${i}<span>${h.name}</span></button>`).join('');
-  items.innerHTML=MENU.map((m,i)=>{QTY[m.id]=1;return `<article class="bd-item${i===0?' on':''}" data-i="${i}">
-    <figure class="bd-plate">${m.img==='pickles'?pickleArt():`<img src="${imgFor(m)}" alt="${m.name}" ${m.heat?'data-food-heat':''} loading="${i<2?'eager':'lazy'}">`}</figure>
+  MENU.forEach(m=>{QTY[m.id]=1;OPT[m.id]=0});
+  const sigs=MENU.filter(m=>m.sig);
+  items.innerHTML=sigs.map((m,i)=>{const s=secOf(m.sec),count=MENU.filter(x=>x.sec===m.sec).length;return `<article class="bd-item${i===0?' on':''}" data-i="${i}">
+    <figure class="bd-plate${m.img.length>1?'':' solo'}">${visual(m)}</figure>
     <div class="bd-info">
-      <div class="bd-tags">${m.best?'<span class="best">Bestseller</span>':''}<span>${m.cat}</span><span>${m.heat?'Comes at your heat':'No cayenne'}</span></div>
+      <span class="bd-sec">${s.name}</span>
       <h2>${m.name}</h2>
       <p>${m.desc}</p>
-      ${m.heat?`<div class="bd-heat"><small>Heat: <span data-heat-short>${HEAT[heat].name}</span></small><div class="bd-chips" role="group" aria-label="Heat level for ${m.name}">${chipRow()}</div></div>`:''}
-      <div class="bd-price">${inr(m.price)}</div>
+      <div class="stats">${statsHTML(m)}</div>
+      ${optsHTML(m)}
+      <div class="bd-price" data-price="${m.id}">${inr(priceOf(m,0))}</div>
       <div class="bd-buy">
         <div class="stepper" role="group" aria-label="Quantity"><button type="button" data-step="-1" data-id="${m.id}" aria-label="One less">−</button><output data-qo="${m.id}" aria-live="polite">1</output><button type="button" data-step="1" data-id="${m.id}" aria-label="One more">+</button></div>
-        <button class="add mag" type="button" data-addq="${m.id}">Add for ${inr(m.price)}</button>
+        <button class="add mag" type="button" data-addq="${m.id}">${addLabel(m.id)}</button>
       </div>
+      <button class="bd-more" type="button" data-jump="${m.sec}">See all ${count} ${s.name.replace('Chicken ','').toLowerCase()}</button>
     </div></article>`}).join('');
-  const label=id=>{const m=MENU.find(x=>x.id===id),q=QTY[id];return q>1?`Add ${q} for ${inr(m.price*q)}`:`Add for ${inr(m.price)}`};
-  $$('[data-step]',items).forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;QTY[id]=Math.max(1,Math.min(20,QTY[id]+(+b.dataset.step)));
-    $(`[data-qo="${id}"]`).textContent=QTY[id];$(`[data-addq="${id}"]`).textContent=label(id)}));
-  $$('[data-addq]',items).forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.addq;addToCart(id,b,QTY[id]);QTY[id]=1;
-    setTimeout(()=>{$(`[data-qo="${id}"]`).textContent=1;b.textContent=label(id)},1350)}));
-  $$('.bd-chips [data-h]',items).forEach(b=>b.addEventListener('click',()=>setHeat(+b.dataset.h,true)));
-  $('#passIndex').innerHTML=MENU.map((m,i)=>`<button type="button" data-go="${i}" aria-current="${i===0}">${m.name.split(',')[0]}</button>`).join('');
-  // printed card
-  const cats=CATS.filter(c=>c!=='All');
-  $('#paperCols').innerHTML=cats.map(c=>{const rows=MENU.filter(m=>m.cat===c);if(!rows.length)return '';
-    return `<div class="mcat"><h3>${c}</h3>${rows.map(m=>`<div class="mrow"><div class="mr-line"><b>${m.name}</b>${m.heat?`<span class="chis" title="Comes at your heat">${chili('#B3121B')}</span>`:''}<span class="lead" aria-hidden="true"></span><span class="pr">${inr(m.price)}</span></div><p>${m.desc}</p><button class="plus" type="button" data-add="${m.id}" aria-label="Add ${m.name} to order">+</button></div>`).join('')}</div>`}).join('');
-  bindAdds($('#paperCols'));
-  $('#heatLegend').innerHTML=HEAT.map((h,i)=>`<span>${i?Array.from({length:i},()=>chili('#B3121B')).join(''):'○'} ${h.name}</span>`).join('');
+  $('#passIndex').innerHTML=sigs.map((m,i)=>`<button type="button" data-go="${i}" aria-current="${i===0}">${secOf(m.sec).name.replace('Chicken ','')}</button>`).join('');
+  // full menu
+  $('#tabsIn').innerHTML=SECTIONS.map(s=>`<button type="button" data-tab="${s.id}">${s.name.replace('Chicken ','')}</button>`).join('')+`<button type="button" data-tab="addons">Add-ons</button>`;
+  $('#sections').innerHTML=SECTIONS.map(s=>`<section class="msec" id="sec-${s.id}" style="--t:${s.tint}" aria-labelledby="h-${s.id}">
+    <div class="sec-head"><h3 class="sec-title" id="h-${s.id}">${s.name}</h3><p>${s.note}</p></div>
+    <div class="mgrid">${MENU.filter(m=>m.sec===s.id).map(m=>`<article class="mcard" data-id="${m.id}">
+      <div class="mc-img">${visual(m)}${statsHTML(m)}</div>
+      <div class="mc-body"><h4>${m.name}</h4><p>${m.desc}</p>${optsHTML(m)}
+        <div class="mc-foot"><span class="price" data-price="${m.id}">${inr(priceOf(m,0))}</span><button class="add" type="button" data-addq="${m.id}">${addLabel(m.id)}</button></div></div></article>`).join('')}</div></section>`).join('');
+  $('#addonGrid').innerHTML=ADDONS.map((g,gi)=>`<div class="addon-card"><h4>${g.title}</h4>${g.items.map(([n,p],i)=>`<div class="arow"><b>${n}</b><span class="lead" aria-hidden="true"></span><span class="pr">${inr(p)}</span><button class="plus" type="button" data-add="a${gi}-${i}" aria-label="Add ${n}">+</button></div>`).join('')}</div>`).join('');
+  // wiring
+  const root=$('main[data-page="menu"]');
+  root.addEventListener('click',e=>{
+    const st=e.target.closest('[data-step]');if(st){const id=st.dataset.id;QTY[id]=Math.max(1,Math.min(20,(QTY[id]||1)+(+st.dataset.step)));refreshItem(id);return}
+    const op=e.target.closest('[data-opt]');if(op){OPT[op.dataset.opt]=+op.dataset.o;refreshItem(op.dataset.opt);return}
+    const ad=e.target.closest('[data-addq]');if(ad){const id=ad.dataset.addq;addToCart(id,ad,QTY[id]||1,OPT[id]||0);QTY[id]=1;setTimeout(()=>refreshItem(id),1350);return}
+    const pl=e.target.closest('[data-add]');if(pl){addToCart(pl.dataset.add,pl,1,null);return}
+    const jm=e.target.closest('[data-jump],[data-tab]');if(jm){const t=$('#sec-'+(jm.dataset.jump||jm.dataset.tab));if(t){lenis?lenis.scrollTo(t,{offset:-140,duration:1.4}):t.scrollIntoView({behavior:'smooth'})}}
+  });
 }
 function bindAdds(root){$$('[data-add]',root).forEach(b=>b.addEventListener('click',e=>{addToCart(b.dataset.add,b)}))}
 function bindTilt(root){$$('.item',root).forEach(card=>{const im=$('.item-img',card);
@@ -1067,26 +1210,27 @@ function bindTilt(root){$$('.item',root).forEach(card=>{const im=$('.item-img',c
   card.addEventListener('pointerleave',()=>gsap.to(card,{rotateY:0,rotateX:0,duration:.8,ease:'elastic.out(1,.5)'}))})}
 
 /* ---------------- cart ---------------- */
-function addToCart(id,btn,qty=1){
-  const m=MENU.find(x=>x.id===id); const h=m.heat?heat:null; const key=id+'|'+h;
-  const line=cart.find(l=>l.key===key); if(line) line.q+=qty; else cart.push({key,id,h,q:qty});
+function addToCart(id,btn,qty=1,o=null){
+  const m=MENU.find(x=>x.id===id); if(!m) return; const oi=m.opts?(o||0):null; const key=id+'|'+(oi??'');
+  const line=cart.find(l=>l.key===key); if(line) line.q+=qty; else cart.push({key,id,o:oi,q:qty});
   store.set('cart',cart); renderCart();
   const bb=$('#bagBtn'); bb.classList.remove('bump'); void bb.offsetWidth; bb.classList.add('bump');
   if(btn){const plus=btn.classList.contains('plus');const t=btn.textContent;if(!plus)btn.textContent='Added';btn.classList.add('done');setTimeout(()=>{if(!plus)btn.textContent=t;btn.classList.remove('done')},1300);
-    if(hasG&&!RM&&m.img!=='pickles'){const src=btn.closest('.item,.dish,.bd-item,.ticket')?.querySelector('img');if(src){const r=src.getBoundingClientRect(),t=bb.getBoundingClientRect();const f=src.cloneNode();Object.assign(f.style,{position:'fixed',left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',zIndex:99,pointerEvents:'none',objectFit:'contain'});document.body.appendChild(f);
+    if(hasG&&!RM){const src=btn.closest('.mcard,.bd-item,.ticket')?.querySelector('img');if(src){const r=src.getBoundingClientRect(),t=bb.getBoundingClientRect();const f=src.cloneNode();Object.assign(f.style,{position:'fixed',left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',zIndex:99,pointerEvents:'none',objectFit:'contain',rotate:'0deg'});document.body.appendChild(f);
       gsap.to(f,{left:t.left+t.width/2-20,top:t.top+t.height/2-20,width:40,height:40,rotate:360,duration:.8,ease:'power3.in',onComplete:()=>f.remove()})}}}
-  toast(`${qty>1?qty+' x ':''}${m.name}${h!==null?' at '+HEAT[h].name:''} added`);
+  toast(`${qty>1?qty+' x ':''}${m.name}${m.opts?' ('+optLabel(m,oi)+')':''} added`);
 }
 function renderCart(){
+  cart=cart.filter(l=>MENU.some(m=>m.id===l.id));
   const n=cart.reduce((a,l)=>a+l.q,0); $('#bagCount').textContent=n;
   const body=$('#drawerBody');
-  if(!n){body.innerHTML=`<div class="empty"><p>Nothing in here yet. Start with the OG hot slider, it's what most people order first.</p><a class="btn btn-y" href="#menu" data-link="menu" style="background:var(--char);color:var(--mustard)">Browse the menu</a></div>`;bindLinks(body);return}
-  const total=cart.reduce((a,l)=>a+MENU.find(m=>m.id===l.id).price*l.q,0);
-  body.innerHTML=`<ul class="lines">${cart.map(l=>{const m=MENU.find(x=>x.id===l.id);return `<li><img src="${m.img==='pickles'?'img/pickle0.webp':imgFor(m)}" alt=""><div><b>${m.name}</b><small>${l.h!==null?HEAT[l.h].name:'No cayenne'}</small>
-    <div class="qty"><button type="button" data-q="-1" data-k="${l.key}" aria-label="Remove one ${m.name}">−</button><span>${l.q}</span><button type="button" data-q="1" data-k="${l.key}" aria-label="Add one ${m.name}">+</button></div></div><span class="line-price">${inr(m.price*l.q)}</span></li>`}).join('')}</ul>
+  if(!n){body.innerHTML=`<div class="empty"><p>Nothing in here yet. The Nashville nuclear slider is a good place to start.</p><a class="btn btn-y" href="#menu" data-link="menu" style="background:var(--char);color:var(--mustard)">Browse the menu</a></div>`;bindLinks(body);return}
+  const total=cart.reduce((a,l)=>a+priceOf(MENU.find(m=>m.id===l.id),l.o)*l.q,0);
+  body.innerHTML=`<ul class="lines">${cart.map(l=>{const m=MENU.find(x=>x.id===l.id);const im=m.img[0]?`<img src="img/menu/${m.img[0]}.webp" alt="">`:`<img src="img/pickle0.webp" alt="">`;return `<li>${im}<div><b>${m.name}</b><small>${optLabel(m,l.o)||secOf(m.sec)?.name||''}</small>
+    <div class="qty"><button type="button" data-q="-1" data-k="${l.key}" aria-label="Remove one ${m.name}">−</button><span>${l.q}</span><button type="button" data-q="1" data-k="${l.key}" aria-label="Add one ${m.name}">+</button></div></div><span class="line-price">${inr(priceOf(m,l.o)*l.q)}</span></li>`}).join('')}</ul>
     <div class="drawer-foot"><div class="total"><span>Total</span><span>${inr(total)}</span></div>
     <button class="btn btn-y" type="button" id="placeBtn">Get my pickup ticket</button>
-    <p class="note">Concept site. Sample prices, and no order is sent. Pay at the stall.</p></div>`;
+    <p class="note">Concept site. Prices from the FRYARD menu, but no order is sent. Pay at the stall.</p></div>`;
   $$('[data-q]',body).forEach(b=>b.addEventListener('click',()=>{const l=cart.find(x=>x.key===b.dataset.k);l.q+=+b.dataset.q;cart=cart.filter(x=>x.q>0);store.set('cart',cart);renderCart()}));
   $('#placeBtn').addEventListener('click',()=>{
     const code=String(100+Math.floor(Math.random()*900));
@@ -1325,17 +1469,17 @@ function buildKnob(){ $$('[data-knob]').forEach(k=>{ if(k.dataset.b) return; k.d
 
 /* ticket rail */
 function buildRail(){ const tr=$('#railTrack'); if(!tr) return;
-  tr.innerHTML=MENU.filter(m=>m.best).map((m,i)=>`<article class="ticket">
+  tr.innerHTML=MENU.filter(m=>m.best&&m.img.length===1).map((m,i)=>`<article class="ticket">
     <span class="clip" aria-hidden="true"></span>
     <div class="tk-paper">
       <div class="tk-top"><span>FRYARD</span><span>Order ${String(i+1).padStart(3,'0')}</span></div>
-      <div class="tk-img"><img src="${imgFor(m)}" alt="${m.name}" loading="lazy"></div>
+      <div class="tk-img"><img src="img/menu/${m.img[0]}.webp" alt="${m.name}" loading="lazy"></div>
       <h3>${m.name}</h3><p>${m.desc}</p>
-      <div class="tk-row"><span>Heat</span><span class="hand" data-heat-short>${HEAT[heat].name}</span></div>
-      <div class="tk-total"><b>${inr(m.price)}</b><button class="add" type="button" data-add="${m.id}">Add to order</button></div>
+      <div class="tk-row"><span>${m.prot?'Protein':'Section'}</span><span class="hand">${m.prot?String(m.prot):secOf(m.sec).name}</span></div>
+      <div class="tk-total"><b>${inr(priceOf(m,0))}</b><button class="add" type="button" data-add="${m.id}" data-o="0">Add to order</button></div>
       <div class="tk-bar" aria-hidden="true"></div>
     </div></article>`).join('');
-  bindAdds(tr);
+  $$('[data-add]',tr).forEach(b=>b.addEventListener('click',()=>addToCart(b.dataset.add,b,1,0)));
   if(FINE&&hasG&&!RM)$$('.ticket',tr).forEach(t=>{t.addEventListener('pointerenter',e=>gsap.fromTo(t,{rotate:(e.movementX||2)>0?6:-6},{rotate:0,duration:1.6,ease:'elastic.out(1,.25)'}))});
 }
 
@@ -1398,7 +1542,7 @@ function heatTouch(el){ if(!el||el.dataset.ht) return; el.dataset.ht=1; const L=
 
 
 /* ---------------- page inits ---------------- */
-let ctx=null;
+let ctx=null; const CLEANUPS=[];
 const inits={
   home(first){
     buildLights(); split($('#hotType')); heatTouch($('#hotType')); pickles();
@@ -1438,17 +1582,23 @@ const inits={
     gsap.from('#coolTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#cool',start:'top 70%'}});
   },
   menu(){ const h=$('#menuTitle'); split(h); SEQ.menu.load();
-    const pass=$('#pass'),N=MENU.length,items=$$('#passItems .bd-item'),plates=items.map(it=>$('.bd-plate',it)),idx=$$('#passIndex button'),ghost=$('#passGhost'),count=$('#passCount'),bg=$('#passBg'),orbit=$('.pass-orbit');
+    const SIGS=MENU.filter(m=>m.sig);
+    const pass=$('#pass'),N=SIGS.length,items=$$('#passItems .bd-item'),plates=items.map(it=>$('.bd-plate',it)),idx=$$('#passIndex button'),ghost=$('#passGhost'),count=$('#passCount'),bg=$('#passBg'),orbit=$('.pass-orbit');
     $('#passTotal').textContent=N;
-    $('#toCard').onclick=e=>{e.preventDefault();const t=$('#menuCard');lenis?lenis.scrollTo(t,{offset:-70,duration:1.6}):t.scrollIntoView({behavior:'smooth'})};
+    $('#toCard').onclick=e=>{e.preventDefault();const t=$('#fullMenu');lenis?lenis.scrollTo(t,{offset:-70,duration:1.6}):t.scrollIntoView({behavior:'smooth'})};
     let cur=-1;
     const show=k=>{if(k===cur)return;cur=k;
       items.forEach((it,i)=>{it.classList.toggle('on',i===k);it.inert=i!==k});
       idx.forEach((b,i)=>b.setAttribute('aria-current',i===k?'true':'false'));
-      count.textContent=String(k+1).padStart(2,'0');bg.style.setProperty('--tint',TINT[MENU[k].id]);
-      ghost.textContent=MENU[k].name.split(',')[0];
+      count.textContent=String(k+1).padStart(2,'0');bg.style.setProperty('--tint',secOf(SIGS[k].sec).tint);
+      ghost.textContent=secOf(SIGS[k].sec).name.replace('Chicken ','');
       if(hasG&&!RM)gsap.fromTo(ghost,{yPercent:30,opacity:0},{yPercent:0,opacity:1,duration:.7,ease:'expo.out',overwrite:true})};
-    if(!hasG||RM){pass.classList.add('static');items.forEach(it=>{it.classList.add('on');it.inert=false});SEQ.menu.draw(120);return}
+    // tabs follow the section in view
+    const tabs=$$('#tabsIn button');
+    const markTab=id=>tabs.forEach(b=>b.setAttribute('aria-current',b.dataset.tab===id?'true':'false'));
+    if(!hasG||RM){pass.classList.add('static');items.forEach(it=>{it.classList.add('on');it.inert=false});SEQ.menu.draw(120);markTab('tenders');return}
+    [...SECTIONS.map(s=>s.id),'addons'].forEach(id=>ScrollTrigger.create({trigger:'#sec-'+id,start:'top 55%',end:'bottom 55%',onToggle:s=>{if(s.isActive){markTab(id);const b=tabs.find(x=>x.dataset.tab===id),bar=$('#tabsIn');if(b&&bar)bar.scrollTo({left:b.offsetLeft-bar.clientWidth/2+b.clientWidth/2,behavior:'smooth'})}}}));
+    markTab('tenders');
     const setF=f=>{plates.forEach((pl,i)=>{const d=f-i,a=Math.min(Math.abs(d),1.5);
         pl.style.opacity=Math.max(0,1-Math.abs(d)*1.6).toFixed(3);
         pl.style.transform=`translateY(${(-d*58).toFixed(2)}vh) rotate(${(-d*38).toFixed(2)}deg) scale(${(1-a*.35).toFixed(3)})`});
@@ -1456,23 +1606,27 @@ const inits={
       ghost.parentElement.style.transform=`translateX(${(-(f-Math.round(f))*14).toFixed(2)}vw)`;
       show(Math.round(f))};
     setF(0);
-    // opener: the slider splash plays, then scroll takes over
     const play={f:0};SEQ.menu.draw(0);
     const tl=gsap.to(play,{f:110,duration:3.4,delay:.3,ease:'power2.inOut',onUpdate:()=>SEQ.menu.draw(play.f)});
     ScrollTrigger.create({trigger:'.mx-hero',start:'top top',end:'bottom top',scrub:true,onUpdate:s=>{if(!tl.isActive())SEQ.menu.draw(110+s.progress*81)}});
     gsap.from($$('.ch',h),{yPercent:120,rotate:10,opacity:0,stagger:.05,duration:1.1,ease:'expo.out',delay:.15});
     gsap.from('.mx-sticker',{scale:0,rotate:-40,duration:.8,delay:.8,ease:'back.out(3)'});
-    gsap.from('.mx-hero-row > *',{y:30,opacity:0,duration:.9,stagger:.12,delay:.6,ease:'power3.out'});
+    gsap.from('.mx-kicker, .mx-hero-row > *',{y:30,opacity:0,duration:.9,stagger:.12,delay:.6,ease:'power3.out'});
     gsap.to('.mx-hero-copy',{yPercent:-30,opacity:.2,ease:'none',scrollTrigger:{trigger:'.mx-hero',start:'top top',end:'bottom top',scrub:true}});
-    // the pass: one dish at a time
-    const st=ScrollTrigger.create({trigger:'#pass',start:'top top',end:()=>'+='+Math.round((N-1)*innerHeight*.85),pin:true,scrub:true,anticipatePin:1,invalidateOnRefresh:true,
-      snap:{snapTo:1/(N-1),duration:{min:.25,max:.7},delay:.12,ease:'power2.inOut'},onUpdate:s=>setF(s.progress*(N-1))});
+    const st=ScrollTrigger.create({trigger:'#pass',start:'top top',end:()=>'+='+Math.round((N-1)*innerHeight*.85),pin:true,scrub:true,anticipatePin:1,invalidateOnRefresh:true,onUpdate:s=>setF(s.progress*(N-1))});
+    // settle on the nearest dish once scrolling stops (works with smooth scroll)
+    let snapping=false;
+    const settle=()=>{if(snapping)return;const y=scrollY;if(y<=st.start+2||y>=st.end-2)return;const seg=(st.end-st.start)/(N-1);const k=Math.round((y-st.start)/seg);const ty=Math.round(st.start+k*seg);
+      if(Math.abs(ty-y)<3)return;snapping=true;const done=()=>{snapping=false};
+      if(lenis)lenis.scrollTo(ty,{duration:.55,easing:t=>1-Math.pow(1-t,3),onComplete:done});else{scrollTo({top:ty,behavior:'smooth'});setTimeout(done,600)}};
+    ScrollTrigger.addEventListener('scrollEnd',settle);
+    CLEANUPS.push(()=>ScrollTrigger.removeEventListener('scrollEnd',settle));
     idx.forEach((b,i)=>b.addEventListener('click',()=>{const y=st.start+(st.end-st.start)*i/(N-1);lenis?lenis.scrollTo(y,{duration:1.3}):scrollTo({top:y,behavior:'smooth'})}));
     gsap.from(plates[0],{yPercent:60,rotate:30,scale:.6,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'#pass',start:'top 65%'}});
     if(FINE)pass.addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to('#passItems',{x:x*24,y:y*16,duration:1.2,ease:'power3.out'});gsap.to('.pass-orbit',{x:x*-40,y:y*-30,duration:1.4,ease:'power3.out'})});
-    // printed card
-    gsap.from('.paper',{y:140,rotate:-5,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'#menuCard',start:'top 75%'}});
-    gsap.from('.mrow',{x:-30,opacity:0,stagger:.05,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.paper-cols',start:'top 80%'}});
+    gsap.from('#fullTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#fullMenu',start:'top 75%'}});
+    ScrollTrigger.batch('.mcard',{start:'top 90%',once:true,onEnter:b=>gsap.from(b,{y:70,opacity:0,rotate:2,stagger:.08,duration:.9,ease:'power3.out'})});
+    gsap.from('.addon-card',{y:80,opacity:0,rotate:-4,stagger:.15,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'#sec-addons',start:'top 80%'}});
   },
   story(){ const h=$('main[data-page="story"] h1'); split(h); bindBoard(); if(!hasG||RM) return;
     gsap.from($$('.ch',h),{yPercent:120,opacity:0,stagger:.02,duration:1,ease:'expo.out'});
@@ -1512,6 +1666,7 @@ const ROUTES=['home','menu','story','find'];
 const getRoute=()=>{const h=location.hash.slice(1);return ROUTES.includes(h)?h:'home'};
 let current=null,busy=false;
 function show(route,first){
+  while(CLEANUPS.length)CLEANUPS.pop()();
   if(ctx){ctx.revert();ctx=null}
   if(hasG&&typeof ScrollTrigger!=='undefined') ScrollTrigger.getAll().forEach(t=>t.kill());
   $$('main[data-page]').forEach(m=>m.hidden=m.dataset.page!==route);
