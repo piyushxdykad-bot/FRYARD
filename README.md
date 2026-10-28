@@ -7,7 +7,7 @@ Concept website for [@fryardindia](https://www.instagram.com/fryardindia/), the 
 ## What's inside
 - **Home** — a scroll story in six scenes: neon FRYARD sign and string lights flicker on, then a walk through the night market (video through a WebGL heat-haze shader) ending in a white-hot flash; "Into the oil" chili-oil dunk with a glaze gauge; "Too hot to handle" tender burst with letters that react to your cursor and melt on scroll; a draggable fryer knob that sets the heat for the whole site; bestsellers as swinging kitchen order tickets on a rail; and a pickle-physics "cool down" section. Optional procedural sizzle sound.
 - **Menu** — FRYARD's real menu (tenders, sliders, burritos, loaded bowls, combos, dips, drinks, add-ons) with their own product photos upscaled 4x. Slider-splash video opener; a pinned showcase of one signature per section with protein/kcal badges, size options and quantity; then the full menu with sticky section tabs and add-on lists
-- **Our story** — draggable polaroids and a scroll timeline
+- **Our story** — a scroll film: the 1930s Nashville hot chicken origin legend with word-by-word reveal and a sepia-to-red photo; "One night at FRYARD", a pinned sideways strip from 6 PM to 11 PM with a live clock and a sky that turns from dusk to night; rolling odometer numbers; and a closing call to action
 - **Find us** — animated map, live open/closed status (IST), party-order request that opens an Instagram DM
 
 ## Tech

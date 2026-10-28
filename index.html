@@ -672,6 +672,91 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 @media (max-width:1100px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.full-head{grid-template-columns:1fr;gap:26px}.fh-title{font-size:clamp(42px,12vw,110px)}.fcap.c1{width:1.15em}.fcap.c2{width:1.15em}}
 @media (max-width:560px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{min-height:190px;border-radius:18px}.tile b{font-size:20px}}
+/* =================== STORY: one night at FRYARD =================== */
+.pro{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:#120604}
+.pro-stage{position:absolute;inset:0}
+.pro-bg{position:absolute;right:-6%;top:50%;translate:0 -50%;width:min(58vw,820px);height:110%;display:grid;place-items:center;pointer-events:none}
+.pro-bg img{height:92%;width:auto;object-fit:contain;filter:grayscale(1) sepia(.55) contrast(1.05) brightness(.62);will-change:filter,transform}
+.pro::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#120604 0%,rgba(18,6,4,.92) 38%,rgba(18,6,4,.25) 70%,transparent);pointer-events:none}
+.pro-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:22px;padding-block:110px 60px}
+.pro-where{margin:0;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--mustard)}
+.pro-h{font-size:clamp(56px,8.5vw,140px);font-variation-settings:"wdth" 66;max-width:9ch}
+.pro-text{margin:0;max-width:40ch;font-size:clamp(19px,1.9vw,28px);line-height:1.4;font-weight:600}
+.pro-text .wd{opacity:.14;transition:opacity .25s,color .25s}
+.pro-text .wd.on{opacity:1}
+.pro-text .wd.hot{color:var(--mustard)}
+.pro-turn{margin:0;max-width:30ch;font-family:var(--hand);font-size:clamp(26px,2.6vw,40px);line-height:1.1;color:var(--mustard);opacity:0;transform:translateY(20px);transition:opacity .6s,transform .8s var(--ease)}
+.pro-turn.on{opacity:1;transform:none}
+.pro-progress,.ns-progress{position:absolute;left:var(--gutter);right:var(--gutter-r);bottom:calc(22px + env(safe-area-inset-bottom,0px));height:3px;background:rgba(247,232,207,.12);z-index:3;border-radius:3px;overflow:hidden}
+.pro-progress i,.ns-progress i{display:block;height:100%;width:100%;background:var(--mustard);transform:scaleX(0);transform-origin:left}
+
+.night-strip{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:#0d0a1a}
+.ns-stage{position:absolute;inset:0}
+.ns-sky{position:absolute;inset:0;background:linear-gradient(180deg,var(--s1,#E86A2B) 0%,var(--s2,#7A1E3A) 55%,var(--s3,#1A0B1E) 100%)}
+.ns-stars{position:absolute;inset:0;opacity:var(--stars,0);background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 28% 8%,#fff9,transparent),radial-gradient(1.5px 1.5px at 47% 22%,#fff7,transparent),radial-gradient(1px 1px at 63% 12%,#fffa,transparent),radial-gradient(1.5px 1.5px at 78% 26%,#fff8,transparent),radial-gradient(1px 1px at 90% 9%,#fff9,transparent),radial-gradient(1px 1px at 36% 30%,#fff6,transparent),radial-gradient(1.5px 1.5px at 7% 34%,#fff7,transparent)}
+.ns-clock{position:absolute;left:var(--gutter);top:calc(env(safe-area-inset-top,0px) + 92px);z-index:4;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ns-label{width:100%;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,232,207,.75)}
+.ns-clock b{font-family:var(--display);font-weight:900;font-size:clamp(64px,8vw,130px);line-height:.85;font-variation-settings:"wdth" 70;font-variant-numeric:tabular-nums;color:var(--cream);text-shadow:0 0 40px rgba(255,180,90,.35)}
+.ns-clock small{font-weight:800;font-size:20px;color:var(--mustard)}
+.ns-track{position:absolute;left:0;top:0;bottom:0;display:flex;align-items:center;gap:6vw;padding-left:38vw;padding-right:14vw;width:max-content;z-index:3;will-change:transform}
+.ns-panel{position:relative;width:min(62vw,880px);height:min(62vh,560px);display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;flex:none}
+.ns-media{position:relative;height:100%;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.45);background:rgba(0,0,0,.25)}
+.ns-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);will-change:transform}
+.ns-media img.dim{filter:brightness(.45) saturate(.7)}
+.ns-media.cut{overflow:visible;background:none;box-shadow:none}
+.ns-media.cut img{position:absolute;width:auto;object-fit:contain;transform:none;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.ns-media.cut .c-a{left:6%;top:4%;height:58%}
+.ns-media.cut .c-b{right:0;top:30%;height:52%;rotate:8deg}
+.ns-media.cut .c-c{left:12%;bottom:0;height:42%;rotate:-6deg}
+.ns-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ns-hour{font-weight:800;font-size:13px;letter-spacing:.14em;color:var(--mustard)}
+.ns-copy h2{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(46px,5.4vw,92px);line-height:.86;font-variation-settings:"wdth" 70}
+.ns-copy p{margin:0;max-width:30ch;font-size:17px;color:rgba(247,232,207,.86)}
+.ns-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+
+.nums{background:var(--blood);padding-block:130px 120px;position:relative;overflow:hidden}
+.nums h2{font-size:clamp(60px,10vw,170px);font-variation-settings:"wdth" 64;margin-bottom:56px}
+.nums-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 24px}
+.num{display:flex;flex-direction:column;gap:12px;border-top:2px solid rgba(247,232,207,.25);padding-top:18px}
+.num.wide{grid-column:1/-1;flex-direction:row;align-items:flex-end;gap:28px;flex-wrap:wrap}
+.num span{max-width:26ch;font-weight:600}
+.odo{display:inline-flex;font-family:var(--display);font-weight:900;font-size:clamp(76px,9vw,150px);line-height:1;font-variation-settings:"wdth" 70;color:var(--mustard);font-variant-numeric:tabular-nums}
+.num.wide .odo{font-size:clamp(90px,15vw,260px);color:var(--cream)}
+.odo .col{display:inline-block;height:1em;overflow:hidden;line-height:1}
+.odo .col i{display:flex;flex-direction:column;font-style:normal;transition:transform 2s cubic-bezier(.16,1,.3,1)}
+.odo .col i span{display:block;height:1em;line-height:1}
+.odo .sep{display:inline-block}
+
+.outro{position:relative;min-height:90vh;display:flex;align-items:center;background:radial-gradient(60% 70% at 50% 60%,rgba(232,50,31,.35),transparent 70%),#120604;padding-block:120px;text-align:center}
+.outro-in{width:100%;display:flex;flex-direction:column;align-items:center;gap:26px}
+.outro .hand{font-size:clamp(28px,3vw,44px);margin:0}
+.outro h2{font-size:clamp(70px,13vw,220px);font-variation-settings:"wdth" 64}
+.outro .ns-btns{justify-content:center}
+
+/* static fallback */
+.pro.static,.night-strip.static{height:auto}
+.pro.static .pro-stage,.night-strip.static .ns-stage{position:relative}
+.pro.static .pro-copy{position:relative}
+.pro.static .wd{opacity:1}
+.pro.static .pro-turn{opacity:1;transform:none}
+.night-strip.static .ns-track{position:relative;flex-direction:column;width:auto;padding:200px var(--gutter-r) 80px var(--gutter);gap:60px}
+.night-strip.static .ns-panel{width:100%}
+
+@media (max-width:900px){
+  .pro-bg{right:-20%;width:90vw;opacity:.55}
+  .pro::after{background:linear-gradient(0deg,#120604 30%,rgba(18,6,4,.6) 70%,rgba(18,6,4,.3))}
+  .pro-copy{justify-content:flex-end;padding-block:0 60px}
+  .ns-track{padding-left:12vw;gap:10vw}
+  .ns-panel{width:80vw;height:auto;grid-template-columns:1fr;gap:18px}
+  .ns-media{height:38vh}
+  .ns-copy h2{font-size:clamp(38px,11vw,64px)}
+  .ns-copy p{font-size:15px}
+  .ns-clock b{font-size:56px}
+  .nums-grid{grid-template-columns:1fr 1fr}
+  .ns-track{align-items:flex-end;padding-bottom:70px}
+  .ns-clock{top:calc(env(safe-area-inset-top,0px) + 84px)}
+}
+
 /* bag drawer */
 .scrim{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .4s}
 .scrim.open{opacity:1;pointer-events:auto}
@@ -1009,32 +1094,54 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
 
 <!-- ======================= STORY ======================= -->
 <main data-page="story" hidden>
-  <section class="page-head wrap">
-    <h1 class="mega split">From Nashville to the Night Market</h1>
-  </section>
-  <section class="story-sec wrap">
-    <div class="story-grid">
-      <div class="board" id="board">
-        <figure class="polaroid" style="left:2%;top:4%;rotate:-7deg"><img src="img/stall-a.webp" alt="The FRYARD stall at night"><figcaption>the stall</figcaption></figure>
-        <figure class="polaroid" style="left:38%;top:0;rotate:6deg"><img src="img/cayenne-a.webp" alt="Cayenne being dusted over fried tenders"><figcaption>the dust</figcaption></figure>
-        <figure class="polaroid" style="left:6%;top:42%;rotate:4deg"><img src="img/cayenne-b.webp" alt="Tenders cooling on a rack under a cloud of chili"><figcaption>fresh out</figcaption></figure>
-        <figure class="polaroid" style="left:40%;top:40%;rotate:-5deg"><img src="img/stall-b.webp" alt="A crowd eating at the Night Market"><figcaption>the regulars</figcaption></figure>
-        <span class="drag-hint">drag the photos around</span>
+  <section class="pro" id="pro" aria-labelledby="proTitle">
+    <div class="pro-stage">
+      <div class="pro-bg" aria-hidden="true"><img src="img/tender-hot.webp" alt="" id="proImg"></div>
+      <div class="pro-copy wrap">
+        <p class="pro-where">Nashville, Tennessee. The 1930s.</p>
+        <h1 class="mega pro-h" id="proTitle">It started<br>as payback</h1>
+        <p class="pro-text" id="proText">As the story goes, a man named Thornton Prince came home late one too many times. To get even, his girlfriend cooked him fried chicken loaded with every hot pepper she could find. It backfired. He loved it so much that his family opened a chicken shack, and Nashville hot chicken was born.</p>
+        <p class="pro-turn" id="proTurn">Almost a century later, that same fire lands at the Night Market.</p>
       </div>
-      <div>
-        <p style="font-size:20px;max-width:38ch;margin:0 0 48px">Nashville hot chicken is fried chicken that gets brushed with cayenne-loaded oil the second it leaves the fryer. We fell for it, then built a red stall to bring it to the Night Market.</p>
-        <ol class="timeline" id="timeline"><span class="fill" aria-hidden="true"></span>
-          <li><h3>The recipe</h3><p>Overnight brine, double fry, cayenne oil, white bread and pickles. Done the Nashville way, tuned to how hot you want it.</p></li>
-          <li><h3>The stall</h3><p>A red stall at the Night Market, in front of Company Garden No. 1. Lights on at 6 PM, last order before 11.</p></li>
-          <li><h3>The regulars</h3><p>Word spread from table to table and onto Instagram, where more than 2,400 people now follow the stall.</p></li>
-          <li><h3>Next up</h3><p>Party trays and bulk orders, so the heat can come to you.</p></li>
-        </ol>
+      <div class="pro-progress" aria-hidden="true"><i id="proBar"></i></div>
+    </div>
+  </section>
+
+  <section class="night-strip" id="strip" aria-labelledby="stripTitle">
+    <div class="ns-stage">
+      <div class="ns-sky" id="nsSky" aria-hidden="true"></div>
+      <div class="ns-stars" aria-hidden="true"></div>
+      <div class="ns-clock" aria-hidden="true"><span class="ns-label" id="stripTitle">One night at FRYARD</span><b id="nsClock">6:00</b><small>PM</small></div>
+      <div class="ns-track" id="nsTrack">
+        <article class="ns-panel"><div class="ns-media"><img src="img/stall-a.webp" alt="The red FRYARD stall at the Night Market"></div><div class="ns-copy"><span class="ns-hour">6:00 PM</span><h2>Lights on</h2><p>The red stall wakes up in front of Company Garden No. 1. String lights, hot oil, and the first orders already waiting.</p></div></article>
+        <article class="ns-panel"><div class="ns-media"><img src="img/cayenne-a.webp" alt="Chili being dusted over fried tenders"></div><div class="ns-copy"><span class="ns-hour">7:00 PM</span><h2>Into the oil</h2><p>Tenders are hand-breaded and fried to order. Nashville hot gets dunked in the glaze, honey glazed gets its sticky finish.</p></div></article>
+        <article class="ns-panel"><div class="ns-media cut"><img src="img/menu/s-legend.webp" alt="" class="c-a"><img src="img/menu/s-nuclear.webp" alt="" class="c-b"><img src="img/menu/s-classic.webp" alt="" class="c-c"></div><div class="ns-copy"><span class="ns-hour">8:00 PM</span><h2>Hand-stacked</h2><p>Every slider is built by hand: crispy chicken, fresh coleslaw, pickles, signature sauce. Always fresh.</p></div></article>
+        <article class="ns-panel"><div class="ns-media"><img src="img/stall-b.webp" alt="Tables full of people at the Night Market"></div><div class="ns-copy"><span class="ns-hour">9:00 PM</span><h2>The rush</h2><p>Tables fill up. Combos go out by the tray, and the Nashville nuclear keeps the brave ones busy.</p></div></article>
+        <article class="ns-panel"><div class="ns-media cut"><img src="img/menu/bw-fury.webp" alt="" class="c-a"><img src="img/menu/b-bigb.webp" alt="" class="c-b"><img src="img/menu/coke.webp" alt="" class="c-c"></div><div class="ns-copy"><span class="ns-hour">10:00 PM</span><h2>Fryin' so hard</h2><p>The fryer doesn't slow down. Big B burritos, loaded bowls, and Fryard's squad for the whole table.</p></div></article>
+        <article class="ns-panel ns-last"><div class="ns-media"><img src="img/stall-a.webp" alt="" class="dim"></div><div class="ns-copy"><span class="ns-hour">11:00 PM</span><h2>Lights out</h2><p>Last orders, then the oil cools down. Same time tomorrow.</p><div class="ns-btns"><a class="btn btn-y" href="#find" data-link="find">Find the stall</a><a class="btn btn-o" href="#menu" data-link="menu">See the menu</a></div></div></article>
+      </div>
+      <div class="ns-progress" aria-hidden="true"><i id="nsBar"></i></div>
+    </div>
+  </section>
+
+  <section class="nums" aria-labelledby="numsTitle">
+    <div class="wrap">
+      <h2 class="mega" id="numsTitle">By the numbers</h2>
+      <div class="nums-grid">
+        <div class="num"><b class="odo" data-odo="6–11"></b><span>PM, every single night</span></div>
+        <div class="num"><b class="odo" data-odo="31"></b><span>things on the menu</span></div>
+        <div class="num"><b class="odo" data-odo="3"></b><span>tender flavours: original, Nashville hot, honey glazed</span></div>
+        <div class="num"><b class="odo" data-odo="4"></b><span>dips, and one comes free with every tender pack</span></div>
+        <div class="num wide"><b class="odo" data-odo="2,424"></b><span>people follow the stall on Instagram</span></div>
       </div>
     </div>
-    <div class="facts">
-      <div><b>6–11</b><span>PM, every night</span></div>
-      <div><b>3</b><span>tender flavours: original, Nashville hot, honey glazed</span></div>
-      <div><b data-count="2424">2,424</b><span>followers on Instagram</span></div>
+  </section>
+
+  <section class="outro" aria-labelledby="outroTitle">
+    <div class="wrap outro-in">
+      <p class="hand">Hand-stacked. Always fresh.</p>
+      <h2 class="mega" id="outroTitle">Same time<br>tomorrow?</h2>
+      <div class="ns-btns"><a class="btn btn-y mag" href="#find" data-link="find">Find the stall</a><a class="btn btn-o mag" href="https://www.instagram.com/fryardindia/" target="_blank" rel="noopener">Follow @fryardindia</a></div>
     </div>
   </section>
 </main>
@@ -1714,11 +1821,41 @@ const inits={
     ScrollTrigger.batch('.mcard',{start:'top 90%',once:true,onEnter:b=>gsap.from(b,{y:70,opacity:0,rotate:2,stagger:.08,duration:.9,ease:'power3.out'})});
     gsap.from('.addon-card',{y:80,opacity:0,rotate:-4,stagger:.15,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'#sec-addons',start:'top 80%'}});
   },
-  story(){ const h=$('main[data-page="story"] h1'); split(h); bindBoard(); if(!hasG||RM) return;
-    gsap.from($$('.ch',h),{yPercent:120,opacity:0,stagger:.02,duration:1,ease:'expo.out'});
-    gsap.from('.polaroid',{y:-200,rotate:()=>gsap.utils.random(-40,40),opacity:0,stagger:.12,duration:1.1,ease:'bounce.out',delay:.4});
-    gsap.to('#timeline .fill',{height:'calc(100% - 16px)',ease:'none',scrollTrigger:{trigger:'#timeline',start:'top 70%',end:'bottom 60%',scrub:true}});
-    $$('#timeline li').forEach(li=>gsap.from(li,{x:40,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:li,start:'top 85%'}}));
+  story(){
+    const ss=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
+    const text=$('#proText');
+    if(!text.dataset.s){text.dataset.s=1;const HOT=/^(hot|pepper|backfired\.?|loved|Nashville)$/i;
+      text.innerHTML=text.textContent.split(/(\s+)/).map(w=>/^\s+$/.test(w)?w:`<span class="wd"${HOT.test(w.replace(/[,.]/g,''))||HOT.test(w)?' data-hot="1"':''}>${w}</span>`).join('')}
+    // odometers
+    $$('.odo').forEach(el=>{if(el.dataset.b)return;el.dataset.b=1;const v=el.dataset.odo;
+      el.innerHTML=`<span class="sr">${v}</span><span aria-hidden="true" style="display:inline-flex">${[...v].map(ch=>/\d/.test(ch)?`<span class="col" data-d="${ch}"><i>${[...Array(20).keys()].map(d=>`<span>${d%10}</span>`).join('')}</i></span>`:`<span class="sep">${ch}</span>`).join('')}</span>`});
+    const roll=(instant)=>$$('.odo .col').forEach((c,k)=>{const i=c.firstChild;if(instant)i.style.transition='none';else i.style.transitionDelay=(k*.06)+'s';i.style.transform=`translateY(-${(10+(+c.dataset.d))}em)`});
+    const words=$$('#proText .wd'),img=$('#proImg'),turn=$('#proTurn'),sky=$('#nsSky'),strip=$('#strip'),track=$('#nsTrack');
+    if(!hasG||RM){$('#pro').classList.add('static');strip.classList.add('static');words.forEach(w=>w.classList.add('on'));turn.classList.add('on');roll(true);img.style.filter='none';return}
+    // prologue: words light up, the photo goes from old sepia to full red
+    ScrollTrigger.create({trigger:'#pro',start:'top top',end:'+=170%',pin:true,scrub:true,anticipatePin:1,onUpdate:s=>{const p=s.progress;const n=Math.round(ss(.04,.78,p)*words.length);
+      words.forEach((w,i)=>{const on=i<n;w.classList.toggle('on',on);if(w.dataset.hot)w.classList.toggle('hot',on)});turn.classList.toggle('on',p>.82);
+      const c=ss(.5,.92,p);img.style.filter=`grayscale(${(1-c).toFixed(3)}) sepia(${(.55*(1-c)).toFixed(3)}) brightness(${(.62+c*.43).toFixed(3)}) saturate(${(1+c*.5).toFixed(3)})`;
+      img.style.transform=`scale(${(1+p*.14).toFixed(3)}) rotate(${(p*-7).toFixed(2)}deg)`;$('#proBar').style.transform=`scaleX(${p})`}});
+    gsap.from('.pro-where, .pro-h',{y:50,opacity:0,stagger:.12,duration:1.1,ease:'expo.out',delay:.1});
+    gsap.from('.pro-bg img',{xPercent:30,rotate:20,opacity:0,duration:1.6,ease:'expo.out',delay:.2});
+    // one night: sideways strip, clock and sky follow the scroll
+    const skies=[['#E86A2B','#7A1E3A','#1A0B1E'],['#C2452A','#5A173A','#160A1F'],['#7A2A44','#2E1240','#0F0820'],['#3A1A4A','#1A0F33','#090615'],['#1E1238','#0F0A24','#06040F'],['#120B26','#080614','#030208']];
+    const dist=()=>Math.max(0,track.scrollWidth-innerWidth);
+    const tw=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#strip',start:'top top',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:s=>{const p=s.progress;
+      const mins=Math.round(p*300),hh=6+Math.floor(mins/60),mm=mins%60;$('#nsClock').textContent=`${hh}:${String(mm).padStart(2,'0')}`;
+      const f=p*(skies.length-1),i=Math.min(skies.length-2,Math.floor(f)),t=f-i;['--s1','--s2','--s3'].forEach((v,k)=>sky.style.setProperty(v,gsap.utils.interpolate(skies[i][k],skies[i+1][k],t)));
+      strip.style.setProperty('--stars',Math.min(1,p*1.6).toFixed(3));$('#nsBar').style.transform=`scaleX(${p})`}}});
+    $$('.ns-panel').forEach(pn=>{const media=$('.ns-media',pn),cut=media.classList.contains('cut');
+      if(cut)$$('img',media).forEach((im,k)=>gsap.fromTo(im,{y:(k-1)*60,rotation:(k-1)*-10},{y:(1-k)*40,rotation:(k-1)*8,ease:'none',scrollTrigger:{trigger:pn,containerAnimation:tw,start:'left right',end:'right left',scrub:true}}));
+      else gsap.fromTo($('img',media),{xPercent:10},{xPercent:-10,ease:'none',scrollTrigger:{trigger:pn,containerAnimation:tw,start:'left right',end:'right left',scrub:true}});
+      gsap.from($('.ns-copy',pn).children,{y:50,opacity:0,stagger:.08,duration:.8,ease:'power3.out',scrollTrigger:{trigger:pn,containerAnimation:tw,start:'left 78%'}});
+      gsap.from(media,{rotate:-4,scale:.9,ease:'none',scrollTrigger:{trigger:pn,containerAnimation:tw,start:'left right',end:'center center',scrub:true}})});
+    // numbers roll in
+    gsap.from('#numsTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.nums',start:'top 75%'}});
+    ScrollTrigger.create({trigger:'.nums-grid',start:'top 82%',once:true,onEnter:()=>roll(false)});
+    gsap.from('.num',{y:40,opacity:0,stagger:.08,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.nums-grid',start:'top 85%'}});
+    gsap.from('.outro-in > *',{y:60,opacity:0,stagger:.12,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.outro',start:'top 70%'}});
   },
   find(){ const h=$('main[data-page="find"] h1'); split(h); if(!hasG||RM) return;
     gsap.from($$('.ch',h),{yPercent:120,opacity:0,stagger:.04,duration:1,ease:'expo.out'});
