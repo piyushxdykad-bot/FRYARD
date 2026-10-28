@@ -637,6 +637,41 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
   .bd-info{width:auto}
   .pass-ghost{bottom:auto;top:40%}
 }
+/* full menu opener */
+.full{background:radial-gradient(70% 45% at 85% 0%,rgba(179,18,27,.35),transparent 70%),#160806}
+.full-head{display:grid;grid-template-columns:1.5fr 1fr;align-items:end;gap:40px;margin-bottom:56px}
+.fh-title{font-size:clamp(64px,10.5vw,176px);font-variation-settings:"wdth" 64;line-height:.86;display:flex;flex-direction:column}
+.fh-line{display:flex;align-items:center;gap:.14em;flex-wrap:nowrap}
+.fh-w{display:inline-block}
+.fcap{display:inline-grid;place-items:center;height:.78em;border-radius:999px;overflow:hidden;flex:none;position:relative;transform-origin:center;transition:transform .6s var(--ease)}
+.fcap::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,#ff7a3d,#B3121B 70%)}
+.fcap img{position:relative;height:118%;width:auto;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.4))}
+.fcap.c1{width:1.5em;rotate:-6deg}.fcap.c1::before{background:radial-gradient(circle at 50% 60%,#ff8a3d,#A3121A 72%)}
+.fcap.c2{width:1.35em;rotate:5deg}.fcap.c2::before{background:radial-gradient(circle at 50% 60%,#ffb347,#B5620C 72%)}
+.fcap.c2 img{height:105%}
+.fcap.c3{width:.95em;rotate:-8deg}.fcap.c3::before{background:radial-gradient(circle at 50% 60%,#F6B72C,#C4870F 72%)}
+.fcap.c3 img{height:135%;rotate:20deg}
+.fcap:hover{transform:rotate(-10deg) scale(1.12)}
+.fh-side{display:flex;flex-direction:column;gap:22px;padding-bottom:10px}
+.fh-count{margin:0;display:flex;gap:16px;align-items:flex-start}
+.fh-count b{font-family:var(--display);font-weight:900;font-size:clamp(64px,7vw,110px);line-height:.8;color:var(--mustard);font-variation-settings:"wdth" 70;font-variant-numeric:tabular-nums}
+.fh-count span{max-width:26ch;color:rgba(247,232,207,.82);padding-top:4px}
+.fh-key{display:flex;gap:18px;flex-wrap:wrap;font-weight:700;font-size:14px}
+.fh-key>span{display:inline-flex;align-items:center;gap:8px}
+.stat.mini{width:40px;height:40px;font-style:normal}
+.stat.mini b{font-size:12px}
+.tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:60px}
+.tile{position:relative;border:0;border-radius:24px;padding:16px 16px 18px;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;overflow:hidden;color:var(--cream);background:radial-gradient(90% 70% at 50% 30%,color-mix(in srgb,var(--t) 85%,#ffb36b) 0%,var(--t) 45%,color-mix(in srgb,var(--t) 40%,#120504) 100%);isolation:isolate;transition:transform .5s var(--ease),box-shadow .5s}
+.tile img{position:absolute;left:50%;top:40%;translate:-50% -50%;width:auto;height:58%;max-width:86%;object-fit:contain;z-index:-1;filter:drop-shadow(0 18px 18px rgba(0,0,0,.45));transition:transform .7s var(--ease)}
+.tile b{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:24px;line-height:.95;font-variation-settings:"wdth" 75}
+.tile small{display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:12px;margin-top:6px;opacity:.9}
+.tile .arrowless{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(20,4,3,.35);display:grid;place-items:center;font-size:18px;transition:transform .5s var(--ease),background .3s}
+.tile:hover{transform:translateY(-8px);box-shadow:0 26px 50px rgba(0,0,0,.45)}
+.tile:hover img{transform:scale(1.12) rotate(-6deg)}
+.tile:hover .arrowless{transform:rotate(-45deg);background:var(--mustard);color:var(--char)}
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.full-head{grid-template-columns:1fr;gap:26px}.fh-title{font-size:clamp(42px,12vw,110px)}.fcap.c1{width:1.15em}.fcap.c2{width:1.15em}}
+@media (max-width:560px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{min-height:190px;border-radius:18px}.tile b{font-size:20px}}
 /* bag drawer */
 .scrim{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .4s}
 .scrim.open{opacity:1;pointer-events:auto}
@@ -947,9 +982,19 @@ footer{background:var(--char);padding-block:80px 28px;overflow:hidden}
   <section class="full" id="fullMenu" aria-labelledby="fullTitle">
     <div class="wrap">
       <div class="full-head">
-        <h2 class="mega" id="fullTitle">Everything<br>we fry</h2>
-        <p>Prices straight from the FRYARD menu. Tap a size, then add it to your order.</p>
+        <h2 class="mega fh-title" id="fullTitle" aria-label="Everything we fry">
+          <span class="fh-line"><span class="fh-w">Everything</span><span class="fcap c1" aria-hidden="true"><img src="img/menu/s-nuclear.webp" alt=""></span></span>
+          <span class="fh-line"><span class="fh-w">We</span><span class="fcap c2" aria-hidden="true"><img src="img/menu/b-bigb.webp" alt=""></span><span class="fh-w">fry</span><span class="fcap c3" aria-hidden="true"><img src="img/menu/t-nashville.webp" alt=""></span></span>
+        </h2>
+        <div class="fh-side">
+          <p class="fh-count"><b id="itemCount">0</b><span>things on the menu, straight from FRYARD's own card. Pick a size, then add it to your order.</span></p>
+          <div class="fh-key" aria-label="How to read the badges">
+            <span><i class="stat prot mini"><b>31g</b></i>Protein</span>
+            <span><i class="stat kcal mini"><b>608</b></i>Calories</span>
+          </div>
+        </div>
       </div>
+      <div class="tiles" id="catTiles"></div>
     </div>
     <nav class="tabs" id="menuTabs" aria-label="Menu sections"><div class="wrap tabs-in" id="tabsIn"></div></nav>
     <div class="wrap" id="sections"></div>
@@ -1216,13 +1261,18 @@ function buildMenu(){
     </div></article>`}).join('');
   $('#passIndex').innerHTML=sigs.map((m,i)=>`<button type="button" data-go="${i}" aria-current="${i===0}">${({tenders:'Tenders',sliders:'Sliders',burritos:'Burritos',bowls:'Bowls',combos:'Combos',dips:'Dips & drinks'})[m.sec]}</button>`).join('');
   // full menu
-  $('#tabsIn').innerHTML=SECTIONS.map(s=>`<button type="button" data-tab="${s.id}">${s.name.replace('Chicken ','')}</button>`).join('')+`<button type="button" data-tab="addons">Add-ons</button>`;
+  $('#tabsIn').innerHTML=SECTIONS.map(s=>`<button type="button" data-tab="${s.id}">${({tenders:'Tenders',sliders:'Sliders',burritos:'Burritos',bowls:'Loaded bowls',combos:'Combos',dips:'Dips & drinks'})[s.id]}</button>`).join('')+`<button type="button" data-tab="addons">Add-ons</button>`;
   $('#sections').innerHTML=SECTIONS.map(s=>`<section class="msec" id="sec-${s.id}" style="--t:${s.tint}" aria-labelledby="h-${s.id}">
     <div class="sec-head"><h3 class="sec-title" id="h-${s.id}">${s.name}</h3><p>${s.note}</p></div>
     <div class="mgrid">${MENU.filter(m=>m.sec===s.id).map(m=>`<article class="mcard" data-id="${m.id}">
       <div class="mc-img">${visual(m)}${statsHTML(m)}</div>
       <div class="mc-body"><h4>${m.name}</h4><p>${m.desc}</p>${optsHTML(m)}
         <div class="mc-foot"><span class="price" data-price="${m.id}">${inr(priceOf(m,0))}</span><button class="add" type="button" data-addq="${m.id}">${addLabel(m.id)}</button></div></div></article>`).join('')}</div></section>`).join('');
+  const TILE_IMG={tenders:'t-nashville',sliders:'s-nuclear',burritos:'b-bigb',bowls:'bw-fury',combos:'s-legend',dips:'d-cheese'};
+  const real=MENU.filter(m=>!m.addon);
+  $('#itemCount').textContent=real.length;$('#itemCount').dataset.count=real.length;
+  $('#catTiles').innerHTML=SECTIONS.map(s=>{const its=MENU.filter(m=>m.sec===s.id);const min=Math.min(...its.map(m=>priceOf(m,0)));
+    return `<button class="tile" type="button" data-jump="${s.id}" style="--t:${s.tint}"><span class="arrowless" aria-hidden="true">↓</span><img src="img/menu/${TILE_IMG[s.id]}.webp" alt="" loading="lazy"><b>${s.name.replace('Chicken ','')}</b><small><span>${its.length} items</span><span>from ${inr(min)}</span></small></button>`}).join('');
   $('#addonGrid').innerHTML=ADDONS.map((g,gi)=>`<div class="addon-card"><h4>${g.title}</h4>${g.items.map(([n,p],i)=>`<div class="arow"><b>${n}</b><span class="lead" aria-hidden="true"></span><span class="pr">${inr(p)}</span><button class="plus" type="button" data-add="a${gi}-${i}" aria-label="Add ${n}">+</button></div>`).join('')}</div>`).join('');
   // wiring
   const root=$('main[data-page="menu"]');
@@ -1655,7 +1705,12 @@ const inits={
     gsap.from($('.pi',plates[0]),{yPercent:40,rotate:25,scale:.6,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'#pass',start:'top 65%'}});
     gsap.from('.pass-ring',{opacity:0,duration:1.6,ease:'power2.out',scrollTrigger:{trigger:'#pass',start:'top 65%'}});
     if(FINE)pass.addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to('#passItems',{x:x*24,y:y*16,duration:1.2,ease:'power3.out'});gsap.to('.pass-orbit',{x:x*-40,y:y*-30,duration:1.4,ease:'power3.out'})});
-    gsap.from('#fullTitle',{yPercent:30,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#fullMenu',start:'top 75%'}});
+    const fhT=gsap.timeline({scrollTrigger:{trigger:'#fullMenu',start:'top 70%'}});
+    fhT.from('#fullTitle .fh-w',{yPercent:110,opacity:0,stagger:.08,duration:1,ease:'expo.out'})
+       .fromTo('#fullTitle .fcap img',{scale:0,rotation:-120},{scale:1,rotation:0,stagger:.12,duration:1.1,ease:'back.out(2)'},'-=.7')
+       .from('.fh-side > *',{y:30,opacity:0,stagger:.1,duration:.8,ease:'power3.out'},'-=.8');
+    ScrollTrigger.create({trigger:'#catTiles',start:'top 85%',once:true,onEnter:()=>gsap.from('#catTiles .tile',{y:90,opacity:0,rotate:()=>gsap.utils.random(-6,6),stagger:.08,duration:1,ease:'expo.out'})});
+
     ScrollTrigger.batch('.mcard',{start:'top 90%',once:true,onEnter:b=>gsap.from(b,{y:70,opacity:0,rotate:2,stagger:.08,duration:.9,ease:'power3.out'})});
     gsap.from('.addon-card',{y:80,opacity:0,rotate:-4,stagger:.15,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'#sec-addons',start:'top 80%'}});
   },
